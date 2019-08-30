@@ -1,35 +1,28 @@
 <?php
-	use app\modules\category\classes\Category;
 
-    $cat = (new Category)->get($product->id_cat)->getParent();
 ?>
 
-<!-- css -->
-<link rel="stylesheet" type="text/css" href="/web/css/product/index/main.css">
+<!-- breadcrumbs -->
+<div class="container">
+    <ol class="breadcrumb">
+		<li><a href="/">Главная</a></li>
+		<? if ($product->category->parent): ?>
+			<li><a href="/category?id_cat=<?=$product->category->parent->id?>"><?=$product->category->parent->name?></a></li>
+		<? endif; ?>
+		<li><a href="/category?id_cat=<?=$cat->id?>"><?=$product->category->name?></a></li>	
+		<li><a href="#"><?=$product->name?></a></li>
+	</ol>
+</div>
 
-<main>
-	<!-- breadcrumbs -->
-	<div class="breadcrumbs-wrp">
-		<ul class="breadcrumbs">
-			<li><a href="/">Главная</a></li>
-			<li><a href="category/list">Каталог</a></li>
-			<? if ($cat->parent): ?>
-				<li><a href="/category?id_cat=<?=$cat->parent->id?>"><?=$cat->parent->name?></a></li>
-			<? endif; ?>	
-			<li><a href="/category?id_cat=<?=$cat->id?>"><?=$cat->name?></a></li>
-			<li><a href="#"><?=$product->name?></a></li>
-		</ul>
+<!-- product -->
+<? include 'product.php'; ?>
+
+<!-- product description -->
+<div class="container" style="margin-bottom: 20px;">
+	<div class="row">
+		<div class="col-md-12">
+			<?php if ($product->description) echo $product->description; ?>
+		</div>
 	</div>
+</div>
 
-	<!-- name product-->
-	<h1 class="product-code"><?=$product->name?></h1>
-
-	<!-- product -->
-	<? include 'product.php'; ?>
-
-	<!-- similar products -->
-	<div class="similar-products-block"></div>
-
-	<!-- viewed products -->
-	<div class="viewed-block"></div>
-</main>

@@ -35,7 +35,7 @@
 	<? endif; ?>
 
 	<!-- category description -->
-	<div class="container">
+	<div class="container" style="margin-bottom: 20px;">
 		<div class="row">
 			<div class="col-md-12">
 				<?php if ($pages && $cat->description) echo $cat->description; ?>

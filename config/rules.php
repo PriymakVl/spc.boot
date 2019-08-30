@@ -23,5 +23,6 @@ return [
 	'cart' => 'cart/index',
 	'cart/add-cylinder' => 'cart/add-cylinder-to-cart',
 	'cart/add-product' => 'cart/add-product-to-cart',
+	'cart/delete-item' => 'cart/delete-item-cart',
 
 ];

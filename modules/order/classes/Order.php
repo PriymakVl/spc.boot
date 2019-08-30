@@ -8,6 +8,7 @@ use app\models\ModelBase;
 use app\models\Customer;
 use app\modules\order\classes\OrderCylinder;
 use app\modules\order\classes\OrderProduct;
+use app\modules\product\classes\Product;
 
 class Order extends ModelBase
 {
@@ -44,9 +45,9 @@ class Order extends ModelBase
 
     public function getProducts()
     {
-        $items = OrderProduct::find()->select('id_prod')->where(['id_order' => $this->id, 'status' => self::STATUS_ACTIVE])->asArray()->all();
+        $items = OrderProduct::find()->select('id_prod')->where(['id_order' => $this->id, 'status' => self::STATUS_ACTIVE])->column();
         if (!$items) return;
-        return Product::finde()->where('IN', 'id', $items)->all();
+        return Product::find()->where(['IN', 'id', $items])->all();
     }
 
     public function convertState($state = null)

@@ -11,10 +11,9 @@
 		<td><?= $product->name ?></td>
 		<td><?= $product->preview ?></td>
 		<td><?= $product->price ?></td>
+		<td><?= $product->qty ?></td>
 		<td>
-			<input type="number" name="qty" value="1" style="width:50px;">
-		<td>
-			 <?= Html::a('удалить', ['/main/delete-item-cart', 'index' => $index, 'type' => 'products']) ?>
+			 <?= Html::a('удалить', ['/cart/delete-item', 'index' => $index, 'type' => 'products']) ?>
 		</td>
 	</tr>
 <? endforeach; ?>

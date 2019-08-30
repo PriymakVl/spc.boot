@@ -31,8 +31,11 @@
         <?=$this->render('main_menu')?>
     </header>
     
-    <?= Alert::widget() ?>
-
+    <!-- message -->
+    <div class="container">
+         <?= Alert::widget() ?>
+    </div>
+   
     <!-- main -->
     <main>
         <?= $content ?>

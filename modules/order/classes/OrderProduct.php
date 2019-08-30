@@ -21,6 +21,7 @@ class OrderProduct extends ModelBase {
             $product->id_prod = $item['id_prod'];
             $product->price = $item['price'];
             $product->qty = $item['qty'];
+            $product->id_order = $id_order;
             $product->save();
         }
     }

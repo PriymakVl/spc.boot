@@ -1,3 +1,8 @@
+<?php
+    use app\modules\category\classes\Category;
+    $catalog = (new Category)->getMain();
+?>
+
  <nav class="navbar">
     <!-- Brand -->
     <!-- <a class="navbar-brand" href="#">Specialist</a> -->
@@ -11,18 +16,20 @@
     <div class="collapse navbar-collapse" id="collapsibleNavbar">
         <ul class="main-menu nav navbar-nav navbar-center">
             <!-- catalog -->
-<!--             <li class="dropdown">
-                <a class="dropdown-toggle" id="navbardrop" data-toggle="dropdown" href="#">Каталог</a>
-                <span class="caret"></span>
-                 <ul class="dropdown-menu">
-                    <li><a href="#">Цилиндры</a></li>
-                    <li><a href="#">Блоки подготовки воздуха</a></li>
-                    <li class="divider"></li>
-                    <li><a href="#">Вентили</a></li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Каталог
+                    <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                    <? foreach ($catalog as $cat): ?>
+                        <li>
+                            <a href="/category?id_cat=<?=$cat->id?>"><?=$cat->name?></a>
+                        </li>
+                    <? endforeach; ?>
                 </ul>
-            </li> -->
+            </li>
             <li class="active">
-                <a  href="#">Главная</a>
+                <a  href="/">Главная</a>
             </li>
             <li>
                 <a href="#">Новости</a>

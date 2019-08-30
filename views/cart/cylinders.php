@@ -13,7 +13,7 @@
 		<td>Согласовать</td>
 		<td><input type="number" name="qty" value="<?=$data['qty']?>" style="width:50px;"></td>
 		<td>
-			 <?= Html::a('удалить', ['/main/delete-item-cart', 'index' => $index, 'type' => 'cylinders']) ?>
+			 <?= Html::a('удалить', ['/cart/delete-item', 'index' => $index, 'type' => 'cylinders']) ?>
 		</td>
 	</tr>
 <? endforeach; ?>

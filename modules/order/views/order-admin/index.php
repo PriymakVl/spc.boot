@@ -28,7 +28,7 @@ function createFieldProducts($order)
     $str = '';
     foreach ($order->products as $product) {
         
-        $str .= $product->code . '<br>';
+        $str .= $product->name . '<br>';
     }
     return $str;
 }
@@ -56,22 +56,21 @@ $this->title = 'Заказы';
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
-       // 'filterModel' => $searchModel,
+        'filterModel' => $searchModel,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+            ['attribute' => 'id', 'label' => '№ заказа', 'format' => 'raw', 'value' => function($model) {return '<a href="#">Заказ №'.$model->id.'</a>';}], 
 
-            ['attribute' => 'customer', 'header' => 'Заказчик', 'format' => 'raw', 'headerOptions' => ['class' => 'text-info'], 'value'=> function ($model) {return createLinkCustomer($model);}],
+            ['attribute' => 'id_customer', 'label' => 'Заказчик', 'format' => 'raw', 'value'=> function ($model) {return createLinkCustomer($model);}],
 
-             // ['attribute' => 'products', 'header' => 'Товары', 'format' => 'raw', 'headerOptions' => ['class' => 'text-info'], 'value'=> function ($model) {return createFieldProducts($model);}],
+            ['attribute' => 'products', 'label' => 'Товары', 'headerOptions' => ['class' => 'text-info'], 'format' => 'raw', 'value'=> function ($model) {return createFieldProducts($model);}],
             
             ['attribute' => 'cylinders', 'header' => 'Цилиндры', 'format' => 'raw', 'headerOptions' => ['class' => 'text-info'], 'value'=> function ($model) {return createFieldCylinders($model);}],
             
-            'state',
             ['attribute' => 'state', 'label' => 'Состояние',
-                'value' => function($model) {return Order::convertState();}, 'filter' => createSelectOrderState(),
+                'value' => function($model) {return $model->convertState();}, 'filter' => createSelectOrderState(),
             ],
 
-            ['attribute' => 'registered', 'header' => 'Дата регистрации', 'headerOptions' => ['class' => 'text-info'], 'value'=> function ($model) {return date('d.m.y', $model->registered);}],
+            ['attribute' => 'registered', 'label' => 'Дата регистрации', 'value'=> function ($model) {return date('d.m.y', $model->registered);}],
             // ['attribute' => 'registered', 'header' => 'Зарегистрирован', 'format' => 'raw', 'headerOptions' => ['class' => 'text-info'], 'value'=> function ($model) {return createLinkPrice($model);}],
             
         ]

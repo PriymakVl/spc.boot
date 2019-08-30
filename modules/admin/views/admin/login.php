@@ -10,7 +10,7 @@ use yii\bootstrap\ActiveForm;
 $this->title = 'Админка';
 ?>
 
-<div class="site-login" style="margin:50px auto">
+<div class="site-login" style="margin:150px auto 0">
 
     <?php $form = ActiveForm::begin([
         'id' => 'login-form',

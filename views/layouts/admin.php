@@ -36,33 +36,38 @@ AppAsset::register($this);
         ],
     ]);
 
+    $items = [
+                ['label' => 'Заказы', 'url' => ['/admin/order']],
+                ['label' => 'Категории', 'url' => ['/admin/category'], 'active' => (Yii::$app->controller->id == 'category-admin')],
+                ['label' => 'Продукты', 'url' => ['/admin/product'], 'active' => (Yii::$app->controller->id == 'product-admin')],
+                ['label' => 'Фильтры', 'url' => ['/admin/filters'], 'active' => (Yii::$app->controller->id == 'filter-admin')],
+                ['label' => 'Выход', 'url' => ['/admin/logout']],
+            ];
+
+
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
-        'items' => [
-            ['label' => 'Заказы', 'url' => ['/admin/order']],
-            ['label' => 'Категории', 'url' => ['/admin/category']],
-            ['label' => 'Продукты', 'url' => ['/admin/product']],
-            ['label' => 'Фильтры', 'url' => ['/admin/filters']],
-            Yii::$app->user->isGuest ? ['label' => ''] : ['label' => 'Выход', 'url' => ['/admin/logout']],
-        ],
+        'items' => Yii::$app->user->isGuest ? [] : $items,
     ]);
 
     NavBar::end();
     ?>
 
-    <div class="container">
+    <div class="container" style="margin-top: 50px;">
         <?= Alert::widget() ?>
         <?= $content ?>
     </div>
 </div>
 
-<footer class="footer">
-    <div class="container">
-        <p class="pull-left">&copy; Specialist <?= date('Y') ?></p>
+<? if (Yii::$app->controller->action->id == 'login'): ?>
+    <footer class="footer navbar-fixed-bottom">
+        <div class="container">
+            <p class="pull-left">&copy; Specialist <?= date('Y') ?></p>
 
-        <p class="pull-right"><?= Yii::powered() ?></p>
-    </div>
-</footer>
+            <p class="pull-right"><?= Yii::powered() ?></p>
+        </div>
+    </footer>
+<? endif; ?>
 
 <?php $this->endBody() ?>
 </body>

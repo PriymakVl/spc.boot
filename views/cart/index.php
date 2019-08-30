@@ -22,10 +22,10 @@ use yii\helpers\Html;
 				<th width="200">Кодировка</th>
 				<th>Описание</th>
 				<th>Цена</th>
-				<th width="50">Кол-во</th>
-				<th>Управление</th>
+				<th width="70">Кол-во</th>
+				<th width="80">Управление</th>
 			</tr>
-
+			
 			<!-- cylinders -->
 			<? if (isset($cart['cylinders'])): ?>
 				<? include 'cylinders.php'; ?>
@@ -43,6 +43,7 @@ use yii\helpers\Html;
 
 	<? else: ?>
 		<p>В корзине еще нет товаров</p>
+		<a href="/" class="btn btn-primary">Продолжить покупки</a>
 	<? endif; ?>
 
 	<!-- checkout form -->

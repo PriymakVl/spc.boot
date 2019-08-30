@@ -21,7 +21,7 @@
               	<div class="card">
                   	<div class="card-body">
                      	<a href="<?=Url::to(['/product', 'id_prod' => $product->id])?>">
-                        	<? if ($subcat->image): ?>
+                        	<? if ($product->image): ?>
                           		<?= Html::img(['@img/'.$product->image->subdir.'/'.$product->image->filename, ['alt' => $product->name]]) ?>
                         	<? else: ?>
                           		<?= Html::img(['@img/no_photo_medium.png']) ?>
@@ -31,14 +31,18 @@
                   	<!-- price -->
                   	<div class="card-price">
                   		<? if ($product->price->value): ?>
-						<span class="product-price">
-							<span class="price-value"><?=$product->price->value?></span>
-							<span class="price-currency">грн.</span>
-							<span class="price-measure">/шт</span>
-						</span>
-					<? endif; ?>
+                          <span>Цена: </span>
+            							<span class="price-value"><?=$product->price->value?></span>
+            							<span class="price-currency">грн.</span>
+            							<span class="price-measure">/шт</span>
+                      <? else: ?>
+                        <span>Согласовать</span>
+            					<? endif; ?>
                   	</div>
-                  	<a href="/cart/add-product?id_prod=<?=$product->id?>" class="btn btn-success" id="add-cart">Добавить в корзину</a>
+                    <!-- button add -->
+                    <div class="btn-wrp">
+                      <a href="/product?id_prod=<?=$product->id?>" class="btn btn-success" id="add-cart">Купить</a>
+                    </div>
                   	<!-- footer -->
 	              	<div class="card-footer">
 	                     <?= Html::a($product->name, ['/product', 'id_prod' => $product->id], ['alt' => '']) ?>
@@ -51,5 +55,12 @@
 </div>
 
 <!-- pagination -->
-<?php if ($pages) echo LinkPager::widget(['pagination' => $pages,]); ?>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 text-center">
+      <?php if ($pages) echo LinkPager::widget(['pagination' => $pages,]); ?>
+    </div>
+  </div>
+</div>
+
 

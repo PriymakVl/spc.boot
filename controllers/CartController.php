@@ -23,9 +23,9 @@ class CartController extends BaseController {
 		return $this->redirect($this->request->referrer);
 	}
 
-	public function actionAddProductToCart($id_prod)
+	public function actionAddProductToCart($id_prod, $qty)
 	{
-		$this->setSessionProduct($id_prod);
+		$this->setSessionProduct($id_prod, $qty);
 		Yii::$app->session->setFlash('success', 'Товар добавлен в корзину');
 		return $this->redirect($this->request->referrer);
 	}
@@ -35,17 +35,18 @@ class CartController extends BaseController {
 		unset($_SESSION['cart'][$type][$index]);
 		if (empty($_SESSION['cart'][$type])) unset($_SESSION['cart'][$type]);
 		Yii::$app->session->setFlash('success', 'Продукт удален из корзины');
-		return $this->redirect('cart');
+		return $this->redirect('/cart');
 	}
 
-	private function setSessionProduct($id_prod)
+	private function setSessionProduct()
 	{
-		$product = Product::findOne($id_prod);
+		$product = Product::findOne($this->request->get('id_prod'));
 		$data['id_prod'] = $product->id;
 		$data['name'] = $product->name;
 		$data['price'] = $product->price->value;
 		$data['preview'] = $product->preview;
-		$data['img'] = $cat->image ? '@img/'.$cat->image->subdir.'/'.$cat->image->filename : '@img/no_photo_medium.png';
+		$data['qty'] = $this->request->get('qty');
+		$data['img'] = $product->image ? '@img/'.$product->image->subdir.'/'.$product->image->filename : '@img/no_photo_medium.png';
 		$_SESSION['cart']['products'][] = $data;
 	}
 
