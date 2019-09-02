@@ -16,9 +16,10 @@ class ProductController extends BaseController
         return $this->render('index/main', compact('product'));
     }
 
-    public function actionSearch($name)
+    public function actionSearch($search)
     {
-    	$products = Product::find()->where(['like', 'name', $name])->all();
+    	$products = Product::find()->where(['IBLOCK_ID' => 14])->andWhere(['like', 'name', trim($search)])->all();
+        if (count($products) == 1) return $this->redirect('/product?id_prod='.$products[0]->id);
     	return $this->render('search/main', compact('products'));
     }
 

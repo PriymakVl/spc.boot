@@ -30,9 +30,9 @@ $qty_items_cart = calculate_items_cart();
 			</a>
 			<!-- search -->
 			<div class="form-group search-wrp">
-				<form>
-		    		<i class="fa fa-search form-control-feedback"></i>
-	    			<input type="text" class="form-control" placeholder="Поиск товаров">
+				<form id="formsearch" action="/search" method="get">
+		    		<i class="fa fa-search" onclick="formsearch.submit();"></i>
+	    			<input type="text" name="search" class="form-control" placeholder="Поиск товаров">
 				</form>
 			</div>
 

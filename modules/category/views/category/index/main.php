@@ -25,7 +25,7 @@
 	<? if ($products): ?> 
 		<? include 'products.php'; ?>
 	<? elseif($cat->children): ?>
-		<? if ($cat->parent && $cat->parent->id = Category::PNEUMO_CYLINDER_CAT_ID): ?>
+		<? if ($cat->parent && $cat->parent->id == Category::PNEUMO_CYLINDER_CAT_ID): ?>
 			<? include 'cylinders.php'; ?>
 		<? else: ?>
 	 		<? include 'categories.php'; ?>

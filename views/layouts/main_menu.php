@@ -14,7 +14,7 @@
 
     <!-- Navbar links -->
     <div class="collapse navbar-collapse" id="collapsibleNavbar">
-        <ul class="main-menu nav navbar-nav navbar-center">
+        <ul class="main-menu nav navbar-nav">
             <!-- catalog -->
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Каталог
@@ -27,7 +27,7 @@
                         </li>
                     <? endforeach; ?>
                 </ul>
-            </li>
+            </li> 
             <li class="active">
                 <a  href="/">Главная</a>
             </li>
@@ -43,3 +43,6 @@
         </ul>
     </div>
 </nav>
+
+ 
+           
