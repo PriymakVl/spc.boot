@@ -41,7 +41,7 @@ $qty_items_cart = calculate_items_cart();
 		<!-- phones box -->
 		<div class="col-md-3">
 			<div class="phone-callback text-center">
-				<span class="btn btn-orange">Заказать звонок</span>
+				<span class="btn btn-orange"  data-toggle="modal" data-target="#callback-form">Заказать звонок</span>
 			</div>
 			<div class="phone-number text-center">
 				<i class="fa fa-phone"></i>

@@ -41,6 +41,9 @@
         <?= $content ?>
     </main>
 
+    <!-- callback form -->
+    <?=$this->render('callback_form')?>
+
     <!-- footer -->
     <?=$this->render('footer')?>
     
