@@ -33,4 +33,5 @@ class AdminController extends BaseController
         Yii::$app->user->logout();
         return $this->redirect('/admin/login');
     }
+
 }

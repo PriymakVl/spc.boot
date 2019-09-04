@@ -18,6 +18,9 @@ return [
 	'admin/filter/category' => 'filter/filter-admin/category',
 	
 	'admin/product/image' => 'product/product-admin/upload-image',
+	
+	'callback/create' => 'admin/callback-admin/create', 
+	'callback/index' => 'admin/callback-admin/index', 
 
 	//cart
 	'cart' => 'cart/index',

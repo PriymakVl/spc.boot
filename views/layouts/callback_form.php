@@ -8,7 +8,7 @@
         <h4 class="modal-title">Заказать обратный звонок</h4>
       </div>
     
-   <form action="/main/callback">
+   <form action="/callback/create">
       <!-- Modal body -->
       <div class="modal-body">
          <!-- name -->
