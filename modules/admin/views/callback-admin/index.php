@@ -19,11 +19,11 @@ $this->title = 'Заказанные звонки';
             //'id',
             'name',
             'phone',
-            'state',
+            // 'state',
 
-            ['class' => 'yii\grid\ActionColumn', 'contentOptions' => ['style' => 'width:100px;'],
-            'headerOptions' => ['class' => 'text-info'], 'header' => 'Операции',
-            ], //'template' => '{delete}'
+            ['class' => 'yii\grid\ActionColumn', 'contentOptions' => ['style' => 'width:100px; text-align:center;'],
+            'headerOptions' => ['class' => 'text-info'], 'header' => 'Операции', 'template' => '{delete}',
+            ], 
         ]
     ]); ?>
 </div>

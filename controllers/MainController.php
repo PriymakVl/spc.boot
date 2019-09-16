@@ -10,8 +10,7 @@ class MainController extends BaseController {
 	public function actionIndex()
 	{
 		$this->view->title = 'Пневмооборудование';
-		$catalog = (new Category)->getMain();
-		return $this->render('index/main', compact('catalog'));
+		return $this->render('index/main');
 	}
 
 	public function actionContacts()

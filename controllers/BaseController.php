@@ -5,6 +5,7 @@
 	use Yii;
 	use yii\web\Controller;
 	use app\helpers\Request;
+	use app\modules\category\classes\Category;
 	
 class BaseController extends Controller {
 
@@ -23,6 +24,7 @@ class BaseController extends Controller {
 		$this->request = Yii::$app->request;
 		$this->session = Yii::$app->session;
 		$this->session->open();
+		$this->view->params['catalog'] = (new Category)->getMain();
 	}
 
 

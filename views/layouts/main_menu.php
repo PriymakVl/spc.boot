@@ -1,9 +1,4 @@
-<?php
-    use app\modules\category\classes\Category;
-    $catalog = (new Category)->getMain();
-?>
-
- <nav class="navbar">
+<nav class="navbar">
     <!-- Brand -->
     <!-- <a class="navbar-brand" href="#">Specialist</a> -->
 
@@ -21,7 +16,7 @@
                     <span class="caret"></span>
                 </a>
                 <ul class="dropdown-menu">
-                    <? foreach ($catalog as $cat): ?>
+                    <? foreach ($this->params['catalog'] as $cat): ?>
                         <li>
                             <a href="/category?id_cat=<?=$cat->id?>"><?=$cat->name?></a>
                         </li>

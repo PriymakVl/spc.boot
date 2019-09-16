@@ -27,4 +27,13 @@ class CallbackAdminController extends BaseController
 		return $this->redirect($this->request->referrer);
 	}
 
+    public function actionDelete($id)
+    {
+        $callback = Callback::findOne($id);
+        $callback->status = self::STATUS_INACTIVE;
+        $callback->save();
+        Yii::$app->session->setFlash('success', 'Обратный звонок удален');
+        return $this->redirect($this->request->referrer);
+    }
+
 }
