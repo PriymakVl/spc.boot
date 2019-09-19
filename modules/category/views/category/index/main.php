@@ -48,4 +48,5 @@
 
 	<!-- viewed products -->
 	<!-- <div class="viewed-block"></div> -->
+
 </main>

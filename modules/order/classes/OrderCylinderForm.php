@@ -19,9 +19,10 @@ class OrderCylinderForm extends Model
     public function rules()
     {
         return [
-            [['id_cat', 'diameter', 'stroke', 'qty'], 'integer'],
-            [['id_cat', 'diameter', 'length', 'qty'], 'required'],
+            [['id_cat', 'diameter'], 'integer'],
+            [['id_cat', 'diameter', 'length', 'qty', 'stroke'], 'required'],
             [['magneto', 'thread_rod'], 'string'],
+            [['qty', 'stroke'], 'number', 'min' => 1],
         ];
     }
 
@@ -35,6 +36,16 @@ class OrderCylinderForm extends Model
     //     $cylinder->id_cat = $form->id_cat;
     //     return $cylinder->save();
     // }
+
+    public function attributeLabels()
+    {
+        return [
+            'id_cat' => 'Серия пневмоцилиндра',
+            'diameter' => 'Диаметр поршня',
+            'stroke' => 'Ход поршня',
+            'qty' => 'Количество', 
+        ];
+    }
 
 
 

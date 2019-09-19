@@ -9,7 +9,7 @@
 		<td>
 			<?= Html::img(['@img/'.$cat->image->subdir.'/'.$cat->image->filename, ['alt' => $cat->name]]) ?>
 		<td><?= $cat->getCodeCylinder($data) ?></td>
-		<td><?= $cat->preview ?></td>
+		<td><?= $cat->getDescriptionCylinder($data) ?></td>
 		<td>Согласовать</td>
 		<td><input type="number" name="qty" value="<?=$data['qty']?>" style="width:50px;"></td>
 		<td>

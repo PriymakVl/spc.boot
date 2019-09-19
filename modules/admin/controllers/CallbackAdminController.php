@@ -23,6 +23,7 @@ class CallbackAdminController extends BaseController
     public function actionCreate()
 	{
 		(new Callback)->add($this->request->get());
+        $this->sendMail();
 		Yii::$app->session->setFlash('success', 'Обратный звонок заказан');
 		return $this->redirect($this->request->referrer);
 	}
@@ -35,5 +36,19 @@ class CallbackAdminController extends BaseController
         Yii::$app->session->setFlash('success', 'Обратный звонок удален');
         return $this->redirect($this->request->referrer);
     }
+
+    private function sendMail()
+    {
+        $callback = (object) $this->request->get();
+        $textMail = 'Прошу перезвонить<br> Имя: <b>'.$callback->name.'</b><br>'.'телефон: <b>'.$callback->phone.'</b>';
+        Yii::$app->mailer->compose()
+        ->setFrom(['admin@cobot.bar' => 'Сайт cobot.bar'])
+        ->setTo('PriymakVl@gmail.com')
+        ->setSubject('Перевонить по телефону')
+        // ->setTextBody('Текст сообщения')
+        ->setHtmlBody($textMail)
+        ->send();
+    }
+
 
 }

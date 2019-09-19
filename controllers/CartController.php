@@ -58,7 +58,7 @@ class CartController extends BaseController {
 		$data['diameter'] = $form->diameter;
 		$data['qty'] = $form->qty;
 		$data['magneto'] = $form->magneto;
-		$data['thread_rod'] = $form->thread_rod;  
+		$data['thread_rod'] = $form->thread_rod; 
 		$_SESSION['cart']['cylinders'][] = $data;
 	}
 
