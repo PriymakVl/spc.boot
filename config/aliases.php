@@ -10,4 +10,5 @@ return [
 		'@views' => '@app/views',
 		'@layouts' => '@views/layouts',
 		'@iblock' => '@img/iblock',
+		'@web' => '@app/web',
 ];

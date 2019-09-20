@@ -6,6 +6,7 @@ use Yii;
 use yii\base\Model;
 use app\models\OrderCylinder;
 use yii\web\NotFoundHttpException;
+use app\modules\category\classes\Category;
 
 class OrderCylinderForm extends Model
 {
@@ -21,21 +22,13 @@ class OrderCylinderForm extends Model
         return [
             [['id_cat', 'diameter'], 'integer'],
             [['id_cat', 'diameter', 'length', 'qty', 'stroke'], 'required'],
-            [['magneto', 'thread_rod'], 'string'],
-            [['qty', 'stroke'], 'number', 'min' => 1],
+            [['magneto', 'tread_rod'], 'string'],
+            [['qty'], 'number', 'min' => 1],
+            [['stroke'], 'number', 'min' => 5, 'max' => $this->getMaxStroke()],
         ];
     }
 
-    // public function saveCylinder($form)
-    // {
-    //     if (!$this->validate()) throw new NotFoundHttpException('Ошибка валидации');
-    //     $cylinder = new OrderCylinder;
-    //     $cylinder->qty = $form->qty;
-    //     $cylinder->diameter = $form->diameter;
-    //     $cylinder->length = $form->length;
-    //     $cylinder->id_cat = $form->id_cat;
-    //     return $cylinder->save();
-    // }
+
 
     public function attributeLabels()
     {
@@ -47,7 +40,13 @@ class OrderCylinderForm extends Model
         ];
     }
 
-
+    public function getMaxStroke()
+    {
+        $code = Category::find()->select('code')->where(['id' => $id_cat])->column()[0];
+        $series_stroke_1000 = ['MS', 'MSD'];
+        if (in_array($code, $series_stroke_1000)) return 1000;
+        return 100;
+    }
 
 
 }

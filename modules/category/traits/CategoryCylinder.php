@@ -36,7 +36,7 @@ trait CategoryCylinder {
 
     private function getHeaderDescription()
     {
-        $messages = parse_ini_file(\Yii::getAlias('@web/ini/cylinders.ini'), true);
+        $messages = parse_ini_file(\Yii::getAlias('@app/web/ini/cylinders.ini'), true);
         return $messages[$this->code] ? $messages[$this->code] : 'Пневматический цилиндр ';
     }
 

@@ -17,7 +17,7 @@ $qty_items_cart = calculate_items_cart();
 		<div class="col-md-3 logo-wrp">
 			<address>г. Каменское, ул. Сергея Нигояна 26</address>
 		    <a href="/">
-		    	<?= Html::img('web/images/logo.jpg', ['alt' => 'logo']) ?>
+		    	<?= Html::img('/web/images/logo.jpg', ['alt' => 'logo']) ?>
 	        </a>
 		</div>
 
