@@ -19,8 +19,13 @@ use app\modules\filter\Category;
     <?= $form->field($model, 'diameter')->dropDownList($data['diameters'], ['prompt' => 'Не выбран'])->label('Диаметр поршня'); ?>
     
     <!-- cylinder stroke -->
-    <?= $form->field($model, 'stroke')->textInput()->label('Ход цилиндра, <span style="color:#444;">от 5мм до '.$data['max_stroke'].'мм</span>') ?>
-
+    <? if ($code == 'CP'): ?>
+        <?= $form->field($model, 'stroke')->dropDownList([5 => '5мм', 10 => '10мм', 15 => '15мм'], ['prompt' => 'Не выбран'])->label('Ход цилиндра:') ?> 
+    <? else: ?>
+        <? $label_stroke = 'Ход цилиндра: <span style="color:#444;">от 5мм до '.$data['max_stroke'].'мм</span>'; ?>
+        <?= $form->field($model, 'stroke')->textInput()->label($label_stroke) ?>
+    <? endif; ?>
+    
      <!-- cylinder count -->
     <?= $form->field($model, 'qty')->textInput(['type' => 'number', 'value' => 1])->label('Количество') ?>
     
@@ -33,10 +38,14 @@ use app\modules\filter\Category;
     <? endif; ?>
     
     <!-- cylinder thread rod -->
-    <? $model->thread_rod = 'out'; ?>
-    <? if ($data['thread_rod'] === 'option'): ?>
+    <? if ($code == 'CP'): ?>
+        <? $model->thread_rod = 'with'; ?>
+        <?= $form->field($model, 'thread_rod')->radioList(['with' => 'С резьбой', 'without' => 'Без резьбы'])->label('Резба на штоке') ?>
+    <? elseif ($data['thread_rod'] === 'option'): ?>
+        <? $model->thread_rod = 'out'; ?>
         <?= $form->field($model, 'thread_rod')->radioList(['out' => 'Наружная', 'inner' => 'Внутренняя'])->label('Резба на штоке') ?>
     <? elseif($data['thread_rod'] === 'out'): ?>
+        <? $model->thread_rod = 'out'; ?>
         <?= $form->field($model, 'thread_rod')->radioList(['out' => 'Наружная'])->label('Резба на штоке') ?>
     <? endif; ?>
 

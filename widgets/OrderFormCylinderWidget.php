@@ -21,8 +21,9 @@ class OrderFormCylinderWidget extends Widget {
 		$data['thread_rod'] = $this->getThreadRod();
 		$model = new OrderCylinderForm();
 		$model->id_cat = $this->category->id;
+		$code = $this->category->code;
 		$this->view->registerJsFile('@web/js/select_category_cylinder.js', ['depends' => [\yii\web\JqueryAsset::className()]]);
-		return $this->render('order_form_cylinder', compact('model', 'data'));
+		return $this->render('order_form_cylinder', compact('model', 'data', 'code'));
 	}
 
 	public function getThreadRod() 
