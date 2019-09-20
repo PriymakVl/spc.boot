@@ -24,12 +24,10 @@
 
 	<? if ($products): ?> 
 		<? include 'products.php'; ?>
-	<? elseif($cat->children): ?>
-		<? if ($cat->parent && $cat->parent->id == Category::PNEUMO_CYLINDER_CAT_ID): ?>
+	<? elseif ($cat->parent && $cat->parent->id == Category::PNEUMO_CYLINDER_CAT_ID): ?>
 			<? include 'cylinders.php'; ?>
-		<? else: ?>
-	 		<? include 'categories.php'; ?>
- 		<? endif; ?>
+	<? elseif($cat->children): ?>
+			<? include 'categories.php'; ?>
  	<? else: ?>
  		<p>В этой категории ничего нет</p>
 	<? endif; ?>

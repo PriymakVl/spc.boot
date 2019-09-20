@@ -35,7 +35,7 @@ use app\modules\filter\Category;
     <!-- cylinder thread rod -->
     <? $model->thread_rod = 'out'; ?>
     <? if ($data['thread_rod'] === 'option'): ?>
-        <?= $form->field($model, 'thread_rod')->radioList(['inner' => 'Внутренняя', 'out' => 'Наружная'])->label('Резба на штоке') ?>
+        <?= $form->field($model, 'thread_rod')->radioList(['out' => 'Наружная', 'inner' => 'Внутренняя'])->label('Резба на штоке') ?>
     <? elseif($data['thread_rod'] === 'out'): ?>
         <?= $form->field($model, 'thread_rod')->radioList(['out' => 'Наружная'])->label('Резба на штоке') ?>
     <? endif; ?>
