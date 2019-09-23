@@ -14,7 +14,7 @@ class OrderFormCylinderWidget extends Widget {
 
 	public function run()
 	{
-		$data['series'] = $this->createSeriesArray();
+		$data['series'] = $this->getSeries();
 		$data['diameters'] = $this->getDiameters();
 		$data['max_stroke'] = $this->getMaxStroke();
 		$data['magneto'] = $this->getMagneto();
@@ -201,13 +201,31 @@ class OrderFormCylinderWidget extends Widget {
 			default: return 'option'; 
 		}
 	}
-
-	private function createSeriesArray()
+	//unset($series[862], $series[863], $series[1031], $series[1032]);
+	private function createSeries()
 	{
-		$categories = Category::find()->where(['id_parent' => Category::PNEUMO_CYLINDER_CAT_ID, 'status' => Category::STATUS_ACTIVE])->asArray()->all();
-		$series = ArrayHelper::map($categories, 'id', 'name');
-		unset($series[862], $series[863], $series[1031], $series[1032]);
-		return $series;
+		switch ($->category->code) {
+			case 'CP': return ['CP'];
+			case 'MS': return ['MS', 'MSA', 'MSD', 'MSJ'];
+			case 'MA': return ['MA', 'MAA', 'MAD', 'MAJ'];
+			case 'MAL': return ['MAL', 'MSAL', 'MALD', 'MALJ'];
+			case 'SDA': return ['SDA', 'SSA', 'STA', 'SDAD', 'SDAJ'];
+			case 'ADV': return ['ADV', 'ADS', 'ADVD', 'ADR', 'ADT', 'ADJ'];
+			case 'JDA': return ['JDA', 'JDS', 'JDAD', 'JDR', 'JDT', 'JDJ'];
+			case 'SR': return ['SR', 'SRD', 'SRJ', 'SRI', 'SRID', 'SRIJ'];
+			case 'SW': return ['SW', 'SWD', 'SWJ', 'SWI', 'SWID', 'SWIJ'];
+			case 'SRT': return ['SRT'];
+			case 'SC': return ['SC', 'SCD', 'SCJ'];
+			case 'SCT': return ['SCT'];
+			case 'SG': return ['SG', 'SGD', 'SGJ'];
+			case 'QG': return ['QGA', 'SGB'];
+			case 'CG': return ['CG', 'CG2', 'CG3'];
+			case 'EM': return ['EG'];
+			case 'GMS': return ['GMS','GMSS', 'GLS', 'GLSS', 'GLSD'];
+			case 'TM': return ['TM'];
+			default: return ['CP', 'MS', 'MA', 'MAL', 'SDA', 'ADV', 'JDA', 'SR', 'SW', 'SRT', 'SC', 'SCT', 'SG', 'QG', 'CG', 'EM', 'GMS'];
+		}
+		
 	}
 
 	public function getMaxStroke()
@@ -236,11 +254,11 @@ class OrderFormCylinderWidget extends Widget {
 			case 'SDAJ': return 300;
 			// ADV
 			case 'ADV': return 500;
-			case 'ADV': return 100;
-			case 'ADV': return 500;
-			case 'ADV': return 300;
-			case 'ADV': return 100;
-			case 'ADV': return 300;
+			case 'ADS': return 100;
+			case 'ADVD': return 500;
+			case 'ADR': return 300;
+			case 'ADT': return 100;
+			case 'ADJ': return 300;
 			// JDA
 			case 'JDA': return 500;
 			case 'JDS': return 100;
