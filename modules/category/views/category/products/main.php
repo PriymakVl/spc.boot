@@ -1,6 +1,8 @@
 <?php
 	use app\modules\category\classes\Category;
 	use app\widgets\OrderFormCylinderWidget;
+	$series_cylinders = ['CP', 'MS', 'MA', 'MAL', 'SDA', 'ADV', 'JDA', 'SR', 'SW', 'SRT', 'SC', 'SCT', 'SG', 'QG', 'CG', 'EM', 'GMS'];
+	$code_cylinder = (in_array($cat->code, $series_cylinders)) ? $cat->code : false;
 ?>
 <!-- css -->
 <link rel="stylesheet" type="text/css" href="/web/css/category/index/form_cylinder.css">
@@ -22,10 +24,10 @@
     	<h1 class="text-center"><?=$cat->name?> | Купить <?=$cat->name?></h1>
 	<? endif; ?>
 
-	<? if ($products): ?> 
-		<? include 'products.php'; ?>
-	<? elseif ($cat->parent && $cat->parent->id == Category::PNEUMO_CYLINDER_CAT_ID): ?>
-			<? include 'cylinders.php'; ?>
+	<? if ($code_cylinder): ?> 
+		<? include 'cylinders.php'; ?>
+	<? elseif ($cat->products): ?>
+		<? include 'products.php'; ?>	
 	<? elseif($cat->children): ?>
 			<? include 'categories.php'; ?>
  	<? else: ?>

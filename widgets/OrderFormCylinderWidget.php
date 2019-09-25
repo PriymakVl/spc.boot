@@ -10,25 +10,26 @@ use app\modules\order\classes\OrderCylinderForm;
 
 class OrderFormCylinderWidget extends Widget {
 
-	public $category;
+	public $series;
 
 	public function run()
 	{
-		$data['series'] = $this->getSeries();
+		$series = $this->getSeries();
+		$data['series'] = array_combine($series, $series);
 		$data['diameters'] = $this->getDiameters();
 		$data['max_stroke'] = $this->getMaxStroke();
 		$data['magneto'] = $this->getMagneto();
 		$data['thread_rod'] = $this->getThreadRod();
 		$model = new OrderCylinderForm();
-		$model->id_cat = $this->category->id;
-		$code = $this->category->code;
-		$this->view->registerJsFile('@web/js/select_category_cylinder.js', ['depends' => [\yii\web\JqueryAsset::className()]]);
-		return $this->render('order_form_cylinder', compact('model', 'data', 'code'));
+		$model->series = $this->series;
+		$series = $this->series;
+		$this->view->registerJsFile('@web/js/select_series_cylinder.js', ['depends' => [\yii\web\JqueryAsset::className()]]);
+		return $this->render('order_form_cylinder', compact('model', 'data', 'series'));
 	}
 
 	public function getThreadRod() 
 	{
-		switch ($this->category->code) {
+		switch ($this->series) {
 			//CP
 			//case 'CP': return false;
 			// MS
@@ -116,7 +117,7 @@ class OrderFormCylinderWidget extends Widget {
 
 	public function getMagneto()
 	{
-		switch ($this->category->code) {
+		switch ($this->series) {
 			//CP
 			case 'CP': return false;
 			// MS
@@ -201,28 +202,91 @@ class OrderFormCylinderWidget extends Widget {
 			default: return 'option'; 
 		}
 	}
-	//unset($series[862], $series[863], $series[1031], $series[1032]);
-	private function createSeries()
+
+	private function getSeries()
 	{
-		switch ($->category->code) {
+		switch($this->series) {
+			// CP
 			case 'CP': return ['CP'];
+			// MS
 			case 'MS': return ['MS', 'MSA', 'MSD', 'MSJ'];
+			case 'MSA': return ['MS', 'MSA', 'MSD', 'MSJ'];
+			case 'MSD': return ['MS', 'MSA', 'MSD', 'MSJ'];
+			case 'MSJ': return ['MS', 'MSA', 'MSD', 'MSJ'];
+			//MA
 			case 'MA': return ['MA', 'MAA', 'MAD', 'MAJ'];
+			case 'MAA': return ['MA', 'MAA', 'MAD', 'MAJ'];
+			case 'MAD': return ['MA', 'MAA', 'MAD', 'MAJ'];
+			case 'MAJ': return ['MA', 'MAA', 'MAD', 'MAJ'];
+			// MAL
 			case 'MAL': return ['MAL', 'MSAL', 'MALD', 'MALJ'];
+			case 'MSAL': return ['MAL', 'MSAL', 'MALD', 'MALJ'];
+			case 'MALD': return ['MAL', 'MSAL', 'MALD', 'MALJ'];
+			case 'MALJ': return ['MAL', 'MSAL', 'MALD', 'MALJ'];
+			// SDA
 			case 'SDA': return ['SDA', 'SSA', 'STA', 'SDAD', 'SDAJ'];
+			case 'SSA': return ['SDA', 'SSA', 'STA', 'SDAD', 'SDAJ'];
+			case 'STA': return ['SDA', 'SSA', 'STA', 'SDAD', 'SDAJ'];
+			case 'SDAD': return ['SDA', 'SSA', 'STA', 'SDAD', 'SDAJ'];
+			case 'SDAJ': return ['SDA', 'SSA', 'STA', 'SDAD', 'SDAJ'];
+			// ADV
 			case 'ADV': return ['ADV', 'ADS', 'ADVD', 'ADR', 'ADT', 'ADJ'];
+			case 'ADS': return ['ADV', 'ADS', 'ADVD', 'ADR', 'ADT', 'ADJ'];
+			case 'ADVD': return ['ADV', 'ADS', 'ADVD', 'ADR', 'ADT', 'ADJ'];
+			case 'ADR': return ['ADV', 'ADS', 'ADVD', 'ADR', 'ADT', 'ADJ'];
+			case 'ADT': return ['ADV', 'ADS', 'ADVD', 'ADR', 'ADT', 'ADJ'];
+			case 'ADJ': return ['ADV', 'ADS', 'ADVD', 'ADR', 'ADT', 'ADJ'];
+			// JDA
 			case 'JDA': return ['JDA', 'JDS', 'JDAD', 'JDR', 'JDT', 'JDJ'];
+			case 'JDS': return ['JDA', 'JDS', 'JDAD', 'JDR', 'JDT', 'JDJ'];
+			case 'JDAD': return ['JDA', 'JDS', 'JDAD', 'JDR', 'JDT', 'JDJ'];
+			case 'JDR': return ['JDA', 'JDS', 'JDAD', 'JDR', 'JDT', 'JDJ'];
+			case 'JDT': return ['JDA', 'JDS', 'JDAD', 'JDR', 'JDT', 'JDJ'];
+			case 'JDJ': return ['JDA', 'JDS', 'JDAD', 'JDR', 'JDT', 'JDJ'];
+			// SR
 			case 'SR': return ['SR', 'SRD', 'SRJ', 'SRI', 'SRID', 'SRIJ'];
+			case 'SRD': return ['SR', 'SRD', 'SRJ', 'SRI', 'SRID', 'SRIJ'];
+			case 'SRJ': return ['SR', 'SRD', 'SRJ', 'SRI', 'SRID', 'SRIJ'];
+			case 'SRI': return ['SR', 'SRD', 'SRJ', 'SRI', 'SRID', 'SRIJ'];
+			case 'SRID': return ['SR', 'SRD', 'SRJ', 'SRI', 'SRID', 'SRIJ'];
+			case 'SRIJ': return ['SR', 'SRD', 'SRJ', 'SRI', 'SRID', 'SRIJ'];
+			// SW
 			case 'SW': return ['SW', 'SWD', 'SWJ', 'SWI', 'SWID', 'SWIJ'];
+			case 'SWD': return ['SW', 'SWD', 'SWJ', 'SWI', 'SWID', 'SWIJ'];
+			case 'SWJ': return ['SW', 'SWD', 'SWJ', 'SWI', 'SWID', 'SWIJ'];
+			case 'SWI': return ['SW', 'SWD', 'SWJ', 'SWI', 'SWID', 'SWIJ'];
+			case 'SWID': return ['SW', 'SWD', 'SWJ', 'SWI', 'SWID', 'SWIJ'];
+			case 'SWIJ': return ['SW', 'SWD', 'SWJ', 'SWI', 'SWID', 'SWIJ'];
+			// SRT
 			case 'SRT': return ['SRT'];
+			// SC
 			case 'SC': return ['SC', 'SCD', 'SCJ'];
+			case 'SCD': return ['SC', 'SCD', 'SCJ'];
+			case 'SCJ': return ['SC', 'SCD', 'SCJ'];
+			// SCT
 			case 'SCT': return ['SCT'];
+			// SG
 			case 'SG': return ['SG', 'SGD', 'SGJ'];
-			case 'QG': return ['QGA', 'SGB'];
+			case 'SGD': return ['SG', 'SGD', 'SGJ'];
+			case 'SGJ': return ['SG', 'SGD', 'SGJ'];
+			// QG
+			case 'QGA': return ['QGA', 'SGB'];
+			case 'QGB': return ['QGA', 'SGB'];
+			// CG
 			case 'CG': return ['CG', 'CG2', 'CG3'];
-			case 'EM': return ['EG'];
+			case 'CG2': return ['CG', 'CG2', 'CG3'];
+			case 'CG3': return ['CG', 'CG2', 'CG3'];
+			// EM
+			case 'EM': return ['EM'];
+			// GMS
 			case 'GMS': return ['GMS','GMSS', 'GLS', 'GLSS', 'GLSD'];
+			case 'GMSS': return ['GMS','GMSS', 'GLS', 'GLSS', 'GLSD'];
+			case 'GLS': return ['GMS','GMSS', 'GLS', 'GLSS', 'GLSD'];
+			case 'GLSS': return ['GMS','GMSS', 'GLS', 'GLSS', 'GLSD'];
+			case 'GLSD': return ['GMS','GMSS', 'GLS', 'GLSS', 'GLSD'];
+			// TM
 			case 'TM': return ['TM'];
+
 			default: return ['CP', 'MS', 'MA', 'MAL', 'SDA', 'ADV', 'JDA', 'SR', 'SW', 'SRT', 'SC', 'SCT', 'SG', 'QG', 'CG', 'EM', 'GMS'];
 		}
 		
@@ -230,7 +294,7 @@ class OrderFormCylinderWidget extends Widget {
 
 	public function getMaxStroke()
 	{
-		switch($this->category->code) {
+		switch($this->series) {
 			// MS
 			case 'MS': return 1000;
 			case 'MSA': return 100;
@@ -316,7 +380,7 @@ class OrderFormCylinderWidget extends Widget {
 
 	public function getDiameters()
 	{
-		switch ($this->category->code) {
+		switch ($this->series) {
 			case 'CP': return [6 => '6мм', 10 => '10мм', 16 => '16мм'];
 			//MS
 			case 'MS': return [12 => '12мм', 16 => '16мм', 20 => '20мм', 25 => '25мм', 32 => '32мм'];

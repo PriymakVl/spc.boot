@@ -4,16 +4,22 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use app\modules\filter\Category;
+
+$product_name = 'пневмоцилиндра';
+$rail_series = ['GMS', 'GMSS', 'GLS', 'GLSS', 'GLSD'];
+$series_value = Yii::$app->request->get('series');
+if (in_array($series_value, $rail_series)) $product_name = 'направляющей';
+
 ?>
 
-<h1 style="margin-top:0;">Форма для заказа пневмоцилиндра</h1>
+<h1 style="margin-top:0;">Форма для заказа <?=$product_name?></h1>
 
 <div class="order-form-cylinder">
 
     <?php $form = ActiveForm::begin(['action' => ['/cart/add-cylinder']]); ?>
 
     <!-- series cylinder -->
-    <?= $form->field($model, 'id_cat')->dropDownList($data['series'], ['id' => 'id_cat'])->label('Серия пневмоцилиндра'); ?>
+    <?= $form->field($model, 'series')->dropDownList($data['series'], ['id' => 'series_cylinder'])->label('Серия'); ?>
 
     <!-- cylinder diameter-->
     <?= $form->field($model, 'diameter')->dropDownList($data['diameters'], ['prompt' => 'Не выбран'])->label('Диаметр поршня'); ?>
@@ -38,7 +44,7 @@ use app\modules\filter\Category;
     <? endif; ?>
     
     <!-- cylinder thread rod -->
-    <? if ($code == 'CP'): ?>
+    <? if ($data['series']['CP'] == 'CP'): ?>
         <? $model->thread_rod = 'with'; ?>
         <?= $form->field($model, 'thread_rod')->radioList(['with' => 'С резьбой', 'without' => 'Без резьбы'])->label('Резьба на штоке') ?>
     <? elseif ($data['thread_rod'] === 'option'): ?>

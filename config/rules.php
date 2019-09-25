@@ -12,6 +12,7 @@ return [
 	'sale' => 'main/sale',
 	'search' => 'product/product/search',
 	'filter' => 'category/category/filter',
+	'category/cylinder/form' => 'category/category/cylinder-form',
 	'order/save' => 'order/order/save',
 	//admin filters
 	'admin/filters' => 'filter/filter-admin/index',
@@ -20,7 +21,7 @@ return [
 	'admin/product/image' => 'product/product-admin/upload-image',
 	
 	'callback/create' => 'admin/callback-admin/create', 
-	'callback/index' => 'admin/callback-admin/index', 
+	'callback/index' => 'admin/callback-admin/index',
 
 	//cart
 	'cart' => 'cart/index',

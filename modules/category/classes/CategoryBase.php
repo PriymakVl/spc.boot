@@ -25,6 +25,7 @@ class CategoryBase extends ModelBase {
             'id_parent' => 'Родитель',
             'description' => 'Описание',
             'filters' => '',
+            'code' => 'Код',
         ];
     }
 

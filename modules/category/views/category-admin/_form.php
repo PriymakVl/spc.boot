@@ -14,6 +14,9 @@ use app\modules\filter\Filter;
     <!-- name -->
     <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
 
+    <!-- code -->
+    <?= $form->field($model, 'code')->textInput() ?>
+
     <!-- parent -->
      <?= $form->field($model, 'id_parent')->dropDownList($model->convertForSelectMain(), ['prompt' => 'Не выбрана'])->label('Родительская категория') ?>
     

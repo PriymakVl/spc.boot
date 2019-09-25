@@ -53,7 +53,7 @@ class CartController extends BaseController {
 	private function setSessionCylinder()
 	{
 		$form = (object)$this->request->post('OrderCylinderForm');
-		$data['id_cat'] = $form->id_cat;
+		$data['series'] = $form->series;
 		$data['stroke'] = $form->stroke;
 		$data['diameter'] = $form->diameter;
 		$data['qty'] = $form->qty;

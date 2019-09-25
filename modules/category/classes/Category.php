@@ -36,6 +36,7 @@ class Category extends CategoryBase {
     public function saveCategory($form)
     {
     	$this->name = $form->name;
+        $this->code = $form->code;
     	$this->id_parent = $form->id_parent;
     	$this->description = $form->description;
         $this->IBLOCK_ID = '14';
@@ -45,7 +46,7 @@ class Category extends CategoryBase {
     public function rules()
     {
     	return [
-    		[['name', 'description'], 'string'],
+    		[['name', 'description', 'code'], 'string'],
     		['id_parent', 'integer'],
     		['name', 'required'],
     	];

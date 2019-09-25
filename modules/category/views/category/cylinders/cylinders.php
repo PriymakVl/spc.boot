@@ -2,13 +2,16 @@
 	use yii\helpers\Url;
 	use yii\helpers\Html;
 	use app\widgets\OrderFormCylinderWidget;
+	use app\modules\category\classes\Category;
+
+	$image = Category::getImageForSeries($series);
 ?>
 
 <div class="container">
 	<div class="row">
 		<div class="col-md-4">
-			<? if ($cat->image): ?>
-          		<img src="<?='/web/images/'.$cat->image->subdir.'/'.$cat->image->filename?>" class="thumbnail" width="325" height="265" alt="<?=$cat->name?>">
+			<? if ($image): ?>
+          		<img src="<?='/web/images/'.$image->subdir.'/'.$image->filename?>" class="thumbnail" width="325" height="265">
         	<? else: ?>
           		<?= Html::img(['@img/no_photo_medium.png', ['class' => "thumbnail"]]) ?>
         	<? endif; ?>
@@ -21,14 +24,8 @@
 		<!-- form order cylinder -->
 		<div class="col-md-8">
 			<div class="row ">
-				<?= OrderFormCylinderWidget::widget(['category' => $cat]); ?>
+				<?= OrderFormCylinderWidget::widget(['series' => $series]); ?>
 			</div>
-		</div>
-	</div>
-	<!-- tabs -->
-	<div class="row">
-		<div class="col-md-12">
-			<? include 'tabs.php'; ?>
 		</div>
 	</div>
 </div>
