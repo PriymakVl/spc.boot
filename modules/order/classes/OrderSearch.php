@@ -25,7 +25,7 @@ class OrderSearch extends Order
 
     public function search($params)
     {
-        $query = Order::find();
+        $query = Order::find()->orderBy(['id' => SORT_DESC]);
         $dataProvider = new ActiveDataProvider(['query' => $query, 'pagination' => ['pageSize' => 10]]);
         $this->load($params);
         if (!$this->validate()) {

@@ -17,7 +17,7 @@ function createFieldCylinders($order)
     if (!$order->cylinders) return '<span class="text-danger">нет</span>';
     $str = '';
     foreach ($order->cylinders as $cylinder) {
-        $str .= $cylinder->code . '<br>';
+        $str .= $cylinder->code.' - '.$cylinder->qty.'шт. <br>';
     }
     return $str;
 }
@@ -27,8 +27,7 @@ function createFieldProducts($order)
     if (!$order->products) return '<span class="text-danger">нет</span>';
     $str = '';
     foreach ($order->products as $product) {
-        
-        $str .= $product->name . '<br>';
+        $str .= $product->name.' - '.$product->qty.'шт. <br>';
     }
     return $str;
 }

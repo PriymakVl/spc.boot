@@ -30,38 +30,6 @@ class OrderAdminController extends BaseController
         return $this->render('view', ['model' => $order]);
     }
 
-    // public function actionCreate()
-    // {
-    //     $model = new Order();
-    //     if ($model->load(Yii::$app->request->post()) && $model->saveProduct((object)Yii::$app->request->post('Product'))) {
-    //         Yii::$app->session->setFlash('success', "Продукт успешно создан");
-    //         return $this->redirect(['view', 'id' => $model->id]);
-    //     }
-    //     return $this->render('create', compact('model'));
-    // }
-
-    // public function actionUpdate($id)
-    // {
-    //     $model = $this->findModel($id);
-    //     if ($model->load(Yii::$app->request->post()) && $model->validate()) {
-    //         $model->saveProduct((object)Yii::$app->request->post('Product'));
-    //         return $this->redirect(['view', 'id' => $model->id]);
-    //     }
-    //     return $this->render('update', compact('model'));
-    // }
-
-
-    // public function actionDelete($id)
-    // {
-    //     $product = Product::findOne($id);
-    //     $product->status = Product::STATUS_INACTIVE;
-    //     $product->save(); 
-    //     Yii::$app->session->setFlash('success', "Продукт успешно удален");
-    //     //to do method delete with delete filters;
-    //     return $this->redirect(['index']);
-    // }
-
-
     protected function findModel($id)
     {
         $order = Order::find()->where(['id' => $id, 'status' => Product::STATUS_ACTIVE])->limit(1)->one();

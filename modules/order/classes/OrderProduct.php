@@ -3,6 +3,7 @@
 namespace app\modules\order\classes;
 
 use app\models\ModelBase;
+use app\modules\product\classes\Product;
 
 class OrderProduct extends ModelBase {
 
@@ -19,6 +20,7 @@ class OrderProduct extends ModelBase {
         {
             $product = new self();
             $product->id_prod = $item['id_prod'];
+            $product->name = Product::find()->select('name')->where(['id' => $item['id_prod']])->asArray()->limit(1)->column()[0];
             $product->price = $item['price'];
             $product->qty = $item['qty'];
             $product->id_order = $id_order;

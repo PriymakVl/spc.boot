@@ -45,9 +45,7 @@ class Order extends ModelBase
 
     public function getProducts()
     {
-        $items = OrderProduct::find()->select('id_prod')->where(['id_order' => $this->id, 'status' => self::STATUS_ACTIVE])->column();
-        if (!$items) return;
-        return Product::find()->where(['IN', 'id', $items])->all();
+        return OrderProduct::find()->where(['id_order' => $this->id, 'status' => self::STATUS_ACTIVE])->all();
     }
 
     public function convertState($state = null)

@@ -17,7 +17,8 @@ trait CategoryCylinder {
     	$code .= '-'.$cylinder->series;
     	$code .= '-'.$cylinder->diameter.'x'.$cylinder->stroke;
         if ($cylinder->magneto == 'yes') $code .= '-S';
-        if (in_array($cylinder->series, ['JDA', 'ADB', 'SDA', 'CP'])) {
+        $thread_rod_arr = ['JDA', 'JDS', 'JDAD', 'JDR', 'JDT', 'JDJ', 'ADV', 'ADS', 'ADVD', 'ADR', 'ADT', 'ADJ', 'SDA', 'SSA', 'STA', 'SDAD', 'SDAJ', 'CP'];
+        if (in_array($cylinder->series, $thread_rod_arr)) {
             if ($cylinder->thread_rod == 'out' || $cylinder->thread_rod == 'with') $code .= '-B';
         }
     	return $code;
