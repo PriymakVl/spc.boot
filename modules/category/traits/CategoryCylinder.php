@@ -47,7 +47,7 @@ trait CategoryCylinder {
 
     private static function getMagnetoDescription($cylinder)
     {
-        if ($cylinder->series == 'CP') return '';
+        if (in_array($cylinder->series, ['CP', 'CG2', 'CG3'])) return '';
         if ($cylinder->magneto == 'yes') return ' с магнитом на поршне, ';
         return ' без магнита на поршне, ';
     }

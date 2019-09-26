@@ -94,6 +94,7 @@ class OrderFormCylinderWidget extends Widget {
 			case 'SGD': return 'out';
 			case 'SGJ': return 'out';
 			// QG
+			case 'QG': return 'out';
 			case 'QGA': return 'out';
 			case 'QGB': return 'out';
 			// CG
@@ -182,6 +183,7 @@ class OrderFormCylinderWidget extends Widget {
 			case 'SGD': return true;
 			case 'SGJ': return true;
 			// QG
+			case 'QG': return false;
 			case 'QGA': return false;
 			case 'QGB': return false;
 			// CG
@@ -270,6 +272,7 @@ class OrderFormCylinderWidget extends Widget {
 			case 'SGD': return ['SG', 'SGD', 'SGJ'];
 			case 'SGJ': return ['SG', 'SGD', 'SGJ'];
 			// QG
+			case 'QG': return ['QGA', 'SGB'];
 			case 'QGA': return ['QGA', 'SGB'];
 			case 'QGB': return ['QGA', 'SGB'];
 			// CG
@@ -443,7 +446,8 @@ class OrderFormCylinderWidget extends Widget {
 			case 'SG': return [125 => '125мм', 200 => '200мм', 250 => '250мм'];
 			case 'SGD': return [125 => '125мм', 200 => '200мм', 250 => '250мм'];
 			case 'SGJ': return [125 => '125мм', 200 => '200мм', 250 => '250мм'];
-			// QGA
+			// QG
+			case 'QG': return [250 => '250мм', 400 => '400мм'];
 			case 'QGA': return [250 => '250мм', 400 => '400мм'];
 			case 'QGB': return [250 => '250мм', 400 => '400мм'];
 			// CG
