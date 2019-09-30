@@ -26,6 +26,7 @@ return [
 	//cart
 	'cart' => 'cart/index',
 	'cart/add-cylinder' => 'cart/add-cylinder-to-cart',
+	'cart/add-converter' => 'cart/add-converter-to-cart',
 	'cart/add-product' => 'cart/add-product-to-cart',
 	'cart/delete-item' => 'cart/delete-item-cart',
 

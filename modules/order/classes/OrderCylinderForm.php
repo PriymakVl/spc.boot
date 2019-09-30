@@ -16,12 +16,13 @@ class OrderCylinderForm extends Model
     public $qty;
     public $magneto;
     public $thread_rod;
+    public $effort; //for series CPT
 
     public function rules()
     {
         return [
-            [['diameter'], 'integer'],
-            [['id_cat', 'diameter', 'length', 'qty', 'stroke'], 'required'],
+            [['diameter, effort'], 'integer'],
+            [['id_cat', 'diameter', 'length', 'qty', 'stroke', 'effort'], 'required'],
             [['magneto', 'tread_rod', 'series'], 'string'],
             [['qty'], 'number', 'min' => 1],
             [['stroke'], 'number', 'min' => 5, 'max' => $this->getMaxStroke()],
@@ -36,7 +37,8 @@ class OrderCylinderForm extends Model
             'id_cat' => 'Серия пневмоцилиндра',
             'diameter' => 'Диаметр поршня',
             'stroke' => 'Ход поршня',
-            'qty' => 'Количество', 
+            'qty' => 'Количество',
+            'effort' => 'Максимальное усилие',
         ];
     }
 

@@ -50,7 +50,7 @@ AppAsset::register($this);
 
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
-        'items' => Yii::$app->user->isGuest ? [] : $items,
+        'items' => Yii::$app->controller->action->id == 'login' ? [] : $items,
     ]);
 
     NavBar::end();

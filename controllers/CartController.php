@@ -22,6 +22,13 @@ class CartController extends BaseController {
 		Yii::$app->session->setFlash('success', 'Пневмоцилиндр добавлен в корзину');
 		return $this->redirect($this->request->referrer);
 	}
+	//for seies CPT
+	public function actionAddConverterToCart()
+	{
+		$this->setSessionConverter();
+		Yii::$app->session->setFlash('success', 'Пневмогидравлический преобразователь добавлен в корзину');
+		return $this->redirect($this->request->referrer);
+	}
 
 	public function actionAddProductToCart($id_prod, $qty)
 	{
@@ -59,6 +66,13 @@ class CartController extends BaseController {
 		$data['qty'] = $form->qty;
 		$data['magneto'] = $form->magneto;
 		$data['thread_rod'] = $form->thread_rod; 
+		$_SESSION['cart']['cylinders'][] = $data;
+	}
+
+	private function setSessionConverter()
+	{
+		$data['series'] = 'CPT';
+		$data['effort'] =  $this->request->post('OrderCylinderForm')['effort'];
 		$_SESSION['cart']['cylinders'][] = $data;
 	}
 

@@ -14,8 +14,20 @@
           		<?= Html::img(['@img/no_photo_medium.png', ['class' => "thumbnail"]]) ?>
         	<? endif; ?>
     	</td>
-		<td><?= Category::getCodeCylinder($data) ?></td>
-		<td><?= Category::getDescriptionCylinder($data) ?></td>
+		<td>
+			<? if ($data['series'] == 'CPT'): ?>
+				<?= Category::getCodeConverter($data['effort']) ?>
+			<? else: ?>
+				<?= Category::getCodeCylinder($data) ?>
+			<? endif; ?>			
+		</td>
+		<td>
+			<? if ($data['series'] == 'CPT'): ?>
+				<?= Category::getDescriptionConverter($data['effort']) ?></td>
+			<? else: ?>
+				<?= Category::getDescriptionCylinder($data) ?>
+			<? endif; ?>
+		</td>
 		<td>Согласовать</td>
 		<td><?=$data['qty']?></td>
 		<td>

@@ -24,6 +24,24 @@ trait CategoryCylinder {
     	return $code;
     }
 
+    public  static function getCodeConverter($effort)
+    {
+        switch($effort) {
+            case '3'; return 'SC-CPT-63X100-20-3';
+            case '5'; return 'SC-CPT-80X100-20-5';
+            case '10'; return 'SC-CPT-80X100-20-10';
+            case '15'; return 'SC-CPT-100X100-20-15';
+            case '20'; return 'SC-CPT-125X100-20-20';
+            case '30'; return 'SC-CPT-125X100-20-30';
+            case '40'; return 'SC-CPT-160X100-20-40';
+        }
+    }
+
+    public static function getDescriptionConverter($effort)
+    {
+        return 'Пневмогидравлический преобразователь, ход под низким усилием 100мм, ход с максимальным усилием 20мм. Маскимальное усилие '. $effort .' тонны';
+    }
+
     public static function getDescriptionCylinder($cylinder)
     {
         $cylinder = (object) $cylinder; 

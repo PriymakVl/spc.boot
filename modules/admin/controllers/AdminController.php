@@ -23,8 +23,6 @@ class AdminController extends BaseController
     {
         $model = new LoginFormAdmin();
         if ($model->load(Yii::$app->request->post()) && $model->login()) $this->redirect('/admin/product');
-
-        //$model->password = '';
         return $this->render('login', ['model' => $model]);
     }
 

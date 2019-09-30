@@ -14,7 +14,7 @@ use yii\helpers\Html;
 
 <h1 class="text-center">Корзина</h1>
 
-<div class="container" style="margin-bottom: 50px;">
+<div class="container cart-wrp" style="margin-bottom: 50px;">
 	<? if (!empty($cart)): ?>
 		<table class="table table-striped table-bordered">
 			<tr>
@@ -25,7 +25,6 @@ use yii\helpers\Html;
 				<th width="70">Кол-во</th>
 				<th width="80">Управление</th>
 			</tr>
-			
 			<!-- cylinders -->
 			<? if (isset($cart['cylinders'])): ?>
 				<? include 'cylinders.php'; ?>

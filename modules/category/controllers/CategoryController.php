@@ -35,7 +35,7 @@ class CategoryController extends BaseController {
 	private function isCylinder($code)
 	{
 		$series_cylinders = ['CP', 'MS', 'MA', 'MAL', 'SDA', 'ADV', 'JDA', 'SR', 
-		'SW', 'SRT', 'SC', 'SCT', 'SG', 'QG', 'CG', 'EM', 'GMS'];
+		'SW', 'SRT', 'SC', 'SCT', 'SG', 'QG', 'CG', 'EM', 'GMS', 'CPT'];
 		return in_array($code, $series_cylinders);
 	}
 

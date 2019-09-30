@@ -14,17 +14,17 @@ class OrderFormCylinderWidget extends Widget {
 
 	public function run()
 	{
-		$series = $this->getSeries();
-		$data['series'] = array_combine($series, $series);
+		$series_arr = $this->getSeries();
+		$data['series'] = array_combine($series_arr, $series_arr); //for select
 		$data['diameters'] = $this->getDiameters();
 		$data['max_stroke'] = $this->getMaxStroke();
 		$data['magneto'] = $this->getMagneto();
 		$data['thread_rod'] = $this->getThreadRod();
 		$model = new OrderCylinderForm();
+		if ($this->series == 'CPT') return $this->render('order_form_cpt', compact('model'));
 		$model->series = $this->series;
-		$series = $this->series;
 		$this->view->registerJsFile('@web/js/select_series_cylinder.js', ['depends' => [\yii\web\JqueryAsset::className()]]);
-		return $this->render('order_form_cylinder', compact('model', 'data', 'series'));
+		return $this->render('order_form_cylinder', compact('model', 'data'));
 	}
 
 	public function getThreadRod() 

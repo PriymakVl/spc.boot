@@ -7,9 +7,7 @@ use app\modules\filter\Category;
 
 $product_name = 'пневмоцилиндра';
 $rail_series = ['GMS', 'GMSS', 'GLS', 'GLSS', 'GLSD'];
-$series_value = Yii::$app->request->get('series');
-if (in_array($series_value, $rail_series)) $product_name = 'направляющей';
-
+if (in_array($model->series, $rail_series)) $product_name = 'направляющей';
 ?>
 
 <h1 style="margin-top:0;">Форма для заказа <?=$product_name?></h1>
@@ -25,7 +23,7 @@ if (in_array($series_value, $rail_series)) $product_name = 'направляющ
     <?= $form->field($model, 'diameter')->dropDownList($data['diameters'], ['prompt' => 'Не выбран'])->label('Диаметр поршня'); ?>
     
     <!-- cylinder stroke -->
-    <? if ($code == 'CP'): ?>
+    <? if ($model->series == 'CP'): ?>
         <?= $form->field($model, 'stroke')->dropDownList([5 => '5мм', 10 => '10мм', 15 => '15мм'], ['prompt' => 'Не выбран'])->label('Ход цилиндра:') ?> 
     <? else: ?>
         <? $label_stroke = 'Ход цилиндра: <span style="color:#444;">от 5мм до '.$data['max_stroke'].'мм</span>'; ?>
@@ -44,7 +42,7 @@ if (in_array($series_value, $rail_series)) $product_name = 'направляющ
     <? endif; ?>
     
     <!-- cylinder thread rod -->
-    <? if ($data['series']['CP'] == 'CP'): ?>
+    <? if ($model->series == 'CP'): ?>
         <? $model->thread_rod = 'with'; ?>
         <?= $form->field($model, 'thread_rod')->radioList(['with' => 'С резьбой', 'without' => 'Без резьбы'])->label('Резьба на штоке') ?>
     <? elseif ($data['thread_rod'] === 'option'): ?>
