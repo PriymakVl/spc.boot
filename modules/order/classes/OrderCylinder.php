@@ -17,8 +17,9 @@ class OrderCylinder extends ModelBase {
         foreach ($cylinders as $item)
         {
             $cylinder = new self();
-            $cylinder->code = Category::getCodeCylinder($item);
-            $cylinder->qty = $item->qty ? $item->qty : 1;
+            if ($item['series'] == 'CPT') $cylinder->code = Category::getCodeConverter($item['effort']);
+            else $cylinder->code = Category::getCodeCylinder($item);
+            $cylinder->qty = $item['qty'] ? $item['qty'] : 1;
             $cylinder->id_order = $id_order;
             $cylinder->save();
         }

@@ -73,6 +73,7 @@ class CartController extends BaseController {
 	{
 		$data['series'] = 'CPT';
 		$data['effort'] =  $this->request->post('OrderCylinderForm')['effort'];
+		$data['qty'] = $this->request->post('OrderCylinderForm')['qty'];
 		$_SESSION['cart']['cylinders'][] = $data;
 	}
 

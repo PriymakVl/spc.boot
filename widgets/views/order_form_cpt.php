@@ -17,6 +17,9 @@ $efforts = ['3' => '3 тонны', '5' => '5 тонн', '10' => '10 тонн', '
         <!-- maximum effort -->
         <?= $form->field($model, 'effort')->dropDownList($efforts, ['prompt' => 'Не выбрано'])->label('Максимальное усилие') ?>
 
+        <!-- converter count -->
+    	<?= $form->field($model, 'qty')->textInput(['type' => 'number', 'value' => 1])->label('Количество') ?>
+
         <div class="form-group">
             <?= Html::submitButton('Добавить в корзину', ['class' => 'btn btn-success']) ?>
         </div>
