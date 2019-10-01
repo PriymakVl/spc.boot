@@ -5,6 +5,7 @@
 	use Yii;
 	use app\modules\category\classes\Category;
 	use app\modules\product\classes\Product;
+	use app\modules\order\classes\Order;
 	use app\models\OrderCylinderForm;
 	
 class CartController extends BaseController {
@@ -12,8 +13,9 @@ class CartController extends BaseController {
 	public function actionIndex()
 	{
 		$cart = $this->session->get('cart');
+		$model = new Order();
 		$this->view->title = 'Корзина';
-		return $this->render('index', compact('cart'));
+		return $this->render('index', compact('cart', 'model'));
 	}
 
 	public function actionAddCylinderToCart()

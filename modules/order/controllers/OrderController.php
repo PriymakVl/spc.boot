@@ -15,11 +15,9 @@ class OrderController extends BaseController {
 
 	public function actionSave()
 	{
-		$form = (object) $_GET;
-		$customer = (new Customer)->getAccordingToForm($form);
-		$order = (new Order)->saveOrder($customer->id, $form->note);
-		(new OrderCylinder)->saveCart($order->id, $this->session->get('cart'));
-		(new OrderProduct)->saveCart($order->id, $this->session->get('cart'));
+		$model = new Order();
+		$model->load(\Yii::$app->request->post());
+		if ($model->validate()) $model->saveOrder(\Yii::$app->request->post('Order'), $this->session->get('cart'));
 		$this->session->setFlash('success', 'Заказ оформлен');
 		$this->session->remove('cart');
 		return $this->redirect('/main/index');

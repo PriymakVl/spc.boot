@@ -10,7 +10,7 @@ use app\modules\order\classes\OrderCylinder;
 use app\modules\order\classes\OrderProduct;
 use app\modules\product\classes\Product;
 
-class Order extends ModelBase
+class Order extends OrderBase
 {
 
     const STATE_ALL = 'all';
@@ -18,19 +18,20 @@ class Order extends ModelBase
     const STATE_CLOSED = 2;
     const STATE_PENDING = 3;
 
-    public static function tableName()
+    public function saveOrder($form, $cart)
     {
-        return '{{orders}}';
+        $customer = (new Customer)->getAccordingToForm((object) $form);
+        $this->createOrder($customer->id);
+        (new OrderCylinder)->saveCart($this->id, $cart);
+        (new OrderProduct)->saveCart($this->id, $cart);
     }
 
-    public function saveOrder($id_customer, $note)
+    private function createOrder($id_customer)
     {
-        $order = new self;
-        $order->id_customer = $id_customer;
-        $order->registered = time();
-        $order->note = $note;
-        $order->state = self::STATE_REGISTERED;
-        if ($order->save()) return $order;
+        $this->id_customer = $id_customer;
+        $this->registered = time();
+        $this->state = self::STATE_REGISTERED;
+        return $this->save();
     }
 
     public function getCustomer()
