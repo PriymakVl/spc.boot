@@ -46,21 +46,26 @@ class Callback extends ModelBase
     {
         return [
             'id' => 'ID',
-            'name' => 'Name',
-            'phone' => 'Phone',
-            'created' => 'Created',
-            'state' => 'State',
+            'name' => 'Имя заказчика',
+            'phone' => 'Телефон заказчика',
+            'created' => 'Время заказа',
+            'processed' => 'Время обработки',
+            'user_id' => 'Кем обработан',
+            'state' => 'Состояние',
             'status' => 'Status',
         ];
     }
 
-    public function add($form)
+    public function add()
     {
-        $form = (object) $form;
-        $this->name = $form->name;
-        $this->phone = $form->phone;
         $this->created = time();
         $this->state = self::STATE_NOT_CALLBACK;
         return $this->save();
+    }
+
+    public function convertState()
+    {
+        if ($this->state == self::STATE_NOT_CALLBACK) return 'не обработан';
+        return 'обработан';
     }
 }

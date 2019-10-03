@@ -21,6 +21,7 @@ return [
 	'admin/product/image' => 'product/product-admin/upload-image',
 	
 	'callback/create' => 'admin/callback-admin/create', 
+	'callback/state' => 'admin/callback-admin/state',
 	'callback/index' => 'admin/callback-admin/index',
 
 	//cart

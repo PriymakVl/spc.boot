@@ -6,6 +6,7 @@ use Yii;
 use app\controllers\BaseController;
 use app\modules\admin\classes\Callback;
 use app\modules\admin\classes\CallbackSearch;
+use app\models\User;
 
 
 class CallbackAdminController extends BaseController
@@ -22,9 +23,15 @@ class CallbackAdminController extends BaseController
 
     public function actionCreate()
 	{
-		(new Callback)->add($this->request->get());
-        $this->sendMail();
-		Yii::$app->session->setFlash('success', 'Обратный звонок заказан');
+        $callback = new Callback();
+        $callback->load($this->request->post());
+        if (!$callback->validate()) {
+            Yii::$app->session->setFlash('error', 'Произошла ошибка при заказе обратного звонка'); 
+        } else {
+            $callback->add();
+            Yii::$app->session->setFlash('success', 'Обратный звонок заказан');
+            $this->sendMail();
+        }
 		return $this->redirect($this->request->referrer);
 	}
 
@@ -34,6 +41,19 @@ class CallbackAdminController extends BaseController
         $callback->status = self::STATUS_INACTIVE;
         $callback->save();
         Yii::$app->session->setFlash('success', 'Обратный звонок удален');
+        return $this->redirect($this->request->referrer);
+    }
+
+    public function actionState($id, $state = null)
+    {
+
+        $callback = Callback::findOne($id);
+        if ($state) $callback->state = Callback::STATE_CALLBACK;
+        else $callback->state = Callback::STATE_NOT_CALLBACK;
+        $callback->processed = time();
+        $callback->user_id = Yii::$app->user->getId();
+        $callback->save();
+        Yii::$app->session->setFlash('success', 'Состояние изменено');
         return $this->redirect($this->request->referrer);
     }
 

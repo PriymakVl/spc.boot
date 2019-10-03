@@ -1,3 +1,11 @@
+<? 
+  use yii\helpers\Html;
+  use yii\widgets\ActiveForm;
+  use app\modules\admin\classes\Callback;
+  
+  $model = new Callback;
+?>
+
 <div class="modal" id="callback-form">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -8,27 +16,25 @@
         <h4 class="modal-title">Заказать обратный звонок</h4>
       </div>
     
-   <form action="/callback/create">
+    <? $form = ActiveForm::begin(['action' => ['/callback/create']]) ?>
+      
       <!-- Modal body -->
       <div class="modal-body">
-         <!-- name -->
-         <div class="form-group">
-            <label for="name">Ваше имя:</label>
-            <input type="text" class="form-control input-sm" id="name" name="name" required>
-         </div>
-         <!-- phone customer -->
-         <div class="form-group">
-            <label for="phone">Ваш телефон:</label>
-            <input type="text" class="form-control input-sm" id="phone" name="phone" required>
-         </div>
+          
+        <!-- name -->
+        <?= $form->field($model, 'name')->label('Ваше имя:') ?>
+         
+        <!-- phone -->
+        <?= $form->field($model, 'phone')->label('Ваш телефон:') ?>
+      
       </div>
 
       <!-- Modal footer -->
       <div class="modal-footer">
-        <input type="submit" class="btn btn-success" value="Заказать">
+        <?= Html::submitButton('Заказать', ['class' => 'btn btn-success']) ?>
       </div>
-   </form>
-      
+
+    <?php ActiveForm::end() ?>      
 
     </div>
   </div>

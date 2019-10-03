@@ -37,11 +37,9 @@ class CallbackSearch extends Callback
      */
     public function search($params)
     {
-        $query = Callback::find();
+        $query = Callback::find()->orderBy(['created' => SORT_DESC]);
 
-        $dataProvider = new ActiveDataProvider(['query' => $query, 'pagination' => ['pageSize' => 10]]);
-
-        //$dataProvider->pagination->pageSize = 2;
+        $dataProvider = new ActiveDataProvider(['query' => $query, 'pagination' => ['pageSize' => 4]]);
 
         $this->load($params);
 
@@ -59,8 +57,6 @@ class CallbackSearch extends Callback
             'state' => $this->state,
             'status' => self::STATUS_ACTIVE,
         ]);
-
-        //->andFilterWhere(['like', 'price', $this->price]);
 
         return $dataProvider;
     }
