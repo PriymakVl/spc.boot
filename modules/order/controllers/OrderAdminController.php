@@ -4,9 +4,10 @@ namespace app\modules\order\controllers;
 
 use Yii;
 use app\controllers\BaseController;
-use app\modules\order\classes\OrderSearch;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use app\modules\order\classes\Order;
+use app\modules\order\classes\OrderSearch;
 
 class OrderAdminController extends BaseController
 {
@@ -26,14 +27,29 @@ class OrderAdminController extends BaseController
 
     public function actionView($id)
     {
-        $order = $this->findModel($id);
+        $order = Order::findOne($id);
         return $this->render('view', ['model' => $order]);
     }
 
-    protected function findModel($id)
+    public function actionDelete($id)
     {
-        $order = Order::find()->where(['id' => $id, 'status' => Product::STATUS_ACTIVE])->limit(1)->one();
-        if ($order === null) throw new NotFoundHttpException('The requested page does not exist.');
-        return $order;
+        $order = Order::findOne($id);
+        $order->status = Order::STATUS_INACTIVE;
+        $order->save();
+        Yii::$app->session->setFlash('success', "Заказ успешно удален");
+        return $this->redirect(['index']);
     }
+
+    public function actionUpdate($id)
+    {
+        $model = Order::findOne($id);
+        if ($this->request->isGet) return $this->render('update', compact('model'));
+        $model->scenario = Order::SCENARIO_ADMIN;
+        $model->load(Yii::$app->request->post());
+        if ($model->state == Order::STATE_CLOSED) $model->closed = time(); 
+        if ($model->save()) Yii::$app->session->setFlash('success', "Состояние заказа успешно обновлено");
+        else Yii::$app->session->setFlash('error', "Ошибка при редактировании состояния заказа");
+        return $this->redirect(['index']);
+    }
+
 }

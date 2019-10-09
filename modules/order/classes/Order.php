@@ -12,7 +12,9 @@ use app\modules\product\classes\Product;
 
 class Order extends OrderBase
 {
-
+    const SCENARIO_ADMIN = 'admin';
+    const SCENARIO_USER = 'user';
+    
     const STATE_ALL = 'all';
     const STATE_REGISTERED = 1;
     const STATE_CLOSED = 2;
@@ -58,6 +60,13 @@ class Order extends OrderBase
             case self::STATE_PENDING: return 'отложен';
             default: return 'не известно';
         }
+    }
+
+    public function editState()
+    {
+        //if ($this->state == self::STATE_CLOSED) $this->closed = time();
+        $this->state = 3;
+        return $this->save();
     }
 
 

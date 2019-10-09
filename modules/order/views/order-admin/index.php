@@ -70,7 +70,8 @@ $this->title = 'Заказы';
             ],
 
             ['attribute' => 'registered', 'label' => 'Дата регистрации', 'value'=> function ($model) {return date('d.m.y', $model->registered);}],
-            // ['attribute' => 'registered', 'header' => 'Зарегистрирован', 'format' => 'raw', 'headerOptions' => ['class' => 'text-info'], 'value'=> function ($model) {return createLinkPrice($model);}],
+            
+            ['class' => 'yii\grid\ActionColumn', 'template' => '{delete} {update}', 'header' => 'Упр.', 'headerOptions' => ['class' => 'text-info']],
             
         ]
     ]); ?>

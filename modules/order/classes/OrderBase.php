@@ -18,11 +18,21 @@ class OrderBase extends ModelBase {
     public function rules()
     {
         return [
+            [['state', 'closed'], 'safe'],
+
             [['name', 'phone'], 'required'],
             [['note'], 'string'],
             ['email', 'email'],
             [['name'], 'string', 'max' => 255],
         ];
+    }
+
+    public function scenarios()
+    {
+        $scenarios = parent::scenarios();
+        $scenarios[static::SCENARIO_ADMIN] = ['state', 'closed'];
+        $scenarios[static::SCENARIO_USER] = ['name', 'phone', 'email'];
+        return $scenarios;
     }
 
     public function attributeLabels()
