@@ -24,7 +24,7 @@ class CartController extends BaseController {
 		Yii::$app->session->setFlash('success', 'Пневмоцилиндр добавлен в корзину');
 		return $this->redirect($this->request->referrer);
 	}
-	//for seies CPT
+	//for series CPT
 	public function actionAddConverterToCart()
 	{
 		$this->setSessionConverter();

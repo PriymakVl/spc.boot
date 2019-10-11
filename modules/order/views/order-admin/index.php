@@ -4,32 +4,10 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 use app\modules\order\classes\Order;
 
-function createLinkCustomer($order)
-{
-    $customer = $order->customer;
-    $str = '<a class="customer-link" href="/customer/customer-admin/view?id_customer=%s">%s</a>';
-    $str .= '<br><span>%s</span><br><span>%s</span>';
-    return sprintf($str, $customer->id, $customer->name, $customer->email, $customer->phone);
-}
 
-function createFieldCylinders($order)
+function createLinkOrder($order)
 {
-    if (!$order->cylinders) return '<span class="text-danger">нет</span>';
-    $str = '';
-    foreach ($order->cylinders as $cylinder) {
-        $str .= $cylinder->code.' - '.$cylinder->qty.'шт. <br>';
-    }
-    return $str;
-}
-
-function createFieldProducts($order)
-{
-    if (!$order->products) return '<span class="text-danger">нет</span>';
-    $str = '';
-    foreach ($order->products as $product) {
-        $str .= $product->name.' - '.$product->qty.'шт. <br>';
-    }
-    return $str;
+    return sprintf('<a href="/order/order-admin/view?id=%s">Заказ №%s</a>', $order->id, $order->id);
 }
 
 function createSelectOrderState()
@@ -45,31 +23,30 @@ function createSelectOrderState()
 $this->title = 'Заказы';
 
 ?>
-<!-- style link -->
 
 <div class="order-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
-
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            ['attribute' => 'id', 'label' => '№ заказа', 'format' => 'raw', 'value' => function($model) {return '<a href="#">Заказ №'.$model->id.'</a>';}], 
+            ['attribute' => 'id', 'label' => '№ заказа', 'format' => 'raw', 'value' => function($model) {return createLinkOrder($model);}], 
 
-            ['attribute' => 'id_customer', 'label' => 'Заказчик', 'format' => 'raw', 'value'=> function ($model) {return createLinkCustomer($model);}],
+            ['attribute' => 'id_customer', 'label' => 'Заказчик', 'format' => 'raw', 'value'=> function ($model) {return $model->createLinkCustomer();}],
 
-            ['attribute' => 'products', 'label' => 'Товары', 'headerOptions' => ['class' => 'text-info'], 'format' => 'raw', 'value'=> function ($model) {return createFieldProducts($model);}],
+            ['attribute' => 'products', 'label' => 'Товары', 'headerOptions' => ['class' => 'text-info'], 'format' => 'raw', 'value'=> function ($model) {return $model->createFieldProducts();}],
             
-            ['attribute' => 'cylinders', 'header' => 'Цилиндры', 'format' => 'raw', 'headerOptions' => ['class' => 'text-info'], 'value'=> function ($model) {return createFieldCylinders($model);}],
+            ['attribute' => 'cylinders', 'header' => 'Цилиндры', 'format' => 'raw', 'headerOptions' => ['class' => 'text-info'], 'value'=> function ($model) {return $model->createFieldCylinders();}],
             
-            ['attribute' => 'state', 'label' => 'Состояние',
-                'value' => function($model) {return $model->convertState();}, 'filter' => createSelectOrderState(),
+            ['attribute' => 'state', 'label' => 'Состояние', 'filter' => createSelectOrderState(), 'format' => 'raw',
+                'value' => function($model) {return $model->createFieldState();},
             ],
 
-            ['attribute' => 'registered', 'label' => 'Дата регистрации', 'value'=> function ($model) {return date('d.m.y', $model->registered);}],
+            ['attribute' => 'registered', 'label' => 'Дата рег.', 'value'=> function ($model) {return date('d.m.y', $model->registered);}],
+
+            ['attribute' => 'closed', 'label' => 'Дата вып.', 'value'=> function ($model) { return $model->closed ? date('d.m.y', $model->closed) : '';}],
             
             ['class' => 'yii\grid\ActionColumn', 'template' => '{delete} {update}', 'header' => 'Упр.', 'headerOptions' => ['class' => 'text-info']],
             

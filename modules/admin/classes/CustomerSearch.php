@@ -1,48 +1,61 @@
 <?php
 
-namespace app\modules\order\classes;
+namespace app\modules\admin\classes;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\modules\order\classes\Order;
+use app\modules\admin\classes\Customer;
 
-class OrderSearch extends Order
+
+class CustomerSearch extends Customer
 {
 
     public function rules()
     {
         return [
-            [['id', 'state'], 'integer'],
-            //[['registered'], 'string'],
+            [['name', 'phone', 'email'], 'string'],
         ];
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function scenarios()
     {
         // bypass scenarios() implementation in the parent class
         return Model::scenarios();
     }
 
+    /**
+     * Creates data provider instance with search query applied
+     *
+     * @param array $params
+     *
+     * @return ActiveDataProvider
+     */
     public function search($params)
     {
-        $query = Order::find()->orderBy(['id' => SORT_DESC]);
-        $dataProvider = new ActiveDataProvider(['query' => $query, 'pagination' => ['pageSize' => 10]]);
+        $query = Customer::find()->orderBy(['name' => SORT_ASC]);
+
+        $dataProvider = new ActiveDataProvider(['query' => $query, 'pagination' => ['pageSize' => 4]]);
+
         $this->load($params);
+
         if (!$this->validate()) {
             // uncomment the following line if you do not want to return any records when validation fails
             // $query->where('0=1');
-            // return $dataProvider;
+            return $dataProvider;
         }
 
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'state' => $this->state,
+            'name' => $this->name,
+            'phone' => $this->phone,
+            'email' => $this->email,
             'status' => self::STATUS_ACTIVE,
-            'id_customer' => $this->id_customer,
         ]);
 
-        // $query->andFilterWhere(['like', 'registered', $this->registered]);
         return $dataProvider;
     }
 }

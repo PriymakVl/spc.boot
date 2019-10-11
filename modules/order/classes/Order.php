@@ -5,13 +5,16 @@ namespace app\modules\order\classes;
 use Yii;
 use yii\web\NotFoundHttpException;
 use app\models\ModelBase;
-use app\models\Customer;
+use app\modules\admin\classes\Customer;
 use app\modules\order\classes\OrderCylinder;
 use app\modules\order\classes\OrderProduct;
 use app\modules\product\classes\Product;
+use app\modules\order\traits\OrderConvert;
 
 class Order extends OrderBase
 {
+    use OrderConvert;
+
     const SCENARIO_ADMIN = 'admin';
     const SCENARIO_USER = 'user';
     
