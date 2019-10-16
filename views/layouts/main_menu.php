@@ -1,3 +1,7 @@
+<?php
+    use yii\helpers\Url;
+?>
+
 <nav class="navbar">
     <!-- Brand -->
     <!-- <a class="navbar-brand" href="#">Specialist</a> -->
@@ -33,7 +37,7 @@
                 <a href="#">О компании</a>
             </li>
             <li>
-                <a href="#">Контакты</a>
+                <a href="<?=Url::to('/main/contacts')?>">Контакты</a>
             </li>
         </ul>
     </div>
