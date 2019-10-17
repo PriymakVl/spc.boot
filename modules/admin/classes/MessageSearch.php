@@ -7,13 +7,13 @@ use yii\data\ActiveDataProvider;
 use app\modules\admin\classes\Message;
 
 
-class MessageSearch extends Callback
+class MessageSearch extends Message
 {
 
     public function rules()
     {
         return [
-            [['id', 'status', 'state'], 'integer'],
+            [['id', 'status', 'state', 'user_id'], 'integer'],
             [['name', 'phone', 'email'], 'string'],
         ];
     }
@@ -36,9 +36,13 @@ class MessageSearch extends Callback
      */
     public function search($params)
     {
-        $query = Message::find()->where(['status' => self::STATUS_ACTIVE])->orderBy(['created_at' => SORT_DESC]);
+        //$query = Message::find()->where(['status' => self::STATUS_ACTIVE])->orderBy(['created_at' => SORT_DESC]);
+
+        $query = Message::find();
+
 
         $dataProvider = new ActiveDataProvider(['query' => $query, 'pagination' => ['pageSize' => 4]]);
+
 
         $this->load($params);
 

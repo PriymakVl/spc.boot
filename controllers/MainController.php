@@ -17,7 +17,7 @@ class MainController extends BaseController {
 
 	public function actionContacts()
 	{
-		$model = new Message();
+		$model = new Message(['scenario' => Message::SCENARIO_CREATE]);
 		$this->view->title = 'Контакты';
 		if ($this->request->isGet) return $this->render('contacts/main', compact('model'));
 		$model->load($this->request->post());

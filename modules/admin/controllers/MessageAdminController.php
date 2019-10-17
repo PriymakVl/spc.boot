@@ -26,19 +26,28 @@ class MessageAdminController extends BaseController
         $message = Message::findOne($id);
         $message->status = self::STATUS_INACTIVE;
         $message->save();
-        Yii::$app->session->setFlash('success', 'Сообщение messageудалено');
-        return $this->redirect($this->request->referrer);
+        Yii::$app->session->setFlash('success', 'Сообщение удалено');
+        return $this->redirect('/admin/message');
     }
 
-    public function actionState($id, $state)
+    public function actionView($id)
     {
+        $model = Message::findOne($id);
+        return $this->render('view', compact('model'));
+    }
 
-        $message = Message::findOne($id);
-        $message->state = $state;
-        $message->updated_at = time();
-        $message->user_id = Yii::$app->user->getId();
-        $message->save();
-        Yii::$app->session->setFlash('success', 'Состояние изменено');
+    public function actionUpdate($id)
+    {
+        $model = Message::findOne($id);
+        $model->scenario = Message::SCENARIO_UPDATE_STATE;
+        if (Yii::$app->request->isGet) return $this->render('update', compact('model'));
+        $model->load($this->request->post());
+        if ($model->validate()) {
+            $model->updateState();
+            Yii::$app->session->setFlash('success', 'Состояние изменено');
+            return $this->redirect(['/admin/message-admin/view', 'id' => $model->id]);
+        }
+        Yii::$app->session->setFlash('error', 'Ошибка при редактировании состояния');
         return $this->redirect($this->request->referrer);
     }
 
