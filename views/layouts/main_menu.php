@@ -1,3 +1,7 @@
+<?php
+    use yii\helpers\Url;
+?>
+
 <nav class="navbar">
     <!-- Brand -->
     <!-- <a class="navbar-brand" href="#">Specialist</a> -->
@@ -23,17 +27,26 @@
                     <? endforeach; ?>
                 </ul>
             </li> 
-            <li class="active">
+
+
+            <? $class = (Yii::$app->controller->id == 'main' &&  Yii::$app->controller->action->id == 'index') ? 'active' : ''; ?>
+            <li class="<?=$class?>">
                 <a  href="/">Главная</a>
             </li>
-            <li>
+            
+            <? $class = (Yii::$app->controller->id == 'main' &&  Yii::$app->controller->action->id == 'news') ? 'active' : ''; ?>
+            <li class="<?=$class?>">
                 <a href="#">Новости</a>
             </li>
-            <li>
+
+            <? $class = (Yii::$app->controller->id == 'main' &&  Yii::$app->controller->action->id == 'about') ? 'active' : ''; ?>
+            <li class="<?=$class?>">
                 <a href="#">О компании</a>
             </li>
-            <li>
-                <a href="#">Контакты</a>
+
+            <? $class = (Yii::$app->controller->id == 'main' &&  Yii::$app->controller->action->id == 'contacts') ? 'active' : ''; ?>
+            <li class="<?=$class?>">
+                <a href="<?=Url::to('/main/contacts')?>">Контакты</a>
             </li>
         </ul>
     </div>

@@ -39,7 +39,8 @@ AppAsset::register($this);
     ]);
 
     $items = [
-                ['label' => 'Звонки', 'url' => ['/callback/index'], 'active' => (Yii::$app->controller->id == 'admin')],
+                ['label' => 'Звонки', 'url' => ['/callback/index'], 'active' => (Yii::$app->controller->id == 'callback-admin')],
+                ['label' => 'Сообщения', 'url' => ['/admin/message'], 'active' => (Yii::$app->controller->id == 'message-admin')],
                 ['label' => 'Заказы', 'url' => ['/admin/order'], 'active' => (Yii::$app->controller->id == 'order-admin')],
                 ['label' => 'Заказчики', 'url' => ['/admin/customer'], 'active' => (Yii::$app->controller->id == 'customer-admin' && Yii::$app->controller->action->id == 'index')],
                 ['label' => 'Категории', 'url' => ['/admin/category'], 'active' => (Yii::$app->controller->id == 'category-admin')],

@@ -4,17 +4,17 @@ namespace app\modules\admin\classes;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\modules\admin\classes\Callback;
+use app\modules\admin\classes\Message;
 
 
-class CallbackSearch extends Callback
+class MessageSearch extends Message
 {
 
     public function rules()
     {
         return [
-            [['id', 'status', 'state'], 'integer'],
-            [['name', 'phone'], 'string'],
+            [['id', 'status', 'state', 'user_id'], 'integer'],
+            [['name', 'phone', 'email'], 'string'],
         ];
     }
 
@@ -36,9 +36,13 @@ class CallbackSearch extends Callback
      */
     public function search($params)
     {
-        $query = Callback::find()->orderBy(['created' => SORT_DESC]);
+        //$query = Message::find()->where(['status' => self::STATUS_ACTIVE])->orderBy(['created_at' => SORT_DESC]);
+
+        $query = Message::find();
+
 
         $dataProvider = new ActiveDataProvider(['query' => $query, 'pagination' => ['pageSize' => 4]]);
+
 
         $this->load($params);
 
@@ -54,6 +58,7 @@ class CallbackSearch extends Callback
             'name' => $this->name,
             'phone' => $this->phone,
             'state' => $this->state,
+            'email' => $this->email,
             'status' => self::STATUS_ACTIVE,
         ]);
 

@@ -1,29 +1,24 @@
-<!-- css -->
-<link rel="stylesheet" type="text/css" href="/web/css/contacts/contacts.css">
-<link rel="stylesheet" type="text/css" href="/web/css/contacts/contacts_flex.css">
+<style type="text/css">
+	.breadcrumb {
+		margin-bottom: 0;
+	}
+</style>
 
 
 <main>
+
 	<!-- breadcrumbs -->
-	<div class="breadcrumbs-wrp">
-		<ul class="breadcrumbs">
-			<li><a href="#"></a>Главная</li>
-			<li><a href="#"></a>Контакты</li>
-		</ul>
+	<div class="container">
+	    <ol class="breadcrumb">
+			<li><a href="/">Главная</a></li>	
+			<li class="active">Контакты</li>
+		</ol>
 	</div>
 
-	<h1 id="pagetitle">Контакты</h1>
-
-	<!-- google map -->
-	<? include 'map.php'; ?>
-
+	<!-- name category -->
+	<h1 class="text-center">Контакты</h1>
 	
-	<div class="inner-wrp">
-		<!-- contacts -->
-		<? include 'contacts.php'; ?>
-
-		<!-- form feedback -->
-		<? include 'form.php'?>
-	</div>
+	<!-- form -->
+	<? include 'form.php'; ?>
 
 </main>
