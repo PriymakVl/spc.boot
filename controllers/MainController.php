@@ -27,4 +27,10 @@ class MainController extends BaseController {
 		return $this->redirect(Yii::$app->request->referrer);
 	}
 
+	public function actionNews()
+	{
+		$articles = true;
+		return $this->render('news/main', compact('articles'));
+	}
+
 }

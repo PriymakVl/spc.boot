@@ -16,6 +16,7 @@ return [
 	'admin' => 'admin/admin/index',
 
 	'contacts' => 'main/contacts',
+	'news' => 'main/news',
 	'sale' => 'main/sale',
 	'search' => 'product/product/search',
 	'filter' => 'category/category/filter',

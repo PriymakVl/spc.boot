@@ -36,7 +36,7 @@
             
             <? $class = (Yii::$app->controller->id == 'main' &&  Yii::$app->controller->action->id == 'news') ? 'active' : ''; ?>
             <li class="<?=$class?>">
-                <a href="#">Новости</a>
+                <a href="<?=Url::to('/news')?>">Новости</a>
             </li>
 
             <? $class = (Yii::$app->controller->id == 'main' &&  Yii::$app->controller->action->id == 'about') ? 'active' : ''; ?>
@@ -46,7 +46,7 @@
 
             <? $class = (Yii::$app->controller->id == 'main' &&  Yii::$app->controller->action->id == 'contacts') ? 'active' : ''; ?>
             <li class="<?=$class?>">
-                <a href="<?=Url::to('/main/contacts')?>">Контакты</a>
+                <a href="<?=Url::to('/contacts')?>">Контакты</a>
             </li>
         </ul>
     </div>
