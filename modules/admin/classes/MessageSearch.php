@@ -36,10 +36,7 @@ class MessageSearch extends Message
      */
     public function search($params)
     {
-        //$query = Message::find()->where(['status' => self::STATUS_ACTIVE])->orderBy(['created_at' => SORT_DESC]);
-
-        $query = Message::find();
-
+        $query = Message::find()->where(['status' => self::STATUS_ACTIVE])->orderBy(['created_at' => SORT_DESC]);
 
         $dataProvider = new ActiveDataProvider(['query' => $query, 'pagination' => ['pageSize' => 4]]);
 

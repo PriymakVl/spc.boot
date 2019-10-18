@@ -23,7 +23,7 @@ class Message extends ModelBase {
     {
         return [
             [['name', 'phone', 'text'], 'required'],
-            [['name', 'phone'], 'string', 'max' => 255],
+            [['name', 'phone, email'], 'string', 'max' => 255],
         ];
     }
 
@@ -31,7 +31,7 @@ class Message extends ModelBase {
     {
         $scenarios = parent::scenarios();
 
-        $scenarios[static::SCENARIO_CREATE] = ['name', 'phone', 'text'];
+        $scenarios[static::SCENARIO_CREATE] = ['name', 'phone', 'text', 'email'];
         $scenarios[static::SCENARIO_UPDATE_STATE] = ['state'];
         return $scenarios;
     }
