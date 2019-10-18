@@ -3,6 +3,7 @@
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 use App\modules\admin\classes\Message;
+use App\models\User;
 
 function getState($model)
 {
@@ -14,7 +15,7 @@ function getState($model)
 function getUsername($model)
 {
     if ($model->user_id) {
-        $user = User::findIdentity(101);
+        $user = User::findIdentity($model->user_id);
         if ($user) return $user->username;
     }
 }
@@ -52,6 +53,8 @@ function getUsername($model)
             ['attribute' => 'state', 'format' => 'raw', 
                 'value' => function($model) {return getState($model);}, 
             ],
+
+            // ['attribute' => 'user_id', 'value' => function($model) {return getUsername($model);}],
 
             ['attribute' => 'updated_at', 'format' => ['date', 'php:d-m-y H:m']],
 

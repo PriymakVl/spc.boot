@@ -19,7 +19,7 @@ function getState($model)
 function getUsername($model)
 {
     if ($model->user_id) {
-        $user = User::findIdentity(101);
+        $user = User::findIdentity($model->user->id);
         if ($user) return $user->username;
     }
 }
@@ -50,7 +50,7 @@ function getUsername($model)
 
             ['attribute' => 'updated_at', 'format' => ['date', 'php:d-m-y H:m']],
 
-            ['attribute' => 'user_id', 'value' => function($model) {return getUsername($model);}],
+            //['attribute' => 'user_id', 'value' => function($model) {return getUsername($model);}],
 
             ['class' => 'yii\grid\ActionColumn', 'contentOptions' => ['style' => 'width:100px; text-align:center;'],
 

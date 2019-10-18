@@ -2,6 +2,7 @@
 
 namespace app\modules\admin\classes;
 
+use Yii;
 use app\models\ModelBase;
 
 class Message extends ModelBase {
@@ -60,6 +61,7 @@ class Message extends ModelBase {
     public function updateState()
     {
         $this->updated_at = time();
+        if (Yii::$app->user->id) $this->user_id = Yii::$app->user->id;
         $this->save();
     }
 
