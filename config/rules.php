@@ -10,6 +10,7 @@ return [
 	'admin/customer/orders' => 'admin/customer-admin/orders',
 	'admin/customer' => 'admin/customer-admin/index',
 	'admin/message' => 'admin/message-admin/index',
+	'admin/news' => 'admin/news-admin/index',
 	
 	'admin/login' => 'admin/admin/login',
 	'admin/logout' => 'admin/admin/logout',

@@ -39,6 +39,7 @@ AppAsset::register($this);
     ]);
 
     $items = [
+                ['label' => 'Новости', 'url' => ['/admin/news'], 'active' => (Yii::$app->controller->id == 'news-admin')],
                 ['label' => 'Звонки', 'url' => ['/callback/index'], 'active' => (Yii::$app->controller->id == 'callback-admin')],
                 ['label' => 'Сообщения', 'url' => ['/admin/message'], 'active' => (Yii::$app->controller->id == 'message-admin')],
                 ['label' => 'Заказы', 'url' => ['/admin/order'], 'active' => (Yii::$app->controller->id == 'order-admin')],
