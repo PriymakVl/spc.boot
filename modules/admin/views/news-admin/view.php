@@ -27,6 +27,7 @@ function getUsername($model)
             ],
         ]) ?>
          <?= Html::a('Редактировать', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+         <?= Html::a($model->img_id ? 'Изменить изображение' : 'Добавить изображение', ['upload-image', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
     </p>
 
     <?= DetailView::widget([
@@ -37,7 +38,7 @@ function getUsername($model)
 
             'text',
 
-            'img',
+            ['attribute' => 'img_id', 'label' => 'Изображение', 'value' => function ($model) { return $model->img_id ? 'есть' : 'нет'; }],
 
             ['attribute' => 'created_at', 'format' => ['date', 'php:d-m-y H:m']],
 

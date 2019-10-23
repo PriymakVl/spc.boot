@@ -2,9 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
-use App\modules\admin\classes\Message;
-
-$states = [Message::STATE_NOT_PROCESSED => 'не обработан', Message::STATE_PROCESSED => 'обработан', Message::STATE_DELAYED => 'отложен'];
+use App\modules\admin\classes\News;
 
 ?>
 
@@ -13,12 +11,14 @@ $states = [Message::STATE_NOT_PROCESSED => 'не обработан', Message::S
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'state')->dropdownList($states)->label('Состояние сообщения'); ?>
+	    <?= $form->field($model, 'title')->label('Заголовок') ?>
 
-    <div class="form-group">
-        <?= Html::submitButton('Сохранить', ['class' => 'btn btn-success']) ?>
-        <?= Html::a('Отменить', ['index'], ['class' => 'btn btn-info']) ?>
-    </div>
+	    <?= $form->field($model, 'text')->textarea(['rows' => '6'])->label('Текст новости') ?>
+
+	    <div class="form-group">
+	        <?= Html::submitButton('Сохранить', ['class' => 'btn btn-success']) ?>
+	        <?= Html::a('Отменить', ['index'], ['class' => 'btn btn-info']) ?>
+	    </div>
 
     <?php ActiveForm::end(); ?>
 

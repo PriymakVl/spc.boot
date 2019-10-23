@@ -5,6 +5,7 @@
 	use Yii;
 	use app\modules\category\classes\Category;
 	use app\modules\admin\classes\Message;
+	use app\modules\admin\classes\News;
 	
 class MainController extends BaseController {
 
@@ -29,8 +30,8 @@ class MainController extends BaseController {
 
 	public function actionNews()
 	{
-		$articles = true;
-		return $this->render('news/main', compact('articles'));
+		$news = News::find()->where(['status' => self::STATUS_ACTIVE])->orderBy(['created_at' => SORT_DESC])->all();
+		return $this->render('news/main', compact('news'));
 	}
 
 }

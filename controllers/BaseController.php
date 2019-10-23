@@ -27,5 +27,16 @@ class BaseController extends Controller {
 		$this->view->params['catalog'] = (new Category)->getMain();
 	}
 
+	public function setMessage($type, $text)
+	{
+		Yii::$app->session->setFlash($type, $text);
+		return $this;
+	} 
+
+	public function back()
+	{
+		return $this->redirect($this->request->referrer);
+	}
+
 
 }

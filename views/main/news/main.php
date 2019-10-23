@@ -12,12 +12,12 @@
 	<h1 class="text-center">Новости</h1>
 	
 	<!-- form -->
-	<? include 'articles.php'; ?>
+	<? include 'news.php'; ?>
 
 </main>
 
 <style type="text/css">
-	.articles img {
+	.news img {
 		width:190px; 
 		height: 120px; 
 		border: 1px solid #ededf0;

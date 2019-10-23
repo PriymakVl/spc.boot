@@ -4,6 +4,7 @@ namespace app\modules\admin\classes;
 
 use Yii;
 use app\models\ModelBase;
+use app\models\Image;
 
 class News extends ModelBase {
 
@@ -27,7 +28,7 @@ class News extends ModelBase {
             'title' => 'Заголовок',
             'text' => 'Текст',
             'created_at' => 'Время создания',
-            'user_id' => 'Автор',
+            'user_id' => 'Добавил',
             'status' => 'Status',
             'text' => 'Текст сообщения'
         ];
@@ -37,7 +38,12 @@ class News extends ModelBase {
     {
         $this->created_at = time();
         $this->user_id = Yii::$app->user->getId();
-        $this->save();
+        return $this->save();
+    }
+
+    public function getImage()
+    {
+        if ($this->img_id) return (new Image)->get($this->img_id);
     }
    
 }

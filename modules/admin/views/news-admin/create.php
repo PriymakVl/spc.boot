@@ -3,10 +3,10 @@
 use yii\helpers\Html;
 
 
-$this->title = 'Редактировать новость' ;
+$this->title = 'Создать новость' ;
 
 ?>
-<div class="news-update">
+<div class="news-create">
 
     <h1><?= Html::encode($this->title) ?></h1>
 

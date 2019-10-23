@@ -19,9 +19,12 @@ function getUsername($model)
 ?>
 
 <div>
-	 <h1><?= Html::encode($this->title) ?></h1>
+	<h1><?= Html::encode($this->title) ?></h1>
 
-	  <?= GridView::widget([
+    <?= Html::a('Создать новость', ['create'], ['class' => 'btn btn-success']) ?>
+    <br><br>
+
+	<?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
@@ -29,7 +32,7 @@ function getUsername($model)
 
             'title',
 
-            'text',
+            ['attribute' => 'img_id', 'label' => 'Изображение', 'value' => function($model) { return $model->img_id ? 'есть' : 'нет'; }],
             
             ['attribute' => 'created_at', 'format' => ['date', 'php:d-m-y H:m']],
 

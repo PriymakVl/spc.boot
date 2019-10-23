@@ -7,6 +7,8 @@ use app\controllers\BaseController;
 use app\modules\admin\classes\News;
 use app\modules\admin\classes\NewsSearch;
 use app\models\User;
+use app\models\UploadForm;
+use yii\web\UploadedFile;
 
 
 class NewsAdminController extends BaseController
@@ -40,27 +42,31 @@ class NewsAdminController extends BaseController
     {
         $model = new News();
         if (Yii::$app->request->isGet) return $this->render('create', compact('model'));
-        $model->load(Yii::$app->request->post());
-        if ($this->saveNews()) {
-            Yii::$app->session->setFlash('success', "Новость успешно создана");
-            return $this->redirect(['view', 'id' => $model->id]);
+        if ($model->load(Yii::$app->request->post()) && $model->validate() && $model->saveNews()) {
+            return $this->setMessage('success', "Новость успешно создана")->redirect(['view', 'id' => $model->id]);
         }
-        Yii::$app->session->setFlash('error', 'Ошибка при редактировании новости');
-        return $this->redirect($this->request->referrer);
+        return $this->setMessage('error', 'Ошибка при редактировании новости')->back();
     }
 
     public function actionUpdate($id)
     {
         $model = News::findOne($id);
         if (Yii::$app->request->isGet) return $this->render('update', compact('model'));
-        $model->load($this->request->post());
-        if ($model->validate()) {
-            $model->updateNews();
-            Yii::$app->session->setFlash('success', 'Новость изменена');
-            return $this->redirect(['/admin/message-admin/view', 'id' => $model->id]);
+        if ($model->load($this->request->post()) && $model->validate() && $model->saveNews()) {
+            $this->setMessage('success', 'Новость изменена')->redirect(['/admin/news-admin/view', 'id' => $model->id]);
         }
-        Yii::$app->session->setFlash('error', 'Ошибка при редактировании новости');
-        return $this->redirect($this->request->referrer);
+        $this->setMessage('error', 'Ошибка при редактировании новости')->back();
+    }
+
+    public function actionUploadImage($id)
+    {
+        $news = News::findOne($id);
+        $model = new UploadForm();
+        if (Yii::$app->request->isGet) return $this->render('upload_image', compact('news', 'model'));
+        $model->imageFile = UploadedFile::getInstance($model, 'imageFile');
+        if ($model->uploadImageNews($news)) Yii::$app->session->setFlash('success', "Изображение успешно загружено");
+        else Yii::$app->session->setFlash('error', "Ошибка пр загрузке изображения");
+        return $this->redirect(['view', 'id' => $id]);
     }
 
 

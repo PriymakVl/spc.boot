@@ -50,6 +50,12 @@ class UploadForm extends Model
         return $category->save();
     }
 
+    public function uploadImageNews($news)
+    {
+        $news->img_id = $this->saveImage();
+        return $news->save();
+    }
+
 
 
 }
