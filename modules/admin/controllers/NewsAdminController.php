@@ -53,9 +53,9 @@ class NewsAdminController extends BaseController
         $model = News::findOne($id);
         if (Yii::$app->request->isGet) return $this->render('update', compact('model'));
         if ($model->load($this->request->post()) && $model->validate() && $model->saveNews()) {
-            $this->setMessage('success', 'Новость изменена')->redirect(['/admin/news-admin/view', 'id' => $model->id]);
+           return $this->setMessage('success', 'Новость изменена')->redirect(['/admin/news-admin/view', 'id' => $model->id]);
         }
-        $this->setMessage('error', 'Ошибка при редактировании новости')->back();
+        return $this->setMessage('error', 'Ошибка при редактировании новости')->back();
     }
 
     public function actionUploadImage($id)

@@ -23,6 +23,7 @@ return [
 	'filter' => 'category/category/filter',
 	'category/cylinder/form' => 'category/category/cylinder-form',
 	'order/save' => 'order/order/save',
+	'stuff' => 'main/stuff',
 
 	//admin filters
 	'admin/filters' => 'filter/filter-admin/index',

@@ -1,5 +1,4 @@
 <?php
-	use yii\widgets\ActiveForm;
     use yii\helpers\Url;
 ?>
 <style type="text/css">
@@ -39,6 +38,7 @@
             <? else: ?>
                 <p>Новостей еще нет</p>
             <? endif; ?>
+
         </div>
     </div>
 </div>

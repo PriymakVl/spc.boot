@@ -41,7 +41,7 @@
 
             <? $class = (Yii::$app->controller->id == 'main' &&  Yii::$app->controller->action->id == 'about') ? 'active' : ''; ?>
             <li class="<?=$class?>">
-                <a href="#">О компании</a>
+                <a href="/stuff">О компании</a>
             </li>
 
             <? $class = (Yii::$app->controller->id == 'main' &&  Yii::$app->controller->action->id == 'contacts') ? 'active' : ''; ?>

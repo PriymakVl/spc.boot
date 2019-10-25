@@ -34,4 +34,9 @@ class MainController extends BaseController {
 		return $this->render('news/main', compact('news'));
 	}
 
+	public function actionStuff()
+	{
+		return $this->render('stuff/main');
+	}
+
 }
