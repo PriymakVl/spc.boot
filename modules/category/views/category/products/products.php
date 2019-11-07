@@ -12,6 +12,12 @@
 	</div>
 </div> -->
 
+<style type="text/css">
+  .card-body {
+    margin-bottom: 30px;
+  }
+</style>
+
 <!-- products -->
 <div class="row">
     <div class="container">
@@ -28,17 +34,19 @@
                         	<? endif; ?>
                       	</a>
                   	</div>
+
                   	<!-- price -->
-                  	<div class="card-price">
-                  		<? if ($product->price->value): ?>
+<!--                   	<div class="card-price">
+                  		<? //if ($product->price->value): ?>
                           <span>Цена: </span>
             							<span class="price-value"><?=$product->price->value?></span>
             							<span class="price-currency">грн.</span>
             							<span class="price-measure">/шт</span>
-                      <? else: ?>
+                      <?// else: ?>
                         <span>Согласовать</span>
-            					<? endif; ?>
-                  	</div>
+            					<? //endif; ?>
+                  	</div> -->
+
                     <!-- button add -->
                     <div class="btn-wrp">
                       <a href="/product?id_prod=<?=$product->id?>" class="btn btn-success" id="add-cart">Купить</a>

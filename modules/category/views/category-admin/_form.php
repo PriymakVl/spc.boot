@@ -23,6 +23,12 @@ use app\modules\filter\Filter;
     <!-- description -->
     <?= $form->field($model, 'description')->textarea(['rows' => 6]) ?>
 
+    <!-- rating -->
+    <?= $form->field($model, 'rating')->textInput() ?>
+
+    <!-- translit -->
+    <?= $form->field($model, 'translit')->textInput() ?>
+
     <div class="form-group">
         <?= Html::submitButton('Сохранить', ['class' => 'btn btn-success']) ?>
     </div>

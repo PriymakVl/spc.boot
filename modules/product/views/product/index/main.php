@@ -1,5 +1,5 @@
 <?php
-
+use yii\helpers\Html;
 ?>
 
 <!-- breadcrumbs -->
@@ -9,7 +9,9 @@
 		<? if ($product->category->parent): ?>
 			<li><a href="/category?id_cat=<?=$product->category->parent->id?>"><?=$product->category->parent->name?></a></li>
 		<? endif; ?>
-		<li><a href="/category?id_cat=<?=$cat->id?>"><?=$product->category->name?></a></li>	
+		<li>
+			<?= Html::a($product->category->name, ['/category', 'id_cat' => $product->category->id]) ?>
+		</li>	
 		<li><a href="#"><?=$product->name?></a></li>
 	</ol>
 </div>

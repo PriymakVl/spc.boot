@@ -19,7 +19,7 @@ class Category extends CategoryBase {
 
 	public function getChildren()
 	{
-		return $this->selectByIdParent($this->id);
+        return self::find()->where(['id_parent' => $this->id, 'status' => self::STATUS_ACTIVE])->orderBy(['rating' => SORT_DESC])->all();
 	}
 
     public function getImage()
@@ -40,14 +40,15 @@ class Category extends CategoryBase {
     	$this->id_parent = $form->id_parent;
     	$this->description = $form->description;
         $this->IBLOCK_ID = '14';
+        if ($form->rating) $this->rating = $form->rating;
     	if ($this->save()) return $this;
     }
 
     public function rules()
     {
     	return [
-    		[['name', 'description', 'code'], 'string'],
-    		['id_parent', 'integer'],
+    		[['name', 'description', 'code', 'translit'], 'string'],
+    		[['id_parent', 'rating'], 'integer'],
     		['name', 'required'],
     	];
     }

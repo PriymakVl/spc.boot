@@ -26,6 +26,8 @@ class CategoryBase extends ModelBase {
             'description' => 'Описание',
             'filters' => '',
             'code' => 'Код',
+            'rating' => 'Райтинг',
+            'translit' => 'Транслитерация',
         ];
     }
 

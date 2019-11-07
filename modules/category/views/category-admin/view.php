@@ -40,6 +40,8 @@ $this->title = $model->name;
             'name',
             ['attribute' => 'id_parent', 'value' => function($model) {return $model->parent->name;}],
             ['attribute' => 'filters', 'format' => 'raw', 'label' => 'Фильтры', 'value' => function($model){return $model->convertFiltersToList();}],
+            'rating',
+            'translit',
             ['attribute' => 'description', 'value' => function($model){return $model->description;}, 'format' => 'raw'],
         ],
     ]) ?>
