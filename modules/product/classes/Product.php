@@ -10,12 +10,14 @@ use app\models\Image;
 use app\modules\product\classes\ProductPrice;
 use app\modules\product\traits\ProductAdminTrait;
 use app\modules\filter\classes\FilterItem;
+use yii\helpers\Inflector;
 
 class Product extends ProductBase {
 
 	use ProductModel, ProductFilter, ProductAdminTrait;
 
     public $itemsFilters;
+    public $translit;
 
  	public function delete()
     {
@@ -43,6 +45,11 @@ class Product extends ProductBase {
     {
         $this->itemsFilters = (new ProductItemFilter)->getAll($this->id);
         return $this;
+    }
+
+    public function getTranslit()
+    {
+        return Inflector::slug($this->name, '_');
     }
 
     public function saveProduct($form)

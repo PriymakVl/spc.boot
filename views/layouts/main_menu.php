@@ -22,7 +22,7 @@
                 <ul class="dropdown-menu">
                     <? foreach ($this->params['catalog'] as $cat): ?>
                         <li>
-                            <a href="/category?id_cat=<?=$cat->id?>"><?=$cat->name?></a>
+                            <a href="/category/<?=$cat->translit?>"><?=$cat->name?></a>
                         </li>
                     <? endforeach; ?>
                 </ul>

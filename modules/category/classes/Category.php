@@ -7,6 +7,8 @@ use app\modules\product\classes\Product;
 use app\models\Image;
 use app\modules\filter\classes\Filter;
 use app\modules\category\classes\CategoryFilter;
+use yii\helpers\Inflector;//translit
+use yii\web\NotFoundHttpException;
 
 class Category extends CategoryBase {
 
@@ -40,8 +42,17 @@ class Category extends CategoryBase {
     	$this->id_parent = $form->id_parent;
     	$this->description = $form->description;
         $this->IBLOCK_ID = '14';
+        if (!$this->translit || $this->translit != $form->translit) $this->translit = $this->translitName($form);
         if ($form->rating) $this->rating = $form->rating;
     	if ($this->save()) return $this;
+    }
+
+    private function translitName()
+    {
+        if (!$this->translit && !$form->translit) $translit = Inflector::slug($form->name);
+        else $translit = $form->translit;
+        if (self::findOne(['translit' => $translit])) throw new NotFoundHttpException('Не уникальный транслит');
+        return $translit;
     }
 
     public function rules()

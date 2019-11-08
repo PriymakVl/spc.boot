@@ -10,7 +10,7 @@
             <? foreach ($cat->children as $subcat): ?>
               	<div class="card">
                   	<div class="card-body">
-                     	<a href="<?=Url::to(['/category', 'id_cat' => $subcat->id])?>">
+                     	<a href="<?=Url::to(['/category/'.$subcat->translit])?>">
                         	<? if ($subcat->image): ?>
                           		<?= Html::img(['@img/'.$subcat->image->subdir.'/'.$subcat->image->filename, ['alt' => $subcat->name]]) ?>
                         	<? else: ?>
@@ -19,7 +19,7 @@
                       	</a>
                   	</div>
 	              	<div class="card-footer">
-	                      <?= Html::a($subcat->name, ['/category', 'id_cat' => $subcat->id], ['alt' => $subcat->preview]) ?>
+	                      <?= Html::a($subcat->name, ['/category/'.$subcat->translit], ['alt' => $subcat->preview]) ?>
 	              	</div>
           		</div> 
             <? endforeach; ?>

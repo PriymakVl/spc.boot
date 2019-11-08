@@ -10,14 +10,16 @@
 	use app\helpers\Helper;
 	use yii\helpers\ArrayHelper;
 	use app\modules\filter\Filter;
+	use yii\web\NotFoundHttpException;
 	
 class CategoryController extends BaseController {
 
 
-	public function actionIndex($id_cat)
+	public function actionIndex($translit)
 	{
 		$cart = $this->session->get('cart');
-		$cat = Category::findOne(['id' => $id_cat, 'status' => self::STATUS_ACTIVE]);
+		$cat = Category::findOne(['translit' => $translit, 'status' => self::STATUS_ACTIVE]);
+		if (!$cat) throw new NotFoundHttpException('Такой категории не существует');
 		if ($this->isCylinder($cat->code)) return $this->redirect(['cylinder/form', 'series' => $cat->code]);
 		if ($cat->products) return $this->products($cat);
 		return $this->render('categories/main', compact('cat'));

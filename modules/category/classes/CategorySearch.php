@@ -40,7 +40,7 @@ class CategorySearch extends Category
      */
     public function search($params)
     {
-        $query = Category::find();
+        $query = Category::find()->orderBy(['rating' => SORT_DESC]);
 
         // add conditions that should always apply here
 

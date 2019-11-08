@@ -26,7 +26,7 @@
             <? foreach ($products as $product): ?>
               	<div class="card">
                   	<div class="card-body">
-                     	<a href="<?=Url::to(['/product', 'id_prod' => $product->id])?>">
+                     	<a href="<?=Url::to(['/product/'.$product->getTranslit().'/'.$product->id])?>">
                         	<? if ($product->image): ?>
                           		<?= Html::img(['@img/'.$product->image->subdir.'/'.$product->image->filename, ['alt' => $product->name]]) ?>
                         	<? else: ?>
@@ -49,11 +49,11 @@
 
                     <!-- button add -->
                     <div class="btn-wrp">
-                      <a href="/product?id_prod=<?=$product->id?>" class="btn btn-success" id="add-cart">Купить</a>
+                      <a href="/product/<?=$product->getTranslit().'/'.$product->id?>" class="btn btn-success" id="add-cart">Купить</a>
                     </div>
                   	<!-- footer -->
 	              	<div class="card-footer">
-	                     <?= Html::a($product->name, ['/product', 'id_prod' => $product->id], ['alt' => '']) ?>
+	                     <?= Html::a($product->name, ['/product/'.$product->getTranslit().'/'.$product->id], ['alt' => '']) ?>
 	              	</div>
           		</div> 
             <? endforeach; ?>

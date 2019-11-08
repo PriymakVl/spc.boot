@@ -19,15 +19,15 @@ use app\modules\filter\Filter;
 
     <!-- parent -->
      <?= $form->field($model, 'id_parent')->dropDownList($model->convertForSelectMain(), ['prompt' => 'Не выбрана'])->label('Родительская категория') ?>
-    
-    <!-- description -->
-    <?= $form->field($model, 'description')->textarea(['rows' => 6]) ?>
 
     <!-- rating -->
     <?= $form->field($model, 'rating')->textInput() ?>
 
     <!-- translit -->
     <?= $form->field($model, 'translit')->textInput() ?>
+    
+    <!-- description -->
+    <?= $form->field($model, 'description')->textarea(['rows' => 6]) ?>
 
     <div class="form-group">
         <?= Html::submitButton('Сохранить', ['class' => 'btn btn-success']) ?>

@@ -37,6 +37,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'filter' => Category::find()->select(['name'])->where(['id_parent' => null, 'status' => Category::STATUS_ACTIVE])->asArray()->indexBy('id')->column(),
             ],
             
+            'translit',
             'rating',
 
             ['class' => 'yii\grid\ActionColumn'],

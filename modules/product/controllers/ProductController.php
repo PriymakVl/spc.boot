@@ -5,13 +5,15 @@ namespace app\modules\product\controllers;
 use Yii;
 use app\controllers\BaseController;
 use app\modules\product\classes\Product;
+use yii\web\NotFoundHttpException;
 
 class ProductController extends BaseController
 {
 	
-    public function actionIndex($id_prod)
+    public function actionIndex($translit, $id)
     {
-        $product = (new Product)->get($id_prod);
+        $product = Product::findOne(['id' => $id, 'status' => self::STATUS_ACTIVE]);
+        if (!$product) throw new NotFoundHttpException('Такого продукта не существует');
         $this->view->title = $product->name;
         return $this->render('index/main', compact('product'));
     }

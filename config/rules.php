@@ -22,6 +22,8 @@ return [
 	'search' => 'product/product/search',
 	'filter' => 'category/category/filter',
 	'category/cylinder/form' => 'category/category/cylinder-form',
+	'category/<translit:\w+>' => 'category/category/index',
+	'product/<translit:\w+>/<id:\d+>' => 'product/product/index',
 	'order/save' => 'order/order/save',
 	'stuff' => 'main/stuff',
 
