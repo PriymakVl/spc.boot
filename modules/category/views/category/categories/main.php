@@ -4,7 +4,7 @@
 	    <ol class="breadcrumb">
 			<li><a href="/">Главная</a></li>
 			<? if ($cat->parent): ?>
-				<li><a href="/category?id_cat=<?=$cat->parent->id?>"><?=$cat->parent->name?></a></li>
+				<li><a href="/category/<?=$cat->parent->translit?>"><?=$cat->parent->name?></a></li>
 			<? endif; ?>	
 			<li class="active"><?=$cat->name?></li>
 		</ol>

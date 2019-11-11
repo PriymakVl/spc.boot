@@ -7,12 +7,14 @@ use yii\helpers\Html;
     <ol class="breadcrumb">
 		<li><a href="/">Главная</a></li>
 		<? if ($product->category->parent): ?>
-			<li><a href="/category?id_cat=<?=$product->category->parent->id?>"><?=$product->category->parent->name?></a></li>
+			<li>
+				<?= Html::a($product->category->parent->name, ['/category/'.$product->category->parent->translit]) ?>
+			</li>
 		<? endif; ?>
 		<li>
-			<?= Html::a($product->category->name, ['/category', 'id_cat' => $product->category->id]) ?>
+			<?= Html::a($product->category->name, ['/category/'.$product->category->translit]) ?>
 		</li>	
-		<li><a href="#"><?=$product->name?></a></li>
+		<li class="active"><?=$product->name?></li>
 	</ol>
 </div>
 
