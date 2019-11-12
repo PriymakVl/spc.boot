@@ -22,6 +22,7 @@ class FilterItemAdminController extends BaseController
     public function actionView($id_item)
     {
         $model = $this->findModel($id_item);
+        debug($model->getCategories());
         return $this->render('view', compact('model'));
     }
 

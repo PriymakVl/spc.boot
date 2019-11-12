@@ -31,8 +31,13 @@ class Category extends CategoryBase {
 
     public function getFilters()
     {
-    	$ids = CategoryFilter::find()->select(['id_filter'])->where(['id_cat' => $this->id, 'status' => self::STATUS_ACTIVE])->asArray()->column();
-    	return Filter::findAll([id => $ids, 'status' => self::STATUS_ACTIVE]);
+    	$ids = CategoryFilter::find()->select(['id_filter'])->where(['id_cat' => $this->id, 'status' => self::STATUS_ACTIVE])->orderBy(['rating' => SORT_DESC])->asArray()->column();
+        if (!$ids) return;
+        foreach ($ids as $id) {
+            $filter = Filter::findOne($id);
+            if ($filter) $filters[] = $filter;
+        }
+    	return $filters;
     }
 
     public function saveCategory($form)

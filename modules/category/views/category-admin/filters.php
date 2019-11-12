@@ -8,7 +8,7 @@ $this->title = 'Фильтры категории';
 <div class="filters-category">
 
     <h1>
-    	<? printf('%s: <span class="text-info">%s</span>', $this->title, $cat->name); ?>
+    	<? printf('%s: <a href="/category/category-admin/view?id=%s" class="text-info">%s</span>', $this->title, $cat->id, $cat->name); ?>
     </h1>
 
   	<form action="/category/category-admin/save-filters">
@@ -17,27 +17,25 @@ $this->title = 'Фильтры категории';
 
     <table class="table table-striped table-bordered table-hover">
         <tr>
-            <th width="40">
-            	<input type="checkbox" disabled>
-            </th>
+            <th width="40">№</th>
             <th class="text-primary">Наименование</th>
+            <th class="text-primary">Рейтинг</th>
             <th class="text-primary">Операции</th>
         </tr>
-        <? if ($all_filters): ?>
-            <? foreach($all_filters as $filter): ?>
+        <? if ($cat->filters): ?>
+            <? $number = 1; ?>
+            <? foreach($cat->filters as $filter): ?>
                 <tr >
-                    <td>
-						<input value="<?=$filter->id?>" type="checkbox" name="filters_new[]" <? if (in_array($filter->id, $cat_filters)) echo 'checked'?>>
-                    </td>
-                    <td class="<?=(in_array($filter->id, $cat_filters)) ? 'text-info' : ''?>"><?=$filter->title?></td>
+                    <td><?=$number?></td>
+                    <td><?=$filter->title?></td>
+                    <td><?=$filter->getRating($cat->id)?></td>
                     <!-- actions filter category -->
                     <td>
                         <!-- select item filter for category -->
-                        <a href="/filter/filter-item-admin/update?id_item=<?=$item->id?>" title="Настроить">
-                            <span class="glyphicon glyphicon-pencil"></span>
-                        </a>
+                        <a href="#" class="edit_rating" id_cat="<?=$cat->id?>" id_filter="<?=$filter->id?>">Редактировать рейтинг</a>
                     </td>
                 </tr>
+                <? $number++; ?>
             <? endforeach; ?>
         <? else: ?>
             <td colspan="3" class="text-danger">Фильтров еще нет</td>
@@ -53,3 +51,5 @@ $this->title = 'Фильтры категории';
 	 </form>
 
 </div>
+
+

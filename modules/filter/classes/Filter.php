@@ -5,6 +5,7 @@ namespace app\modules\filter\classes;
 use app\models\ModelBase;
 use app\modules\category\classes\CategoryFilter;
 use app\modules\filter\classes\FilterItem;
+use app\modules\category\classes\Category;
 
 class Filter extends ModelBase {
 
@@ -39,6 +40,22 @@ class Filter extends ModelBase {
         $this->name = strtolower(trim($form->name));
         $this->title = trim($form->title);
         return $this->save();
+    }
+
+    public function getRating($id_cat)
+    {
+        $obj = CategoryFilter::findOne(['id_cat' => $id_cat, 'id_filter' => $this->id, 'status' => self::STATUS_ACTIVE]);
+        return $obj ? $obj->rating : 0;
+    }
+
+    public function getCategories()
+    {
+        $items = CategoryFilter::findAll(['id_filter' => $this->id, 'status' => self::STATUS_ACTIVE]);
+        if (!$items) return;
+        foreach ($items as $item) {
+            $cats[] = Category::findOne(['id' => $item->id_cat, 'status' => self::STATUS_ACTIVE]);
+        }
+        return $cats;
     }
 
     public function rules()

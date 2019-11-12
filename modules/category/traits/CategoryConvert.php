@@ -12,7 +12,7 @@ trait CategoryConvert {
         if (!$this->filters) return;
         $list = '<ol>';
         foreach ($this->filters as $filter) {
-            $list .= '<li>'.$filter->title.'</li>';
+            $list .= sprintf('<li><a href="/filter/filter-admin/view?id=%s">%s</a></li>', $filter->id, $filter->title);
         }
         return $list .= '</ol>';
     }

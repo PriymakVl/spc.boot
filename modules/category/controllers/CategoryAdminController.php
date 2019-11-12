@@ -81,10 +81,9 @@ class CategoryAdminController extends BaseController
 
     public function actionFilters($id_cat)
     {
-        $cat_filters = CategoryFilter::find()->select('id_filter')->where(['id_cat' => $id_cat, 'status' => self::STATUS_ACTIVE])->column();
-        $all_filters = Filter::findAll(['status' => self::STATUS_ACTIVE]);
+        Yii::$app->view->registerJsFile('@web/js/admin/change_rating_filter.js', ['depends' => 'yii\web\YiiAsset']);
         $cat = Category::findOne($id_cat);
-        return $this->render('filters', compact('cat_filters', 'all_filters', 'cat'));
+        return $this->render('filters', compact('cat'));
     }
 
     public function actionSaveFilters($id_cat)

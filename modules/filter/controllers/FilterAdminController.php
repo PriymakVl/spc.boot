@@ -8,6 +8,7 @@ use app\modules\filter\classes\FilterSearch;
 use app\controllers\BaseController;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use app\modules\category\classes\CategoryFilter;
 
 class FilterAdminController extends BaseController
 {
@@ -67,6 +68,16 @@ class FilterAdminController extends BaseController
         $model->status = Filter::STATUS_INACTIVE;
         $model->save();
         return $this->redirect(['index']);
+    }
+
+    public function actionRating($id_filter, $id_cat, $rating)
+    {
+        $obj = CategoryFilter::findOne(['id_filter' => $id_filter, 'id_cat' => $id_cat, 'status' => self::STATUS_ACTIVE]);
+        if (!$obj) return $this->setMessage('error', 'Ошибка при редактировании рейтинга')->back();
+        $obj->rating = $rating;
+        $obj->save();
+        $this->setMessage('success', 'Рейтинг успешно отредактирован');
+        $this->redirect(['/category/category-admin/filters', 'id_cat' => $id_cat]);
     }
 
     protected function findModel($id)

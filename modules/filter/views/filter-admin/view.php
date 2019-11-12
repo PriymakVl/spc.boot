@@ -9,7 +9,28 @@ $this->title = $model->title;
 
 \yii\web\YiiAsset::register($this);
 
+// function getCategory($filter) {
+//     $category = $filter->getCategory();
+//     if ($category) return sprintf('<a href="/category/category-admin/view?id=%s">%s</a>', $category->id, $category->name);
+// }
+
+function getCategories($filter)
+{
+    $categories = $filter->getCategories();
+    if (!$categories) return;
+    $list = '<ol>';
+    foreach ($categories as $category) {
+        $item = '<li>';
+        if ($category->parent) $item .= $category->parent->name.' / ';
+        $item .= $category->name.'</li>';
+        $list .= $item;
+    }
+    return $list.'</ol>';
+}
+
 ?>
+
+
 
 <div class="category-view">
 
@@ -32,6 +53,7 @@ $this->title = $model->title;
         'attributes' => [
             'name',
             'title',
+            ['attribute' => 'category', 'label' => 'Категории', 'format' => 'raw', 'value' => function($model) {return getCategories($model);} ],
         ],
     ]) ?>
 
