@@ -52,7 +52,7 @@ $this->title = 'Фильтры продукта';
                     <? $number++; ?>
                 <? endforeach; ?>
             <? else: ?>
-                <td colspan="3" class="text-danger">Фильтров еще нет</td>
+                <td colspan="4" class="text-danger">Фильтров еще нет</td>
             <? endif; ?>
         </table>
         <!-- buttons block -->

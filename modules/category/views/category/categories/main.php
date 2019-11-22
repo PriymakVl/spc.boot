@@ -13,8 +13,13 @@
 	<!-- name category -->
 	<h1 class="text-center"><?=$cat->name?> | Купить <?=$cat->name?></h1>
 
+	<!-- categories and filters -->
 	<? if($cat->children): ?>
-		<? include 'categories.php'; ?>
+		<? if ($cat->filters): ?>
+			<? include 'categories_filters.php'; ?>
+		<? else: ?>
+			<? include 'categories.php'; ?>
+		<? endif; ?>
  	<? else: ?>
  		<p>В этой категории ничего нет</p>
 	<? endif; ?>

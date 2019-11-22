@@ -1,18 +1,30 @@
 <?php
 	use yii\helpers\Url;
 	use yii\helpers\Html;
-	use yii\widgets\LinkPager;
+  use app\widgets\FilterWidget;
 ?>
-<!-- sort product -->
-<!-- <div class="sort-product-wrp">
-	<div class="link-block">
-		<a href="#">По популярности<i class="fas fa-angle-down"></i></a>
-		<a href="#">По алфавиту<i class="fas fa-angle-down"></i></a>
-		<a href="#">По цене<i class="fas fa-angle-down"></i></a>
-	</div>
-</div> -->
 
 <style type="text/css">
+
+  .filters-cards-wrp {
+    display: flex;
+    /*justify-content: space-between;*/
+  }
+
+  .filters-wrp {
+    width: 255px;
+  }
+
+  .cards-wrp {
+/*    display: flex;
+    justify-content: space-between;*/
+    margin-left: 40px;
+  }
+
+  .cards-wrp .card {
+    margin: 0 0 20px 20px;
+  }
+
   .card-body {
     margin-bottom: 30px;
   }
@@ -21,8 +33,15 @@
 <!-- products -->
 <div class="row">
     <div class="container">
-        <div class="row cards-wrp">
+        <div class="row filters-cards-wrp">
 
+          <!-- filters -->
+          <? if ($cat->filters): ?>
+            <?= FilterWidget::widget(['cat' => $cat]) ?>
+          <? endif; ?>
+
+          <!-- products -->
+          <div class="cards-wrp">
             <? foreach ($products as $product): ?>
               	<div class="card">
                   	<div class="card-body">
@@ -40,23 +59,15 @@
                       <a href="/product/<?=$product->getTranslit().'/'.$product->id?>" class="btn btn-success" id="add-cart">Купить</a>
                     </div>
                   	<!-- footer -->
-	              	<div class="card-footer">
-	                     <?= Html::a($product->name, ['/product/'.$product->getTranslit().'/'.$product->id], ['alt' => '']) ?>
-	              	</div>
+                	<div class="card-footer">
+                       <?= Html::a($product->name, ['/product/'.$product->getTranslit().'/'.$product->id], ['alt' => '']) ?>
+                	</div>
           		</div> 
             <? endforeach; ?>
-
+          </div>
         </div>
     </div>
 </div>
 
-<!-- pagination -->
-<div class="container">
-  <div class="row">
-    <div class="col-md-12 text-center">
-      <?php if ($pages) echo LinkPager::widget(['pagination' => $pages,]); ?>
-    </div>
-  </div>
-</div>
 
 

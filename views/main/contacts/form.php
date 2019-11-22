@@ -1,5 +1,6 @@
 <?php
 	use yii\widgets\ActiveForm;
+    use yii\captcha\Captcha;
 ?>
 <style type="text/css">
 
@@ -45,6 +46,14 @@
                             <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-pen-square bigicon"></i></span>
                             <div class="col-md-8">
                                 <?= $form->field($model, 'text')->textarea(['rows' => '7'])->label(false) ?>
+                            </div>
+                        </div>
+
+                        <!-- captcha -->
+                        <div class="form-group">
+                            <span class="col-md-1 col-md-offset-2 text-center"></span>
+                            <div class="col-md-8">
+                                <?= $form->field($model, 'captcha')->widget(Captcha::className())->label('Введите символы указанные на картинке: ') ?>
                             </div>
                         </div>
 

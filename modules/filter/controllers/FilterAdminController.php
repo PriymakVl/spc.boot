@@ -9,6 +9,7 @@ use app\controllers\BaseController;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use app\modules\category\classes\CategoryFilter;
+use app\modules\category\classes\Category;
 
 class FilterAdminController extends BaseController
 {
@@ -80,10 +81,34 @@ class FilterAdminController extends BaseController
         $this->redirect(['/category/category-admin/filters', 'id_cat' => $id_cat]);
     }
 
+    public function actionCategories()
+    {
+        $model = new CategoryFilter;
+        if ($this->request->isPost) $this->addCategory($model);
+        $filter = Filter::findOne($this->get->id_filter);
+        $categories = $filter->getCategories();
+        return $this->render('categories', compact('filter', 'categories', 'model'));
+    }
+
+    public function actionDeleteCategory($id_filter, $id_cat)
+    {
+        $obj = CategoryFilter::findOne(['id_filter' => $id_filter, 'id_cat' => $id_cat, 'status' => self::STATUS_ACTIVE]);
+        $obj->status = self::STATUS_INACTIVE;
+        $obj->save();
+        return $this->setMessage('success', 'Категория успешно удалена')->back();
+    }
+
+    private function addCategory($model) {
+        if ($model->add((object) $this->post->CategoryFilter)) return $this->setMessage('success', 'Категория успешно добавлена')->back();
+        else return $this->setMessage('error', 'Ошибка при добавлении категории')->back();
+    }
+
     protected function findModel($id)
     {
         $model = Filter::findOne(['id' => $id, 'status' => Filter::STATUS_ACTIVE]);
         if ($model === null) throw new NotFoundHttpException('Такого фильтра не существует.');
         return $model;
     }
+
+
 }

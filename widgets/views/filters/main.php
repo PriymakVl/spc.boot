@@ -14,11 +14,11 @@
 			
 
 			<!-- hidden -->
-			<input type="hidden" name="id_cat" value="<?=$_GET['id_cat']?>">
+			<input type="hidden" name="id_cat" value="<?=$cat->id?>">
 			<!-- form button block -->
 			<div class="form-button-wrp">
 				<input type="submit" value="Показать">
-				<a href="/category?id_cat=<?=$_GET['id_cat']?>"><i class="fas fa-times"></i>Сбросить</a>
+				<a href="/category/<?=$cat->translit?>"><i class="fas fa-times"></i>Сбросить</a>
 			</div>
 		</form>
 	</div>

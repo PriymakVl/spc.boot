@@ -12,7 +12,7 @@
             <? foreach ($catalog as $cat): ?>
               <div class="card">
                   <div class="card-body">
-                     <a href="<?=Url::to(['/category', 'id_cat' => $cat->id])?>">
+                     <a href="<?=Url::to(['/category/'.$cat->translit])?>">
                         <? if ($cat->image): ?>
                           <?= Html::img(['@img/'.$cat->image->subdir.'/'.$cat->image->filename, ['alt' => $cat->name]]) ?>
                         <? else: ?>
@@ -22,7 +22,7 @@
                       
                   </div>
                   <div class="card-footer">
-                      <?= Html::a($cat->name, ['/category', 'id_cat' => $cat->id], ['alt' => $cat->preview]) ?>
+                      <?= Html::a($cat->name, ['/category'.$cat->translit], ['alt' => $cat->preview]) ?>
                   </div>
               </div> 
             <? endforeach; ?>

@@ -22,6 +22,7 @@ class BaseAsset extends AssetBundle
 
     public $css = [
         'css/layout/main.css', 'css/layout/slider.css', 'css/layout/menu.css', 'css/layout/header.css', 'css/layout/footer.css', 'css/layout/catalog.css',
+        'css/filters.css',
     ];
     public $js = [
         // 'js/filter_show.js'

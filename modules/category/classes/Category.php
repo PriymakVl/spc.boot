@@ -60,6 +60,12 @@ class Category extends CategoryBase {
         return $translit;
     }
 
+    public function getNameWithParent()
+    {
+        if (!$this->parent) return $this->name;
+        return $this->parent->name. ' / '. $this->name;
+    }
+
     public function rules()
     {
     	return [

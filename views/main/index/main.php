@@ -3,7 +3,7 @@
 
 <main>
 	<!-- slider -->
-	<? include 'slider.php'; ?>
+	<? //include 'slider.php'; ?>
 
 	<!-- catalog -->
 	<?include 'catalog.php'; ?>

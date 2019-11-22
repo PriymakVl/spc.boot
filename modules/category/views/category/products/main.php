@@ -29,7 +29,7 @@
 	<? elseif ($cat->products): ?>
 		<? include 'products.php'; ?>	
 	<? elseif($cat->children): ?>
-			<? include 'categories.php'; ?>
+		<? include 'categories.php'; ?>
  	<? else: ?>
  		<p>В этой категории ничего нет</p>
 	<? endif; ?>

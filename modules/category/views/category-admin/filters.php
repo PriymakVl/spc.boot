@@ -8,7 +8,7 @@ $this->title = 'Фильтры категории';
 <div class="filters-category">
 
     <h1>
-    	<? printf('%s: <a href="/category/category-admin/view?id=%s" class="text-info">%s</span>', $this->title, $cat->id, $cat->name); ?>
+    	<? printf('%s: <a href="/category/category-admin/view?id=%s" class="text-info">%s</span></a>', $this->title, $cat->id, $cat->name); ?>
     </h1>
 
   	<form action="/category/category-admin/save-filters">

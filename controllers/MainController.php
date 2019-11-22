@@ -22,10 +22,9 @@ class MainController extends BaseController {
 		$this->view->title = 'Контакты';
 		if ($this->request->isGet) return $this->render('contacts/main', compact('model'));
 		$model->load($this->request->post());
-		if (!$model->validate()) return;
-		$model->saveMessage();
-		$this->session->setFlash('success', "Сообщение отправлено");
-		return $this->redirect(Yii::$app->request->referrer);
+		if (!$model->validate()) return $this->setMessage('error', "Ошибка при отправке сообщения")->back();
+		debug($model->saveMessage());
+		return $this->setMessage('success', "Сообщение отправлено")->back();
 	}
 
 	public function actionNews()

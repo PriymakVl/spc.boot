@@ -39,6 +39,7 @@ $this->title = 'Продукты';
 
     <p>
         <?= Html::a('Создать продукт', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Загрузить из файла', ['upload-file-excel'], ['class' => 'btn btn-primary']) ?>
     </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
@@ -52,9 +53,13 @@ $this->title = 'Продукты';
             //'id',
             'name',
             //'description:ntext',
-            ['attribute' => 'price', 'header' => 'Цена', 'format' => 'raw', 'headerOptions' => ['class' => 'text-info'], 'value'=> function ($model) {return createLinkPrice($model);}],
-            ['attribute' => 'id_cat', 
-            'value' => function($model) {return Category::findOne($model->id_cat)->name;}, 
+            // ['attribute' => 'price', 'header' => 'Цена', 'format' => 'raw', 'headerOptions' => ['class' => 'text-info'], 'value'=> function ($model) {return createLinkPrice($model);}],
+            
+            ['attribute' => 'id_cat', 'format' => 'raw',
+            'value' => function($model) {
+                $cat = Category::findOne($model->id_cat);
+                return  $cat->parent ? $cat->parent->name.' <span class="text-danger">/</span> '.$cat->name : $cat->name;
+            }, 
             'filter' => (new Category)->convertForSelectMainWithSubcategory(),
             ],
             ['attribute' => 'image', 'header' => 'Изображение', 'format' => 'raw', 'headerOptions' => ['class' => 'text-info'],

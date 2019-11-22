@@ -50,7 +50,7 @@ class CategoryController extends BaseController {
     {
     	$cat = Category::findOne($id_cat); 
         $products = (new Product)->filter($cat);
-        return $this->render('index/main', compact('cat', 'products'));
+        return $this->render('filters/main', compact('cat', 'products'));
     }
 
 }

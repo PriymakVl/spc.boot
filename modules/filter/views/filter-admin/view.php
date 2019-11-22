@@ -4,15 +4,8 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 $this->title = $model->title;
-//$this->params['breadcrumbs'][] = ['label' => 'Categories', 'url' => ['index']];
-//$this->params['breadcrumbs'][] = $this->title;
 
 \yii\web\YiiAsset::register($this);
-
-// function getCategory($filter) {
-//     $category = $filter->getCategory();
-//     if ($category) return sprintf('<a href="/category/category-admin/view?id=%s">%s</a>', $category->id, $category->name);
-// }
 
 function getCategories($filter)
 {
@@ -20,6 +13,7 @@ function getCategories($filter)
     if (!$categories) return;
     $list = '<ol>';
     foreach ($categories as $category) {
+        if (!$category) continue;
         $item = '<li>';
         if ($category->parent) $item .= $category->parent->name.' / ';
         $item .= $category->name.'</li>';
@@ -46,6 +40,7 @@ function getCategories($filter)
             ],
         ]) ?>
          <?= Html::a('Элементы фильтра', ['filter-item-admin/index', 'id_filter' => $model->id], ['class' => 'btn btn-primary']) ?>
+         <?= Html::a('Категории', ['filter-admin/categories', 'id_filter' => $model->id], ['class' => 'btn btn-primary']) ?>
     </p>
 
     <?= DetailView::widget([

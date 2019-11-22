@@ -4,6 +4,7 @@ namespace app\modules\category\traits;
 
 use app\modules\filter\Filter;
 use yii\helpers\ArrayHelper;
+use app\modules\category\classes\Category;
 
 trait CategoryConvert {
 
@@ -20,7 +21,7 @@ trait CategoryConvert {
     public function convertForSelectMain()
     {
         $params = ['id_parent' => null, 'status' => self::STATUS_ACTIVE];
-        return self::find()->select(['name'])->where($params)->asArray()->indexBy('id')->column();
+        return Category::find()->select(['name'])->where($params)->asArray()->indexBy('id')->column();
     }
 
     public function convertForSelectMainWithSubcategory()

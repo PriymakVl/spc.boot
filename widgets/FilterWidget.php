@@ -10,20 +10,19 @@ use yii\helpers\ArrayHelper;
 
 class FilterWidget extends Widget {
 
+	public $cat;
 
 	public function run()
 	{
-		$id_cat = Yii::$app->request->get('id_cat');
-		$cat = (new Category)->get($id_cat);
-		$filters = $this->createFiltersNamesArray($cat->filters);
-		return $this->render('filters/main', compact('filters'));
+		$filters = $this->createFiltersNamesArray();
+		return $this->render('filters/main', ['filters' => $filters, 'cat' => $this->cat]);
 	}
 
-	private function createFiltersNamesArray($filters)
+	private function createFiltersNamesArray()
 	{
-		if (!$filters) return;
+		if (!$this->cat->filters) return;
 		$names = [];
-		foreach ($filters as $filter) {
+		foreach ($this->cat->filters as $filter) {
 			$names[] = $filter->name;
 		}
 		return $names;

@@ -33,17 +33,6 @@
 		<div class="col-md-8">
 			<div class="row ">
 				<h1 style="margin-top:0;"><?=$product->name?></h1>
-
-				<!-- product price -->
-				<div class="product-price">
-					<? if ($product->price->value): ?>
-						<span class="price-value"><?=$product->price->value?></span>
-						<span class="price-currency">грн.</span>
-						<span class="price-measure">/шт</span>
-					<? else: ?>
-						<span class="text-danger">Согласуйте цену</span>
-					<? endif; ?>
-				</div>
 			
 				<!-- form order  -->
 				<div class="product-form-order">

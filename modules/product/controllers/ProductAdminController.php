@@ -3,6 +3,9 @@
 namespace app\modules\product\controllers;
 
 use Yii;
+use yii\web\NotFoundHttpException;
+use yii\filters\VerbFilter;
+use yii\web\UploadedFile;
 use app\modules\product\classes\Product;
 use app\modules\product\classes\ProductItemFilter;
 use app\modules\product\classes\ProductSearch;
@@ -11,9 +14,7 @@ use app\modules\filter\classes\FilterItem;
 use app\controllers\BaseController;
 use app\models\UploadForm;
 use app\modules\product\classes\ProductPrice;
-use yii\web\NotFoundHttpException;
-use yii\filters\VerbFilter;
-use yii\web\UploadedFile;
+use app\modules\product\classes\ProductUploadExcel;
 
 class ProductAdminController extends BaseController
 {
@@ -116,5 +117,13 @@ class ProductAdminController extends BaseController
         $product = Product::find()->where(['id' => $id, 'status' => Product::STATUS_ACTIVE])->limit(1)->one();
         if ($product === null) throw new NotFoundHttpException('The requested page does not exist.');
         return $product;
+    }
+
+    public function actionUploadFileExcel()
+    {
+        $model = new ProductUploadExcel();
+        if (Yii::$app->request->isGet) return $this->render('upload_excel', compact('model'));
+        $model->excelFile = UploadedFile::getInstance($model, 'excelFile');
+        if ($model->excelFile->error == 0) $model->addProducts();
     }
 }

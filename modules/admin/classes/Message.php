@@ -2,7 +2,6 @@
 
 namespace app\modules\admin\classes;
 
-use Yii;
 use app\models\ModelBase;
 
 class Message extends ModelBase {
@@ -14,6 +13,8 @@ class Message extends ModelBase {
     const SCENARIO_CREATE = 'create';
     const SCENARIO_UPDATE_STATE = 'update_state';
 
+    public $captcha;
+
 	public static function tableName()
     {
         return '{{messages}}';
@@ -22,8 +23,9 @@ class Message extends ModelBase {
     public function rules()
     {
         return [
-            [['name', 'phone', 'text'], 'required'],
+            [['name', 'phone', 'text', 'captcha'], 'required'],
             [['name', 'phone, email'], 'string', 'max' => 255],
+            ['captcha', 'captcha'],
         ];
     }
 
@@ -31,7 +33,7 @@ class Message extends ModelBase {
     {
         $scenarios = parent::scenarios();
 
-        $scenarios[static::SCENARIO_CREATE] = ['name', 'phone', 'text', 'email'];
+        $scenarios[static::SCENARIO_CREATE] = ['name', 'phone', 'text', 'email', 'captcha'];
         $scenarios[static::SCENARIO_UPDATE_STATE] = ['state'];
         return $scenarios;
     }
@@ -55,7 +57,7 @@ class Message extends ModelBase {
     {
         $this->created_at = time();
         $this->state = self::STATE_NOT_PROCESSED;
-        $this->save();
+        return $this->save(false);
     }
 
     public function updateState()
