@@ -27,7 +27,6 @@ $this->params['breadcrumbs'][] = $this->title;
         ]) ?>
         <?= Html::a('Фильтры', ['product-admin/filters', 'id_prod' => $model->id], ['class' => 'btn btn-primary']) ?>
         <?= Html::a('Изображение', ['product-admin/upload-image', 'id_prod' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Цена', ['product-admin/update-price', 'id_prod' => $model->id], ['class' => 'btn btn-primary']) ?>
     </p>
 
     <?= DetailView::widget([
@@ -38,8 +37,6 @@ $this->params['breadcrumbs'][] = $this->title;
             ['attribute' => 'preview', 'label' => 'Анонс'],
             // category
             ['attribute' => 'id_cat', 'label' => 'Категория', 'format' => 'raw', 'value' => function($model) {return $model->createBreadcrumbsCategories();}], 
-            //price
-            ['attribute' => 'price', 'label' => 'Цена', 'value' => function($model) {return $model->price->value.' '.$model->price->currency;}],
             ['attribute' => 'filters', 'label' => 'Фильтры', 'format' => 'raw', 'value' => function($model) {return $model->createListFilters();}],
             'description:ntext',
             // 'status',

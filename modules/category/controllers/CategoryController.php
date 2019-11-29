@@ -11,6 +11,7 @@
 	use yii\helpers\ArrayHelper;
 	use app\modules\filter\Filter;
 	use yii\web\NotFoundHttpException;
+	use app\modules\product\classes\ProductItemFilter;
 	
 class CategoryController extends BaseController {
 
@@ -51,6 +52,23 @@ class CategoryController extends BaseController {
     	$cat = Category::findOne($id_cat); 
         $products = (new Product)->filter($cat);
         return $this->render('filters/main', compact('cat', 'products'));
+    }
+
+    public function actionUpfilter()
+    {
+    	$translit = 'filtroelementy';
+    	$id_filter = 7;
+    	$id_item_filter = 35;
+    	$cat = Category::findOne(['translit' => $translit, 'status' => self::STATUS_ACTIVE]);
+    	// debugProp($cat->products, 'name');
+    	foreach ($cat->products as $product) {
+    		$obj = new ProductItemFilter();
+	    	$obj->id_filter = $id_filter;
+	    	$obj->id_item = $id_item_filter;
+	    	$obj->id_prod = $product->id;
+	    	$obj->save();
+    	}
+    	exit('end');
     }
 
 }

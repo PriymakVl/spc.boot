@@ -8,6 +8,7 @@
 
   .filters-cards-wrp {
     display: flex;
+    align-items: flex-start;
     /*justify-content: space-between;*/
   }
 
