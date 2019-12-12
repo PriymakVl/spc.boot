@@ -25,7 +25,16 @@ use app\modules\filter\Filter;
 
     <!-- translit -->
     <?= $form->field($model, 'translit')->textInput() ?>
-    
+
+    <!-- meta title -->
+    <?= $form->field($model, 'meta_title')->textarea(['rows' => 1]) ?>
+
+    <!-- meta keywords -->
+    <?= $form->field($model, 'meta_keywords')->textarea(['rows' => 1]) ?>
+
+    <!-- meta description -->
+    <?= $form->field($model, 'meta_description')->textarea(['rows' => 2]) ?>
+
     <!-- description -->
     <?= $form->field($model, 'description')->textarea(['rows' => 6]) ?>
 

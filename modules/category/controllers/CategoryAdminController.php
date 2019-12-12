@@ -55,7 +55,7 @@ class CategoryAdminController extends BaseController
     {
         $model = new Category();
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
-            $model->saveCategory((object)Yii::$app->request->post('Category'));
+            $model->saveCategory();
             return $this->redirect(['view', 'id' => $model->id]);
         }
         return $this->render('create', compact('model'));
@@ -65,7 +65,7 @@ class CategoryAdminController extends BaseController
     {
         $model = $this->findModel($id);
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
-            $model->saveCategory((object)Yii::$app->request->post('Category'));
+            $model->saveCategory();
             return $this->redirect(['view', 'id' => $model->id]);
         }
         return $this->render('update', compact('model'));

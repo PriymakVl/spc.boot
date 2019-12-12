@@ -20,6 +20,7 @@ class CategoryController extends BaseController {
 	{
 		$cart = $this->session->get('cart');
 		$cat = Category::findOne(['translit' => $translit, 'status' => self::STATUS_ACTIVE]);
+		$this->registerMetaTags($cat);
 		if (!$cat) throw new NotFoundHttpException('Такой категории не существует');
 		if ($this->isCylinder($cat->code)) return $this->redirect(['cylinder/form', 'series' => $cat->code]);
 		if ($cat->products) return $this->products($cat);
@@ -54,21 +55,21 @@ class CategoryController extends BaseController {
         return $this->render('filters/main', compact('cat', 'products'));
     }
 
-    public function actionUpfilter()
-    {
-    	$translit = 'filtroelementy';
-    	$id_filter = 7;
-    	$id_item_filter = 35;
-    	$cat = Category::findOne(['translit' => $translit, 'status' => self::STATUS_ACTIVE]);
-    	// debugProp($cat->products, 'name');
-    	foreach ($cat->products as $product) {
-    		$obj = new ProductItemFilter();
-	    	$obj->id_filter = $id_filter;
-	    	$obj->id_item = $id_item_filter;
-	    	$obj->id_prod = $product->id;
-	    	$obj->save();
-    	}
-    	exit('end');
-    }
+    // public function actionUpfilter()
+    // {
+    // 	$translit = 'seriya_cn';
+    // 	$id_filter = 7;
+    // 	$id_item_filter = 35;
+    // 	$cat = Category::findOne(['translit' => $translit, 'status' => self::STATUS_ACTIVE]);
+    // 	// debugProp($cat->products, 'name');
+    // 	foreach ($cat->products as $product) {
+    // 		$obj = new ProductItemFilter();
+	   //  	$obj->id_filter = $id_filter;
+	   //  	$obj->id_item = $id_item_filter;
+	   //  	$obj->id_prod = $product->id;
+	   //  	$obj->save();
+    // 	}
+    // 	exit('end');
+    // }
 
 }

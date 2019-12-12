@@ -38,5 +38,12 @@ class BaseController extends Controller {
 		return $this->redirect($this->request->referrer);
 	}
 
+	public function registerMetaTags($object) 
+	{
+		$this->view->title = $object->meta_title ? $object->meta_title : $object->name;
+		$this->view->registerMetaTag(['name' => 'description', 'content' => $object->meta_description]);
+		$this->view->registerMetaTag(['name' => 'keywords', 'content' => $object->meta_description]);
+	}
+
 
 }

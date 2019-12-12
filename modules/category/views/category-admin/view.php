@@ -42,6 +42,9 @@ $this->title = $model->name;
             ['attribute' => 'filters', 'format' => 'raw', 'label' => 'Фильтры', 'value' => function($model){return $model->convertFiltersToList();}],
             'rating',
             'translit',
+            'meta_title',
+            'meta_description',
+            'meta_keywords',
             ['attribute' => 'description', 'value' => function($model){return $model->description;}, 'format' => 'raw'],
         ],
     ]) ?>

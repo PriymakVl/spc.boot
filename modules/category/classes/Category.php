@@ -40,22 +40,17 @@ class Category extends CategoryBase {
     	return $filters;
     }
 
-    public function saveCategory($form)
+    public function saveCategory()
     {
-    	$this->name = $form->name;
-        $this->code = $form->code;
-    	$this->id_parent = $form->id_parent;
-    	$this->description = $form->description;
         $this->IBLOCK_ID = '14';
-        if (!$this->translit || $this->translit != $form->translit) $this->translit = $this->translitName($form);
+        if (!$this->translit) $this->translit = $this->translitName();
         if ($form->rating) $this->rating = $form->rating;
     	if ($this->save()) return $this;
     }
 
     private function translitName()
     {
-        if (!$this->translit && !$form->translit) $translit = Inflector::slug($form->name);
-        else $translit = $form->translit;
+        $translit = Inflector::slug($this->name);
         if (self::findOne(['translit' => $translit])) throw new NotFoundHttpException('Не уникальный транслит');
         return $translit;
     }
@@ -69,7 +64,7 @@ class Category extends CategoryBase {
     public function rules()
     {
     	return [
-    		[['name', 'description', 'code', 'translit'], 'string'],
+    		[['name', 'description', 'code', 'translit', 'meta_title', 'meta_description', 'meta_keywords'], 'string'],
     		[['id_parent', 'rating'], 'integer'],
     		['name', 'required'],
     	];
