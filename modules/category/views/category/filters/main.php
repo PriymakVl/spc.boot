@@ -6,6 +6,9 @@
 <div class="container">
     <ol class="breadcrumb">
 		<li><a href="/">Главная</a></li>
+		<? if ($cat->parent): ?>
+			<li><a href="/category/<?=$cat->parent->translit?>"><?=$cat->parent->name?></a></li>
+		<? endif; ?>
 		<li><a href="/category/<?=$cat->translit?>"><?=$cat->name?></a></li>	
 		<li class="active">Результаты фильтрации</li>
 	</ol>

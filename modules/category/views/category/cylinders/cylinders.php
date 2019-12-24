@@ -8,6 +8,16 @@
 ?>
 
 <div class="container">
+
+	<!-- breadcrumbs -->
+	<div class="container">
+	    <ol class="breadcrumb">
+			<li><a href="/">Главная</a></li>
+			<li><a href="/category/tsilindry">Цилиндры</a></li>
+			<li class="active"><?=$series?></li>
+		</ol>
+	</div>
+
 	<div class="row">
 		<div class="col-md-4">
 			<? if ($image): ?>

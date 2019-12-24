@@ -34,7 +34,7 @@ class CategoryAdminController extends BaseController
 
     public function actionMain()
     {
-        $cats = Category::findAll(['id_parent' => null, 'status' => self::STATUS_ACTIVE]);
+        $cats = Category::find()->where(['id_parent' => null, 'status' => self::STATUS_ACTIVE])->orderBy(['rating' => SORT_DESC])->all();
         return $this->render('main', compact('cats'));
     }
 
@@ -71,9 +71,9 @@ class CategoryAdminController extends BaseController
         return $this->render('update', compact('model'));
     }
 
-    public function actionDelete($id)
+    public function actionDelete($id_cat)
     {
-        $cat = Category::findOne($id);
+        $cat = Category::findOne($id_cat);
         $cat->status = self::STATUS_INACTIVE;
         if ($cat->save()) $cat->setFlash('success', 'Категория успешно удалена');
         return $this->redirect(['index']);

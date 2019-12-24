@@ -24,7 +24,7 @@ class BaseController extends Controller {
 		$this->request = Yii::$app->request;
 		$this->session = Yii::$app->session;
 		$this->session->open();
-		$this->view->params['catalog'] = (new Category)->getMain();
+		$this->view->params['catalog'] = Category::find()->where(['id_parent' => null, 'status' => self::STATUS_ACTIVE])->orderBy(['rating' => SORT_DESC])->all();
 	}
 
 	public function setMessage($type, $text)

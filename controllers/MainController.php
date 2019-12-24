@@ -12,7 +12,7 @@ class MainController extends BaseController {
 	public function actionIndex()
 	{
 		$this->view->title = 'Пневмооборудование';
-		$catalog = Category::findAll(['id_parent' => null, 'status' => self::STATUS_ACTIVE]);
+		$catalog = Category::find()->where(['id_parent' => null, 'status' => self::STATUS_ACTIVE])->orderBy(['rating' => SORT_DESC])->all();
 		return $this->render('index/main', compact('catalog'));
 	}
 

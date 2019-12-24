@@ -11,7 +11,7 @@
 	</div>
 
 	<!-- name category -->
-	<h1 class="text-center"><?=$cat->name?> | Купить <?=$cat->name?></h1>
+	<h1 class="text-center"><?=$cat->name?></h1>
 
 	<!-- categories and filters -->
 	<? if($cat->children): ?>

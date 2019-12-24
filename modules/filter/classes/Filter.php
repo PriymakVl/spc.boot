@@ -39,6 +39,7 @@ class Filter extends ModelBase {
     {
         $this->name = strtolower(trim($form->name));
         $this->title = trim($form->title);
+        $this->title_long = trim($form->title_long);
         return $this->save();
     }
 

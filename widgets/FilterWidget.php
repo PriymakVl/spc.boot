@@ -15,6 +15,7 @@ class FilterWidget extends Widget {
 	public function run()
 	{
 		$filters = $this->createFiltersNamesArray();
+		// $this->view->registerCssFile('filter/filter_widget.css');
 		return $this->render('filters/main', ['filters' => $filters, 'cat' => $this->cat]);
 	}
 

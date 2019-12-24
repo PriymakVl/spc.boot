@@ -43,14 +43,14 @@ class Category extends CategoryBase {
     public function saveCategory()
     {
         $this->IBLOCK_ID = '14';
-        if (!$this->translit) $this->translit = $this->translitName();
+        if(!$this->translit) $this->translit = $this->translitName();
         if ($form->rating) $this->rating = $form->rating;
     	if ($this->save()) return $this;
     }
 
     private function translitName()
     {
-        $translit = Inflector::slug($this->name);
+        $translit = Inflector::slug($this->name, '_');
         if (self::findOne(['translit' => $translit])) throw new NotFoundHttpException('Не уникальный транслит');
         return $translit;
     }

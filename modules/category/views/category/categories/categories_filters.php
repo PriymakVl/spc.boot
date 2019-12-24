@@ -5,23 +5,16 @@
 ?>
 
 <style type="text/css">
-  .filters-cats-wrp {
-    display: flex;
-    justify-content: space-between;
-  }
 
-  .filters-wrp {
-    width: 255px;
-  }
+.filters-cats-wrp {
+  display: flex;
+}
 
-  .cards-wrp {
-    justify-content: space-between;
-    margin-left: 40px;
-  }
+/*.row:before, .row:after {
+  content: '';
+  display: none;
+}*/
 
-  .filters-cats-wrp .card {
-    margin: 0 0 20px 0;
-  }
 </style>
 
 <div class="row">

@@ -6,13 +6,12 @@ use app\modules\category\classes\CategoryFilter;
 use app\modules\category\classes\Category;
 
 $this->title = 'Категории фильтра';
-
 ?>
 
 <div class="categories_filter">
 
     <h1>
-    	<? printf('%s: <a href="/filter/filter-admin/view?id=%s" class="text-info">%s</span></a>', $this->title, $filter->id, $filter->title); ?>
+    	<? printf('%s: <a href="/filter/filter-admin/view?id=%s" class="text-info">%s</a>', $this->title, $filter->id, $filter->title_long); ?>
     </h1>
 
     <table class="table table-striped table-bordered table-hover">

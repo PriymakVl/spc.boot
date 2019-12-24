@@ -10,7 +10,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="filter-item-index">
 
     <h1>
-        <?= $this->title.': <span class="text-info">'.$filter->title.'</span>' ?>
+        <?= $this->title .': '. Html::a($filter->title_long, ['/filter/filter-admin/view', 'id' => $filter->id]) ?>
     </h1>
 
     <p>

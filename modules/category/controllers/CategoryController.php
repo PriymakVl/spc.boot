@@ -27,9 +27,8 @@ class CategoryController extends BaseController {
 		return $this->render('categories/main', compact('cat'));
 	}
 
-	private function products($category)
+	private function products($cat)
 	{
-		$cat = $category;
 		$query = Product::find()->where(['id_cat' => $cat->id, 'status' => self::STATUS_ACTIVE, 'IBLOCK_ID' => 14]);
 		$pages = new Pagination(['defaultPageSize' => 6, 'totalCount' => $query->count()]);
 		$products = $query->offset($pages->offset)->limit($pages->limit)->all();

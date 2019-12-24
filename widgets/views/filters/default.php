@@ -1,6 +1,6 @@
 <? if ($filter->items): ?>
 	<!-- filter <?=$filter->name?> -->
-	<section class="filters-wrp">
+	<section>
 		<h3>
 			<span><?=$filter->title?></span>
 			<i class="fas fa-angle-up"></i>

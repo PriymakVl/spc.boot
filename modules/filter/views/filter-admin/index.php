@@ -13,6 +13,7 @@ function getCategories($filter)
     if (!$categories) return;
     $list = '<ol>';
     foreach ($categories as $category) {
+        if (!$category) continue;
         $item = '<li>';
         if ($category->parent) $item .= $category->parent->name.' / ';
         $item .= $category->name.'</li>';
@@ -37,7 +38,8 @@ function getCategories($filter)
         'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
-            ['attribute' => 'title', 'label' => 'Название'],
+            ['attribute' => 'title_long', 'label' => 'Название'],
+            ['attribute' => 'title', 'label' => 'Короткое название'],
             ['attribute' => 'categories', 'format' => 'raw', 'label' => 'Категории', 'value' => function($model) {return getCategories($model);}],
             ['class' => 'yii\grid\ActionColumn', 'header' => 'Операции'],
         ],

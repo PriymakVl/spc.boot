@@ -11,7 +11,7 @@ trait ProductFilter {
 	public function filter($cat)
 	{
 		if ($cat->children) $products = self::find()->where(['id_cat' => Helper::getProperties($cat->children, 'id'), 'status' => self::STATUS_ACTIVE])->all();
-		else $products = self::find()->where(['id_cat' => $id_cat, status => self::STATUS_ACTIVE])->all();
+		else $products = self::find()->where(['id_cat' => $cat->id, status => self::STATUS_ACTIVE])->all();
 		if (!$products) return;
 		$this->callMethods($products, ['getItemsFilters']);
 		return $this->applyFilters($products);

@@ -21,7 +21,7 @@
 
 	<!-- name category -->
 	<? if ($cat->parent->id != Category::PNEUMO_CYLINDER_CAT_ID): ?>
-    	<h1 class="text-center"><?=$cat->name?> | Купить <?=$cat->name?></h1>
+    	<h1 class="text-center"><?=$cat->name?></h1>
 	<? endif; ?>
 
 	<? if ($code_cylinder): ?> 

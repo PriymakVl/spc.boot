@@ -11,7 +11,7 @@ $this->title = $model->name;
 
 <div class="filter-item-view">
 
-    <h1>Элемент фильтра: <span class="text-info"><?=$model->filter->title?></span></h1>
+    <h1>Элемент фильтра: <span class="text-info"><?=$model->filter->title_long?></span></h1>
 
     <p>
         <?= Html::a('Редактировать', ['update', 'id_item' => $model->id], ['class' => 'btn btn-primary']) ?>

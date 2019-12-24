@@ -12,6 +12,7 @@ $this->title = 'Главные категории';
         <tr>
             <th width="40">№</th>
             <th class="text-primary">Наименование</th>
+            <th class="text-primary">Рейтинг</th>
             <th class="text-primary">Операции</th>
         </tr>
         <? if ($cats): ?>
@@ -20,6 +21,7 @@ $this->title = 'Главные категории';
                 <tr >
                     <td><?=$number?></td>
                     <td><?=$cat->name?></td>
+                    <td><?=$cat->rating?></td>
                     <!-- actions main category -->
                     <td>
                         <!-- view category -->

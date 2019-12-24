@@ -15,6 +15,9 @@ use yii\widgets\ActiveForm;
     <!-- filter title  -->
     <?= $form->field($model, 'title')->textInput()->label('Заголовок') ?>
 
+    <!-- filter title  -->
+    <?= $form->field($model, 'title_long')->textInput()->label('Полный заголовок') ?>
+
     <div class="form-group">
         <?= Html::submitButton('Сохранить', ['class' => 'btn btn-success']) ?>
         <? if ($model->id): ?>

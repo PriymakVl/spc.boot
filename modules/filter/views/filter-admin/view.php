@@ -3,7 +3,7 @@
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 
-$this->title = $model->title;
+$this->title = $model->title_long;
 
 \yii\web\YiiAsset::register($this);
 
@@ -28,7 +28,7 @@ function getCategories($filter)
 
 <div class="category-view">
 
-    <h1>Фильтр: <span class="text-success"><?=$this->title?></span></h1>
+    <h1>Фильтр: <?= Html::a($filter->title_long, ['/filter/filter-admin/view', 'id' => $filter->id]) ?></h1>
 
     <p>
         <?= Html::a('Редактировать', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
