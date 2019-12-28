@@ -122,47 +122,82 @@ trait CategoryCylinder {
     //for form order cylinder
     public static function getImageForSeries($series)
     {
-        $parent = null;
-        // CP
-        if (in_array($series, ['CP'])) $parent = 'CP';
-        // MS
-        else if (in_array($series, ['MS', 'MSA', 'MSD', 'MSJ'])) $parent = 'MS';
-        //MA
-        else if (in_array($series, ['MA', 'MAA', 'MAD', 'MAJ'])) $parent = 'MA';
-        // MAL
-        else if (in_array($series, ['MAL', 'MSAL', 'MALD', 'MALJ'])) $parent = 'MAL';
-        // SDA
-        else if (in_array($series, ['SDA', 'SSA', 'STA', 'SDAD', 'SDAJ'])) $parent = 'SDA';
-        // ADV
-        else if (in_array($series, ['ADV', 'ADS', 'ADVD', 'ADR', 'ADT', 'ADJ'])) $parent = 'ADV';
-        // JDA
-        else if (in_array($series, ['JDA', 'JDS', 'JDAD', 'JDR', 'JDT', 'JDJ'])) $parent = 'JDA';
-        // SR
-        else if (in_array($series, ['SR', 'SRD', 'SRJ', 'SRI', 'SRID', 'SRIJ'])) $parent = 'SR';
-        // SW
-        else if (in_array($series, ['SW', 'SWD', 'SWJ', 'SWI', 'SWID', 'SWIJ'])) $parent = 'SW';
-        // SRT
-        else if (in_array($series, ['SRT'])) $parent = 'SRT';
-        // SC
-        else if (in_array($series, ['SC', 'SCD', 'SCJ'])) $parent = 'SC';
-        // SCT
-        else if (in_array($series, ['SCT'])) $parent = 'SCT';
-        // SG
-        else if (in_array($series, ['SG', 'SGD', 'SGJ'])) $parent = 'SG';
-        // QG
-        else if (in_array($series, ['QGA', 'SGB'])) $parent = 'QGA';
-        // CG
-        else if (in_array($series, ['CG', 'CG2', 'CG3'])) $parent = 'CG';
-        // EM
-        else if (in_array($series, ['EG'])) $parent = 'EG';
-        // GMS
-        else if (in_array($series, ['GMS','GMSS', 'GLS', 'GLSS', 'GLSD'])) $parent = 'GMS';
-        // TM
-        else if (in_array($series, ['TM'])) $parent = 'TM';
-
+        $parent = self::getParentCategoryBySeriesCylinder($series);
         if (!$parent) return false;
         $cat = self::find()->where(['code' => $parent])->limit(1)->one();
         return $cat->image;
     }
+
+    private static function getParentCategoryBySeriesCylinder($series) {
+        // CP
+        if (in_array($series, ['CP'])) return 'CP';
+        // MS
+        else if (in_array($series, ['MS', 'MSA', 'MSD', 'MSJ'])) return 'MS';
+        //MA
+        else if (in_array($series, ['MA', 'MAA', 'MAD', 'MAJ'])) return 'MA';
+        // MAL
+        else if (in_array($series, ['MAL', 'MSAL', 'MALD', 'MALJ'])) return 'MAL';
+        // SDA
+        else if (in_array($series, ['SDA', 'SSA', 'STA', 'SDAD', 'SDAJ'])) return 'SDA';
+        // ADV
+        else if (in_array($series, ['ADV', 'ADS', 'ADVD', 'ADR', 'ADT', 'ADJ'])) return 'ADV';
+        // JDA
+        else if (in_array($series, ['JDA', 'JDS', 'JDAD', 'JDR', 'JDT', 'JDJ'])) return 'JDA';
+        // SR
+        else if (in_array($series, ['SR', 'SRD', 'SRJ', 'SRI', 'SRID', 'SRIJ'])) return 'SR';
+        // SW
+        else if (in_array($series, ['SW', 'SWD', 'SWJ', 'SWI', 'SWID', 'SWIJ'])) return 'SW';
+        // SRT
+        else if (in_array($series, ['SRT'])) return 'SRT';
+        // SC
+        else if (in_array($series, ['SC', 'SCD', 'SCJ'])) return 'SC';
+        // SCT
+        else if (in_array($series, ['SCT'])) return 'SCT';
+        // SG
+        else if (in_array($series, ['SG', 'SGD', 'SGJ'])) return 'SG';
+        // QG
+        else if (in_array($series, ['QGA', 'SGB', 'QG'])) return 'QG';
+        // CG
+        else if (in_array($series, ['CG', 'CG2', 'CG3'])) return 'CG';
+        // EM
+        else if (in_array($series, ['EG'])) return 'EG';
+        // GMS
+        else if (in_array($series, ['GMS','GMSS', 'GLS', 'GLSS', 'GLSD'])) return 'GMS';
+        // TM
+        else if (in_array($series, ['TM'])) return 'TM';
+        //CPT
+        else if (in_array($series, ['CPT'])) return 'CPT';
+    }
+
+    public function getTranslitBySeriesCylinder($series)
+    {
+        $parent = self::getParentCategoryBySeriesCylinder($series);
+        if (!$parent) return false;
+        switch ($parent) {
+            case 'SR': return 'seriya_sr';
+            case 'SC': return 'seriya_sc';
+            case 'MS': return 'seriya_ms';
+            case 'MAL': return 'seriya_mal';
+            case 'SDA': return 'seriya_sda';
+            case 'ADV': return 'seriya_adv';
+            case 'JDA': return 'seriya_jda';
+            case 'CP': return 'seriya_cp';
+            case 'SG': return 'seriya_sg';
+            case 'EM': return 'seriya_em';
+            case 'SW': return 'seriya_sw';
+            case 'MA': return 'seriya_ma';
+            case 'SRT': return 'seriya_srt';
+            case 'SCT': return 'seriya_sct';
+            case 'QGA': return 'seriya_qga';
+            case 'CG': return 'seriya_cg';
+            case 'EG': return 'seriya_eg';
+            case 'GMS': return 'seriya_gms';
+            case 'TM': return 'seriya_tm';
+            case 'QG': return 'seriya_qg';
+            case 'CPT': return 'seriya_cpt';
+        }
+    }
+
+    
 
 }

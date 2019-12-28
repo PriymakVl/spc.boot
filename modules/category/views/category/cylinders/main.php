@@ -8,4 +8,10 @@
 
 	<? include 'cylinders.php'; ?>
 
+	<? if ($cat->description): ?>
+
+		<? include 'tabs.php'; ?>
+
+	<? endif; ?>
+
 </main>

@@ -15,7 +15,9 @@
 
 	<!-- categories and filters -->
 	<? if($cat->children): ?>
-		<? if ($cat->filters): ?>
+		<? if ($cat->translit == 'tsilindry'): ?>
+			<? include 'categories_cylinders.php'; ?>
+		<? elseif ($cat->filters): ?>
 			<? include 'categories_filters.php'; ?>
 		<? else: ?>
 			<? include 'categories.php'; ?>

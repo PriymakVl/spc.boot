@@ -24,6 +24,7 @@ class CategoryController extends BaseController {
 		if (!$cat) throw new NotFoundHttpException('Такой категории не существует');
 		if ($this->isCylinder($cat->code)) return $this->redirect(['cylinder/form', 'series' => $cat->code]);
 		if ($cat->products) return $this->products($cat);
+		if ($cat->translit == 'tsilindry') $cat->filterCylinders();
 		return $this->render('categories/main', compact('cat'));
 	}
 
@@ -35,6 +36,10 @@ class CategoryController extends BaseController {
 		return $this->render('products/main', compact('cat', 'pages', 'products'));
 	}
 
+	// private function cylinders($cat) {
+	// 	$this->render('categories/main_', compact('cat'));
+	// }
+
 	private function isCylinder($code)
 	{
 		$series_cylinders = ['CP', 'MS', 'MA', 'MAL', 'SDA', 'ADV', 'JDA', 'SR', 
@@ -44,7 +49,10 @@ class CategoryController extends BaseController {
 
 	public function actionCylinderForm($series)
 	{
-		return $this->render('cylinders/main', compact('series'));
+		$translit = Category::getTranslitBySeriesCylinder($series);
+		$cat = Category::findOne(['translit' => $translit, 'status' => STATUS_ACTIVE]);
+		// debug($cat);
+		return $this->render('cylinders/main', compact('series', 'cat'));
 	}
 
 	public function actionFilter($id_cat)

@@ -10,11 +10,6 @@
   display: flex;
 }
 
-/*.row:before, .row:after {
-  content: '';
-  display: none;
-}*/
-
 </style>
 
 <div class="row">

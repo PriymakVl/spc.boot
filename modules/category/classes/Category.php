@@ -13,6 +13,7 @@ use yii\web\NotFoundHttpException;
 class Category extends CategoryBase {
 
     const PNEUMO_CYLINDER_CAT_ID = 830;
+    public $childrenFilter;
 
 	public function getProducts()
 	{

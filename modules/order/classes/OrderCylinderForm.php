@@ -17,6 +17,7 @@ class OrderCylinderForm extends Model
     public $magneto;
     public $thread_rod;
     public $effort; //for series CPT
+    public $description;
 
     public function rules()
     {

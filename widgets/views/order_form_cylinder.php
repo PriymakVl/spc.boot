@@ -50,7 +50,7 @@ if (in_array($model->series, $rail_series)) $product_name = 'направляю�
         <?= $form->field($model, 'thread_rod')->radioList(['out' => 'Наружная', 'inner' => 'Внутренняя'])->label('Резба на штоке') ?>
     <? elseif($data['thread_rod'] === 'out'): ?>
         <? $model->thread_rod = 'out'; ?>
-        <?= $form->field($model, 'thread_rod')->radioList(['out' => 'Наружная'])->label('Резба на штоке') ?>
+        <?= $form->field($model, 'thread_rod')->radioList(['out' => 'Наружная'])->label('Резьба на штоке') ?>
     <? endif; ?>
 
     <div class="form-group">

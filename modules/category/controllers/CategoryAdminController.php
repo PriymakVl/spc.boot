@@ -71,9 +71,9 @@ class CategoryAdminController extends BaseController
         return $this->render('update', compact('model'));
     }
 
-    public function actionDelete($id_cat)
+    public function actionDelete($id)
     {
-        $cat = Category::findOne($id_cat);
+        $cat = Category::findOne($id);
         $cat->status = self::STATUS_INACTIVE;
         if ($cat->save()) $cat->setFlash('success', 'Категория успешно удалена');
         return $this->redirect(['index']);
