@@ -8,11 +8,33 @@ use app\modules\category\classes\Category;
 $this->title = 'Категории фильтра';
 ?>
 
+<style type="text/css">
+    table {
+        margin-top: 30px;
+    }
+</style>
+
 <div class="categories_filter">
 
     <h1>
     	<? printf('%s: <a href="/filter/filter-admin/view?id=%s" class="text-info">%s</a>', $this->title, $filter->id, $filter->title_long); ?>
     </h1>
+
+    <!-- form add category -->
+    <?php 
+        $form = ActiveForm::begin();
+            //id main cat
+            $items = Category::convertForSelectMain();
+            echo $form->field($model, 'id_main_cat')->dropDownList($items,['prompt' => 'Не выбрана'])->label('Главная категория');
+            //id cat
+            $items = (new Category)->convertForSelectMainWithSubcategory();
+            echo $form->field($model, 'id_cat')->dropDownList($items,['prompt' => 'Не выбрана'])->label('Категория');
+            //id_filter
+            echo $form->field($model, 'id_filter', ['template' => '{input}'])->hiddenInput(['value' => $filter->id]);
+            //button submit
+            echo Html::submitButton('Добавить категорию', ['class' => 'btn btn-success']);
+        ActiveForm::end(); 
+    ?>
 
     <table class="table table-striped table-bordered table-hover">
         <tr>
@@ -39,22 +61,6 @@ $this->title = 'Категории фильтра';
             <td colspan="3" class="text-danger">Категорий еще нет</td>
         <? endif; ?>
     </table>
-
-    <!-- form add category -->
-    <?php 
-        $form = ActiveForm::begin();
-            //id main cat
-            $items = Category::convertForSelectMain();
-            echo $form->field($model, 'id_main_cat')->dropDownList($items,['prompt' => 'Не выбрана'])->label('Главная категория');
-            //id cat
-            $items = (new Category)->convertForSelectMainWithSubcategory();
-            echo $form->field($model, 'id_cat')->dropDownList($items,['prompt' => 'Не выбрана'])->label('Категория');
-            //id_filter
-            echo $form->field($model, 'id_filter', ['template' => '{input}'])->hiddenInput(['value' => $filter->id]);
-            //button submit
-            echo Html::submitButton('Добавить категорию', ['class' => 'btn btn-success']);
-        ActiveForm::end(); 
-    ?>
 
 </div>
 

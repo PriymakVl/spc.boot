@@ -21,13 +21,13 @@ trait CategoryConvert {
     public function convertForSelectMain()
     {
         $params = ['id_parent' => null, 'status' => self::STATUS_ACTIVE];
-        return Category::find()->select(['name'])->where($params)->asArray()->indexBy('id')->column();
+        return Category::find()->select(['name'])->where($params)->asArray()->indexBy('id')->orderBy(['rating' => SORT_DESC])->column();
     }
 
     public function convertForSelectMainWithSubcategory()
     {
         $params = ['id_parent' => null, 'status' => self::STATUS_ACTIVE];
-        $main = self::find()->select(['id', 'name'])->where($params)->asArray()->all();
+        $main = self::find()->select(['id', 'name'])->where($params)->asArray()->orderBy(['rating' => SORT_DESC])->all();
         for ($i = 0; $i < count($main); $i++) {
             $subcategories = self::find()->select(['name'])->where(['id_parent' => $main[$i]['id'], 'status' => self::STATUS_ACTIVE])->asArray()->indexBy('id')->column();
             if ($subcategories) $result[$main[$i]['name']] = $subcategories;

@@ -9,15 +9,6 @@
 .filters-cats-wrp {
   display: flex;
 }
-.cards-wrp {
-  margin-left: 20px;
-}
-.card {
-  width: 275px; height: 270px;
-}
-.card-preview {
-  font-size: 13px;
-}
 
 </style>
 
@@ -43,7 +34,6 @@
                       </a>
                   </div>
                 <div class="card-footer">
-                  <div class="card-preview"><?=$subcat->preview?></div>
                       <?= Html::a($subcat->name, ['/category/'.$subcat->translit], ['alt' => $subcat->preview]) ?>
                 </div>
               </div> 

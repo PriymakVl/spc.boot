@@ -7,7 +7,7 @@
 			<? 
 				foreach ($filters as $name) {
 					if ($name == 'price') continue; 
-					$filter = (new app\modules\filter\classes\Filter)->selectByName($name);
+					$filter = (new app\modules\filter\classes\Filter)->selectByName($name)->setCatId($cat->id);
 					if ($filter) include 'default.php';
 				}
 			?>

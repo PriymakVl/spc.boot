@@ -30,16 +30,28 @@ trait CategoryCylinderFilter {
         // debugProp($this->children, 'translit');
     }
 
-    private function filterStandard($children) {
-    	
+    private function filterStandard($cats) 
+    {
     	$standards_cats = $this->getArrayCategoriesByStandard();
     	if (!$standards_cats) return false;
-    	$children_filter = [];
-    	foreach ($children as $cat) {
-    		$translit = $this->getTranslitBySeriesCylinder($cat->code);
-    		if (in_array($translit, $standards_cats)) $children_filter[] = $cat;
-    	}
-    	return $children_filter;
+        return $this->filterCategories($standards_cats, $cats);
+    }
+
+    private function filterType($cats) 
+    {
+        $types_cats = $this->getArrayCategoriesByType();
+        if (!$types_cats) return;
+        return $this->filterCategories($types_cats, $cats);
+    }
+
+    private function filterCategories($cats_arr, $cats) 
+    {
+        $cats_filter = [];
+        foreach ($cats as $cat) {
+            $translit = $this->getTranslitBySeriesCylinder($cat->code);
+            if (in_array($translit, $cats_arr)) $cats_filter[] = $cat;
+        }
+        return $cats_filter;
     }
 
     private function getArrayCategoriesByStandard() {

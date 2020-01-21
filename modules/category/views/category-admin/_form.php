@@ -35,6 +35,9 @@ use app\modules\filter\Filter;
     <!-- meta description -->
     <?= $form->field($model, 'meta_description')->textarea(['rows' => 2]) ?>
 
+    <!-- preview -->
+    <?= $form->field($model, 'preview')->textarea(['rows' => 2]) ?>
+
     <!-- description -->
     <?= $form->field($model, 'description')->textarea(['rows' => 6]) ?>
 

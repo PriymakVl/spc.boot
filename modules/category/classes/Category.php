@@ -65,7 +65,7 @@ class Category extends CategoryBase {
     public function rules()
     {
     	return [
-    		[['name', 'description', 'code', 'translit', 'meta_title', 'meta_description', 'meta_keywords'], 'string'],
+    		[['name', 'description', 'code', 'translit', 'meta_title', 'meta_description', 'meta_keywords', 'preview'], 'string'],
     		[['id_parent', 'rating'], 'integer'],
     		['name', 'required'],
     	];

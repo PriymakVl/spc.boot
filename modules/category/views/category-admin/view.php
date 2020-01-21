@@ -45,6 +45,7 @@ $this->title = $model->name;
             'meta_title',
             'meta_description',
             'meta_keywords',
+            'preview',
             ['attribute' => 'description', 'value' => function($model){return $model->description;}, 'format' => 'text'],
         ],
     ]) ?>

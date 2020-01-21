@@ -10,11 +10,16 @@ trait ProductFilter {
 
 	public function filter($cat)
 	{
-		if ($cat->children) $products = self::find()->where(['id_cat' => Helper::getProperties($cat->children, 'id'), 'status' => self::STATUS_ACTIVE])->all();
-		else $products = self::find()->where(['id_cat' => $cat->id, status => self::STATUS_ACTIVE])->all();
+		$products = $this->getProductsCategory($cat);
 		if (!$products) return;
 		$this->callMethods($products, ['getItemsFilters']);
 		return $this->applyFilters($products);
+	}
+
+	public function getProductsCategory($cat)
+	{
+		if ($cat->children) return self::find()->where(['id_cat' => Helper::getProperties($cat->children, 'id'), 'status' => self::STATUS_ACTIVE])->all();
+		return self::find()->where(['id_cat' => $cat->id, status => self::STATUS_ACTIVE])->all();
 	}
 
 	private function applyFilters($products)
