@@ -52,7 +52,7 @@ class CartController extends BaseController {
 		$product = Product::findOne($this->request->get('id_prod'));
 		$data['id_prod'] = $product->id;
 		$data['name'] = $product->name;
-		$data['price'] = $product->price->value;
+		// $data['price'] = $product->price->value;
 		$data['preview'] = $product->preview;
 		$data['qty'] = $this->request->get('qty');
 		$data['img'] = $product->image ? '@img/'.$product->image->subdir.'/'.$product->image->filename : '@img/no_photo_medium.png';
