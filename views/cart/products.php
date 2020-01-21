@@ -10,7 +10,7 @@
 			<?= Html::img([$product->img, ['alt' => $product->name]]) ?>
 		<td><?= $product->name ?></td>
 		<td><?= $product->preview ?></td>
-		<td><?= $product->price ? $product->price : 'Согласовать'?></td>
+		<td>Согласовать</td>
 		<td><?= $product->qty ?></td>
 		<td>
 			 <?= Html::a('удалить', ['/cart/delete-item', 'index' => $index, 'type' => 'products']) ?>
