@@ -13,7 +13,7 @@
 <head>
     <meta charset="<?= Yii::$app->charset ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/5f29610ead.js" crossorigin="anonymous"></script>
     <?php $this->registerCsrfMetaTags(); ?>
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
@@ -21,35 +21,26 @@
 <body>
 <?php $this->beginBody() ?>
 
-<div id="body" class="container-fluid">
-    
-    <header id="header">
-    <!-- header -->
-        <?=$this->render('header')?>
 
-        <!-- main menu -->
-        <?=$this->render('main_menu')?>
-    </header>
-    
-    <!-- message -->
-    <div class="container">
-         <?= Alert::widget() ?>
-    </div>
-   
-    <!-- main -->
-    <main>
-        <?= $content ?>
-    </main>
+ <?=$this->render('header')?>
 
-    <!-- callback form -->
-    <?=$this->render('callback_form')?>
+<div class="body">
 
-    <!-- footer -->
-    <?=$this->render('footer')?>
+    <?=$this->render('sidebar')?>
+
+    <div class="body__inner">
+        <!-- main -->
+        <main class="content">
     
-     <!-- yii setup -->     
-    <p class="pull-right"><?//= Yii::powered() ?></p>
-</div> 
+            <? echo $content; ?>
+
+        </main>
+
+    </div> <!-- /.body__inner -->
+</div> <!-- /.body -->
+
+<!-- footer -->
+<?=$this->render('footer')?>
 
 <?php $this->endBody() ?>
 </body>

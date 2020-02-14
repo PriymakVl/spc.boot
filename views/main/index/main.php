@@ -1,11 +1,13 @@
 <!-- css -->
-<link rel="stylesheet" type="text/css" href="/web/css/layout/slider.css">
+<?php
+
+$this->registerCssFile('@web/css/main/slider.css');
+
+?>
 
 <main>
-	<!-- slider -->
-	<? //include 'slider.php'; ?>
 
-	<!-- catalog -->
-	<?include 'catalog.php'; ?>
+	<!-- slider -->
+	<?=$this->render('slider')?>
 
 </main>
