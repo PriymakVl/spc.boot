@@ -1,36 +1,37 @@
+<?php
+use yii\helpers\Url;
+use yii\helpers\Html;
 
-<!-- breadcrumbs -->
-<div class="container">
-    <ol class="breadcrumb">
-		<li><a href="/">Главная</a></li>
-		<? if ($cat->parent): ?>
-			<li><a href="/category/<?=$cat->parent->translit?>"><?=$cat->parent->name?></a></li>
-		<? endif; ?>	
-		<li class="active"><?=$cat->name?></li>
-	</ol>
-</div>
+$this->registerCssFile('@web/css/content/category.css');
+?>
 
-<!-- name category -->
-<h1 class="text-center"><?=$cat->name?></h1>
+<?=$this->render('breadcrumbs', ['cat' => $cat])?>
 
-<!-- categories and filters -->
-<? if($cat->children): ?>
-	<? if ($cat->translit == 'tsilindry'): ?>
-		<? include 'categories_cylinders.php'; ?>
-	<? elseif ($cat->filters): ?>
-		<? include 'categories_filters.php'; ?>
-	<? else: ?>
-		<? include 'categories.php'; ?>
-	<? endif; ?>
-	<? else: ?>
-		<p>В этой категории ничего нет</p>
-<? endif; ?>
+<h1 class="page-title"><?=$cat->name?></h1>
 
-<!-- category description -->
-<div class="container" style="margin-bottom: 20px;">
-	<div class="row">
-		<div class="col-md-12">
-			<?php if ($pages && $cat->description) echo $cat->description; ?>
-		</div>
-	</div>
-</div>
+<!-- Category -->
+<div class="category">
+
+	<? foreach ($cat->children as $subcat): ?>
+		<a href="<?=Url::to(['/category/'.$subcat->translit])?>" class="category__item">
+			<div class="category__img">
+            	<? if ($subcat->image): ?>
+					<?= Html::img(['@img/'.$subcat->image->subdir.'/'.$subcat->image->filename, ['alt' => $subcat->name]]) ?>
+				<? else: ?>
+						<?= Html::img(['@img/no_photo_medium.png']) ?>
+				<? endif; ?>
+			</div>
+			<div class="category__preview">
+				<div class="category__name"><?=$subcat->name?></div>
+				<div class="category__desc"><?=$subcat->preview?></div>
+			</div>
+		</a>
+	<? endforeach; ?>
+
+</div> <!-- /.category -->
+
+
+
+
+
+
