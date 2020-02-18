@@ -23,19 +23,19 @@ class CategoryController extends BaseController {
 		$this->registerMetaTags($cat);
 		if (!$cat) throw new NotFoundHttpException('Такой категории не существует');
 		// if ($this->isCylinder($cat->code)) return $this->redirect(['cylinder/form', 'series' => $cat->code]);
-		if ($cat->products) return $this->products($cat);
+		if ($cat->products) return $this->redirect(['/product/', 'cat_id' => $cat->id]);
 		// if ($cat->translit == 'tsilindry') $cat->filterCylinders();
 		return $this->render('categories/main', compact('cat'));
 	}
 
-	private function products($cat)
-	{
+	// private function products($cat)
+	// {
 		// $query = Product::find()->where(['id_cat' => $cat->id, 'status' => self::STATUS_ACTIVE, 'IBLOCK_ID' => 14]);
 		// $pages = new Pagination(['defaultPageSize' => 6, 'totalCount' => $query->count()]);
 		// $products = $query->offset($pages->offset)->limit($pages->limit)->all();
-		$products = Product::find()->where(['id_cat' => $cat->id, 'status' => self::STATUS_ACTIVE, 'IBLOCK_ID' => 14])->all();
-		return $this->render('products/main', compact('cat', 'products'));
-	}
+		// $products = Product::find()->where(['id_cat' => $cat->id, 'status' => self::STATUS_ACTIVE, 'IBLOCK_ID' => 14])->all();
+		// return $this->render('products/main', compact('cat', 'products'));
+	// }
 
 	private function cylinders($cat) {
 		$this->render('categories/main_', compact('cat'));

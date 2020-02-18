@@ -1,32 +1,33 @@
 <?php
 use yii\helpers\Html;
+
+$this->registerCssFile('@web/css/content/product.css');
+$this->registerCssFile('@web/css/content/product_sidebar.css');
 ?>
 
-<!-- breadcrumbs -->
-<div class="container">
-    <ol class="breadcrumb">
-		<li><a href="/">Главная</a></li>
-		<? if ($product->category->parent): ?>
-			<li>
-				<?= Html::a($product->category->parent->name, ['/category/'.$product->category->parent->translit]) ?>
-			</li>
-		<? endif; ?>
-		<li>
-			<?= Html::a($product->category->name, ['/category/'.$product->category->translit]) ?>
-		</li>	
-		<li class="active"><?=$product->name?></li>
-	</ol>
+<?=$this->render('breadcrumbs', ['cat' => $cat])?>
+
+<div class="product-wrp">
+	<!-- Product -->
+	<div class="product">
+		<div class="product__inner">
+		
+			<?=$this->render('gallery', ['cat' => $cat])?>
+				
+
+			<!-- Product content -->
+			<div class="product__content">
+			
+				<h1 class="product__name"><?=$cat->name?></h1>
+
+				<?=$this->render('buy_block')?>
+				
+			</div> <!-- /.product__content -->
+		</div> <!-- /.product__inner -->
+
+		<?= $this->render('product_description') ?>
+
+	</div> <!-- /.product -->
+
+	<?=$this->render('sidebar')?>
 </div>
-
-<!-- product -->
-<? include 'product.php'; ?>
-
-<!-- product description -->
-<div class="container" style="margin-bottom: 20px;">
-	<div class="row">
-		<div class="col-md-12">
-			<?php if ($product->description) echo $product->description; ?>
-		</div>
-	</div>
-</div>
-
