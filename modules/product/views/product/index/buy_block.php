@@ -23,6 +23,20 @@
 		</select>
 	</div>
 
+	<div class="product__size">
+		<label>Пр. резьба:</label>
+		<select name="" id="">
+			<option value="">Не выбран</option>
+			<option value="">M5</option>
+			<option value="">G1/8”</option>
+			<option value="">G1/4”</option>
+			<option value="">G3/8”</option>
+			<option value="">G1/2”</option>
+			<option value="">G3/4”</option>
+			<option value="">G1”</option>
+		</select>
+	</div>
+
 	<div class="product__cart-block">
 		<div class="product__counter-block">
 			<span>-</span>

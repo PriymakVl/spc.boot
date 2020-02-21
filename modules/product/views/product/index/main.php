@@ -4,6 +4,7 @@ use yii\helpers\Html;
 $this->registerCssFile('@web/css/content/product.css');
 $this->registerCssFile('@web/css/content/product_sidebar.css');
 $this->registerCssFile('@web/css/content/product_description.css');
+$this->registerCssFile('@web/css/content/product_dimension.css');
 ?>
 
 <?=$this->render('breadcrumbs', ['cat' => $cat])?>

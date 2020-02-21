@@ -40,7 +40,7 @@
 </div> <!-- /.body -->
 
 <!-- footer -->
-<?//=$this->render('footer')?>
+<?=$this->render('footer')?>
 
 <?php $this->endBody() ?>
 </body>
