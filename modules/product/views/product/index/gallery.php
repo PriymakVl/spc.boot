@@ -8,7 +8,7 @@ use yii\helpers\Html;
 		<?= Html::img('@web/images/'.$cat->image->subdir.'/'.$cat->image->filename) ?>
 	</div>
 	<div class="product__trumb">
-		<?//= Html::img('@web/images/'.$cat->image->subdir.'/'.$cat->image->filename) ?>
+		<?= Html::img('@web/images/'.$cat->image->subdir.'/'.$cat->image->filename) ?>
 		<!-- <img src="assets/img/cat_cu.jpg" alt=""> -->
 		<!-- <img src="assets/img/cat_fn.jpg" alt=""> -->
 	</div>

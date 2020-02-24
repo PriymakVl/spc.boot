@@ -21,11 +21,10 @@ class BaseAsset extends AssetBundle
     public $baseUrl = '@web';
 
     public $css = [
-        'css/layout/main.css', //'css/layout/init.css', 'css/layout/slider.css', 'css/layout/header.css', 'css/layout/footer.css', 'css/layout/catalog.css',
-        //'css/filters.css',
+        'css/layout/main.css',
     ];
     public $js = [
-        // 'js/filter_show.js'
+        'js/catalog_show.js'
     ];
     public $depends = [
         'yii\web\YiiAsset',

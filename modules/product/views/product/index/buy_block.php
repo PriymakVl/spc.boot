@@ -3,37 +3,24 @@
 
 	<div class="product__series">
 		<label>Серия:</label>
-		<select name="" id="">
+		<select name="series" id="product_series">
 			<option value="">Не выбрана</option>
-			<option value="">CN</option>
-			<option value="">CU</option>
+			<option value="cn">SA-CN</option>
+			<option value="cu">SA-CU</option>
 		</select>
 	</div>
 
 	<div class="product__model">
 		<label>Модель:</label>
-		<select name="" id="">
+		<select name="model" id="product_model" disabled>
 			<option value="">Не выбрана</option>
-			<option value="">SA-CN20-08-D</option>
-			<option value="">SA-CN40-15-D</option>
-			<option value="">SA-CN60-25-D</option>
-			<option value="">SA-CN20-08</option>
-			<option value="">SA-CN40-15</option>
-			<option value="">SA-CN60-25</option>
 		</select>
 	</div>
 
 	<div class="product__size">
 		<label>Пр. резьба:</label>
-		<select name="" id="">
+		<select name="size" id="product_size" disabled>
 			<option value="">Не выбран</option>
-			<option value="">M5</option>
-			<option value="">G1/8”</option>
-			<option value="">G1/4”</option>
-			<option value="">G3/8”</option>
-			<option value="">G1/2”</option>
-			<option value="">G3/4”</option>
-			<option value="">G1”</option>
 		</select>
 	</div>
 
