@@ -2,9 +2,9 @@
 <table class="product__spec">
 	<tr>
 		<th>Модель</th>
-		<th>CU20</th>
-		<th colspan="3">CU40</th>
-		<th colspan="2">CU60</th>
+		<th>SA-CU20</th>
+		<th colspan="3">SA-CU40</th>
+		<th colspan="2">SA-CU60</th>
 	</tr>
 
 <!-- 	<tr>

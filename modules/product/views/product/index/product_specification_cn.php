@@ -2,10 +2,10 @@
 <table class="product__spec">
 	<tr>
 		<th>Модель</th>
-		<th>CN10</th>
-		<th>CN20</th>
-		<th>CN40</th>
-		<th>CN60</th>
+		<th>SA-CN10</th>
+		<th>SA-CN20</th>
+		<th>SA-CN40</th>
+		<th>SA-CN60</th>
 	</tr>
 
 <!-- 	<tr>

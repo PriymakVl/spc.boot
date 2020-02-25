@@ -39,6 +39,11 @@ class CartController extends BaseController {
 		return $this->redirect($this->request->referrer);
 	}
 
+	public function actionAddProductByCode($series, $model, $size)
+	{
+		debug();
+	}
+
 	public function actionDeleteItemCart($type, $index)
 	{
 		unset($_SESSION['cart'][$type][$index]);
