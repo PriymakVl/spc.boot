@@ -2,7 +2,9 @@
 
 	use yii\helpers\Html;
 
-	$controller_name = Yii::$app->controller->id;
+	$hide_catalog = false;
+	if (Yii::$app->controller->id == 'product') $hide_catalog = true;
+	if (Yii::$app->controller->id == 'cart') $hide_catalog = true;
 
  ?>
 
@@ -13,7 +15,7 @@
         <i class="fas fa-bars catalog__toggle"></i>
     </div>
     
-	<ul class="catalog__list" <? if ($controller_name == 'product') echo 'style="display:none;"'; ?>>
+	<ul class="catalog__list" <? if ($hide_catalog) echo 'style="display:none;"'; ?>>
 		<? foreach ($this->params['catalog'] as $cat): ?>
 			<li class="catalog__item">
 				 <?= Html::a($cat->name, ['/category/'.$cat->translit], ['class' => 'catalog__link']) ?>

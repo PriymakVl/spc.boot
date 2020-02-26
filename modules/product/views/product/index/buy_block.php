@@ -35,15 +35,14 @@
 
 	<div class="product__cart-block">
 		<div class="product__counter-block">
-			<div class="error-message">Нет количества</div>
 			<span id="product_count_minus">-</span>
 			<input type="text" id="product_count" value="1" name="count">
 			<span id="product_count_plus">+</span>
 		</div>
 
-		<button class="product__cart-btn" type="button" data-toggle="modal" data-target="#cart_modal$$">
+		<button class="product__cart-btn" type="button" data-toggle="modal" data-target="#cart_modal">
 			<i class="fas fa-cart-plus product__cart-icon"></i>
-			В корзину
+			добавить в корзину
 		</button> 
 	</div>
 

@@ -14,7 +14,6 @@ class CartController extends BaseController {
 	{
 		$cart = $this->session->get('cart');
 		$model = new Order();
-		$this->view->title = 'Корзина';
 		return $this->render('index', compact('cart', 'model'));
 	}
 
@@ -32,16 +31,29 @@ class CartController extends BaseController {
 		return $this->redirect($this->request->referrer);
 	}
 
-	public function actionAddProductToCart($id_prod, $qty)
+	// public function actionAddProductToCart($id_prod, $qty)
+	// {
+	// 	$this->setSessionProduct($id_prod, $qty);
+	// 	Yii::$app->session->setFlash('success', 'Товар добавлен в корзину');
+	// 	return $this->redirect($this->request->referrer);
+	// }
+
+	//ajax
+	public function actionAddProductByCode($model, $size, $qty)
 	{
-		$this->setSessionProduct($id_prod, $qty);
-		Yii::$app->session->setFlash('success', 'Товар добавлен в корзину');
-		return $this->redirect($this->request->referrer);
+		$name = $model.'-'.$size;
+		$product = Product::findOne(['name' => $name]);
+		if (!$product) return 'no';
+		$this->setSessionProduct($product->id, $qty);
+		return $this->calculateItemsCart();
 	}
 
-	public function actionAddProductByCode($series, $model, $size)
+	private function calculateItemsCart()
 	{
-		debug();
+		if (empty($_SESSION['cart'])) return 0;
+		$qty_cylinders = empty($_SESSION['cart']['cylinders']) ? 0 : count($_SESSION['cart']['cylinders']);
+		$qty_products = empty($_SESSION['cart']['products']) ? 0 : count($_SESSION['cart']['products']);
+		return $qty_cylinders + $qty_products;
 	}
 
 	public function actionDeleteItemCart($type, $index)

@@ -1,22 +1,20 @@
 <?php
-use yii\helpers\Html;	
+use yii\helpers\Html;
+$this->title = 'Корзина';	
 ?>
 <!-- css files -->
-<link rel="stylesheet" type="text/css" href="/web/css/cart.css">
+<!-- <link rel="stylesheet" type="text/css" href="/web/css/cart.css"> -->
 
-<!-- breadcrumbs -->
-<div class="container">
-    <ol class="breadcrumb">
-		<li><a href="/">Главная</a></li>
-		<li>Корзина</li>
-	</ol>
+<!-- Breadcrumbs  -->
+<div class="breadcrumbs">
+	<a href="/" class="breadcrumbs__link">Главная</a>
+	<span class="breadcrumbs__del">/</span>
+	<span class="breadcrumbs__active">Корзина</span>
 </div>
 
-<h1 class="text-center">Корзина</h1>
-
-<div class="container cart-wrp" style="margin-bottom: 50px;">
+<div class="cart">
 	<? if (!empty($cart)): ?>
-		<table class="table table-striped table-bordered">
+		<table class="cart__table">
 			<tr>
 				<th width="120">Фото</th>
 				<th width="200">Кодировка</th>
@@ -25,26 +23,15 @@ use yii\helpers\Html;
 				<th width="70">Кол-во</th>
 				<th width="80">Управление</th>
 			</tr>
-			<!-- cylinders -->
-			<? if (isset($cart['cylinders'])): ?>
-				<? include 'cylinders.php'; ?>
-			<? endif ?>
 
-			<!-- products -->
-			<? if (isset($cart['products'])): ?>
-				<? include 'products.php'; ?>
-			<? endif ?>
+			<?=$this->render('products', ['cart' => $cart])?>
+
 		</table>
-
-		<button type="button" class="btn btn-success" data-toggle="modal" data-target="#checkout">
-				Оформить заказ
-		</button>
-
 	<? else: ?>
 		<p>В корзине еще нет товаров</p>
 		<a href="/" class="btn btn-primary">Продолжить покупки</a>
 	<? endif; ?>
+</div>
 
-	<!-- checkout form -->
-	<? include 'checkout_form.php'; ?>
+<?//=$this->render('checkout_form')?>
 </div>

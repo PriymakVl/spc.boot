@@ -67,9 +67,9 @@ $qty_items_cart = calculate_items_cart();
 		</div>
 
 		<!-- Cart -->
-		<div class="h-cart">
+		<a href="/cart" class="h-cart">
 			<i class="fas fa-shopping-cart h-cart__icon"></i>
 			<span  class="h-cart__title">Корзина пуста</span>
-		</div>
+		</a>
 	</div>
 </header>
