@@ -5,7 +5,7 @@ $this->registerCssFile('@web/css/main/slider.css');
 
 ?>
 
-<main>
+<main style="min-height: 810px;">
 
 	<!-- slider -->
 	<?=$this->render('slider')?>

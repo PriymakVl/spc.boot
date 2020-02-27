@@ -13,7 +13,7 @@
         <a href="#" class="btn btn-success">Оформить заказ</a>
       </div>
       <div class="modal-footer">
-        <a href="#" class="btn btn-default">Перейти в корзину</a>
+        <a href="/cart" class="btn btn-default">Перейти в корзину</a>
       </div>
     </div>
 

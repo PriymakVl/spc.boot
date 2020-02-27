@@ -42,9 +42,9 @@ class CartController extends BaseController {
 	public function actionAddProductByCode($model, $size, $qty)
 	{
 		$name = $model.'-'.$size;
-		$product = Product::findOne(['name' => $name]);
+		$product = Product::findOne(['name' => $name, 'status' => self::STATUS_ACTIVE]);
 		if (!$product) return 'no';
-		$this->setSessionProduct($product->id, $qty);
+		$this->setSessionProduct($product, $qty);
 		return $this->calculateItemsCart();
 	}
 
@@ -60,18 +60,19 @@ class CartController extends BaseController {
 	{
 		unset($_SESSION['cart'][$type][$index]);
 		if (empty($_SESSION['cart'][$type])) unset($_SESSION['cart'][$type]);
-		Yii::$app->session->setFlash('success', 'Продукт удален из корзины');
-		return $this->redirect('/cart');
+		// Yii::$app->session->setFlash('success', 'Продукт удален из корзины');
+		$count = $this->calculateItemsCart();
+		if ($count) return $this->redirect('/cart');
+		return $this->goHome();
 	}
 
-	private function setSessionProduct()
+	private function setSessionProduct($product, $qty)
 	{
-		$product = Product::findOne($this->request->get('id_prod'));
 		$data['id_prod'] = $product->id;
 		$data['name'] = $product->name;
 		// $data['price'] = $product->price->value;
 		$data['preview'] = $product->preview;
-		$data['qty'] = $this->request->get('qty');
+		$data['qty'] = $qty;
 		$data['img'] = $product->image ? '@img/'.$product->image->subdir.'/'.$product->image->filename : '@img/no_photo_medium.png';
 		$_SESSION['cart']['products'][] = $data;
 	}

@@ -1,6 +1,7 @@
 <?php
-	use app\modules\product\classes\Product;
 	use yii\helpers\Html;
+	use yii\helpers\Url;
+	use app\modules\product\classes\Product;
 ?>
 
 <? foreach ($cart['products'] as  $index => $product): ?>
@@ -8,12 +9,14 @@
 	<tr>
 		<td>
 			<?= Html::img([$product->img, ['alt' => $product->name]]) ?>
-		<td><?= $product->name ?></td>
-		<td><?= $product->preview ?></td>
-		<td>Согласовать</td>
-		<td><?= $product->qty ?></td>
-		<td>
-			 <?= Html::a('удалить', ['/cart/delete-item', 'index' => $index, 'type' => 'products']) ?>
+		<td class="cart__name"><?= $product->name ?></td>
+		<td class="cart__preview"><?= $product->preview ?></td>
+		<td class="cart__price">Согласовать</td>
+		<td class="cart__qty"><?= $product->qty ?></td>
+		<td class="cart__item-delete">
+			<a href="<?=Url::to(['/cart/delete-item', 'index' => $index, 'type' => 'products'])?>">
+				<i class="fas fa-trash-alt cart__item-delete-icon"></i>
+			</a>
 		</td>
 	</tr>
 <? endforeach; ?>

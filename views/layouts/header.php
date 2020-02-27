@@ -67,9 +67,16 @@ $qty_items_cart = calculate_items_cart();
 		</div>
 
 		<!-- Cart -->
-		<a href="/cart" class="h-cart">
-			<i class="fas fa-shopping-cart h-cart__icon"></i>
-			<span  class="h-cart__title">Корзина пуста</span>
-		</a>
+		<? if ($qty_items_cart): ?>
+			<a href="/cart" class="h-cart h-cart--active-border">
+				<i class="fas fa-shopping-cart h-cart__icon h-cart--active-text"></i>
+				<span  class="h-cart__title h-cart--active-text">Товаров: <?=$qty_items_cart?>шт.</span>
+			</a>
+		<? else: ?>
+			<a href="" class="h-cart">
+				<i class="fas fa-shopping-cart h-cart__icon"></i>
+				<span  class="h-cart__title">Корзина пуста</span>
+			</a>
+		<? endif; ?>
 	</div>
 </header>

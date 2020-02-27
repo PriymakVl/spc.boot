@@ -1,9 +1,8 @@
 <?php
 use yii\helpers\Html;
 $this->title = 'Корзина';	
+$this->registerCssFile('@web/css/content/cart.css');
 ?>
-<!-- css files -->
-<!-- <link rel="stylesheet" type="text/css" href="/web/css/cart.css"> -->
 
 <!-- Breadcrumbs  -->
 <div class="breadcrumbs">
@@ -12,16 +11,17 @@ $this->title = 'Корзина';
 	<span class="breadcrumbs__active">Корзина</span>
 </div>
 
+<h1 class="page-title">Корзина</h1>
 <div class="cart">
 	<? if (!empty($cart)): ?>
-		<table class="cart__table">
+		<table class="cart__content">
 			<tr>
-				<th width="120">Фото</th>
-				<th width="200">Кодировка</th>
+				<th width="80">Фото</th>
+				<th width="150">Кодировка</th>
 				<th>Описание</th>
-				<th>Цена</th>
+				<th width="100">Цена</th>
 				<th width="70">Кол-во</th>
-				<th width="80">Управление</th>
+				<th width="90">Удалить</th>
 			</tr>
 
 			<?=$this->render('products', ['cart' => $cart])?>
