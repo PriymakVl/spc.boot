@@ -8,9 +8,11 @@ $this->registerCssFile('@web/css/content/product/product_dimension.css');
 $this->registerCssFile('@web/css/content/product/product_cart_modal.css');
 
 $this->registerJsFile('@web/js/product/product_tab.js', ['depends' => 'yii\web\YiiAsset']);
-$this->registerJsFile('@web/js/product/choice_air_preparation_air.js', ['depends' => 'yii\web\YiiAsset']);
 $this->registerJsFile('@web/js/product/product_counter.js', ['depends' => 'yii\web\YiiAsset']);
 $this->registerJsFile('@web/js/product/product_add_cart.js', ['depends' => 'yii\web\YiiAsset']);
+
+$this->registerJsFile('@web/js/product/select_air_preparation.js', ['depends' => 'yii\web\YiiAsset']);
+
 ?>
 
 <?=$this->render('breadcrumbs', ['cat' => $cat])?>
@@ -29,6 +31,8 @@ $this->registerJsFile('@web/js/product/product_add_cart.js', ['depends' => 'yii\
 			
 				<h1 class="product__name"><?=$cat->name?></h1>
 
+				<?=$this->render('product_select')?>
+
 				<?=$this->render('buy_block')?>
 				
 			</div> <!-- /.product__content -->
@@ -38,6 +42,7 @@ $this->registerJsFile('@web/js/product/product_add_cart.js', ['depends' => 'yii\
 
 	<?=$this->render('sidebar')?>
 </div>
+
 
 <?= $this->render('product_description') ?>
 

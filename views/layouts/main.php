@@ -24,6 +24,11 @@
 
  <?=$this->render('header')?>
 
+ <!-- message -->
+<div class="container">
+     <?= Alert::widget() ?>
+</div>
+
 <div class="body">
 
     <?=$this->render('sidebar')?>
@@ -41,6 +46,9 @@
 
 <!-- footer -->
 <?=$this->render('footer')?>
+
+<!-- Callback Form -->
+<?=$this->render('callback_form')?>
 
 <?php $this->endBody() ?>
 </body>

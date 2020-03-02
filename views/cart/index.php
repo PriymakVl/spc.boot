@@ -27,11 +27,15 @@ $this->registerCssFile('@web/css/content/cart.css');
 			<?=$this->render('products', ['cart' => $cart])?>
 
 		</table>
+
+		<button type="button" class="cart__btn-checkout" data-toggle="modal" data-target="#checkout">Оформить заказ</button>
+
 	<? else: ?>
 		<p>В корзине еще нет товаров</p>
 		<a href="/" class="btn btn-primary">Продолжить покупки</a>
 	<? endif; ?>
 </div>
 
-<?//=$this->render('checkout_form')?>
-</div>
+
+
+<?=$this->render('checkout_form', ['model' => $model])?>

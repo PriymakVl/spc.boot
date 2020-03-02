@@ -54,7 +54,7 @@ $qty_items_cart = calculate_items_cart();
 				0(800)-210-317
 			</div>
 			<div class="h-phone__callback">
-				<a href="">Заказать обратный звонок</a>
+				<a href="#" data-toggle="modal" data-target="#callback-form">Заказать обратный звонок</a>
 			</div>
 		</div>
 

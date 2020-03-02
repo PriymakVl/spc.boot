@@ -31,13 +31,6 @@ class CartController extends BaseController {
 		return $this->redirect($this->request->referrer);
 	}
 
-	// public function actionAddProductToCart($id_prod, $qty)
-	// {
-	// 	$this->setSessionProduct($id_prod, $qty);
-	// 	Yii::$app->session->setFlash('success', 'Товар добавлен в корзину');
-	// 	return $this->redirect($this->request->referrer);
-	// }
-
 	//ajax
 	public function actionAddProductByCode($model, $size, $qty)
 	{
@@ -60,7 +53,6 @@ class CartController extends BaseController {
 	{
 		unset($_SESSION['cart'][$type][$index]);
 		if (empty($_SESSION['cart'][$type])) unset($_SESSION['cart'][$type]);
-		// Yii::$app->session->setFlash('success', 'Продукт удален из корзины');
 		$count = $this->calculateItemsCart();
 		if ($count) return $this->redirect('/cart');
 		return $this->goHome();
@@ -68,11 +60,7 @@ class CartController extends BaseController {
 
 	private function setSessionProduct($product, $qty)
 	{
-		$data['id_prod'] = $product->id;
-		$data['name'] = $product->name;
-		// $data['price'] = $product->price->value;
-		$data['preview'] = $product->preview;
-		$data['qty'] = $qty;
+		$data = ['id_prod' => $product->id, 'name' => $product->name, 'preview' => $product->preview, 'qty' => $qty];
 		$data['img'] = $product->image ? '@img/'.$product->image->subdir.'/'.$product->image->filename : '@img/no_photo_medium.png';
 		$_SESSION['cart']['products'][] = $data;
 	}
