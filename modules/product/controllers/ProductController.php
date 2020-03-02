@@ -19,7 +19,7 @@ class ProductController extends BaseController
     //     return $this->render('index/main', compact('product'));
     // }
 
-    public function actionIndex($cat_id)
+    public function actionIndex($cat_id = 812)
     {
         $cat = Category::findOne($cat_id);
         $products = Product::find()->where(['id_cat' => $cat->id, 'status' => self::STATUS_ACTIVE, 'IBLOCK_ID' => 14])->all();

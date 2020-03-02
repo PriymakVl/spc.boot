@@ -23,9 +23,17 @@ class CategoryController extends BaseController {
 		$this->registerMetaTags($cat);
 		if (!$cat) throw new NotFoundHttpException('Такой категории не существует');
 		// if ($this->isCylinder($cat->code)) return $this->redirect(['cylinder/form', 'series' => $cat->code]);
-		if ($cat->products) return $this->redirect(['/product/', 'cat_id' => $cat->id]);
+		//if ($cat->products) return $this->redirect(['/product/', 'cat_id' => $cat->id]);
 		// if ($cat->translit == 'tsilindry') $cat->filterCylinders();
-		return $this->render('categories/main', compact('cat'));
+		$template = $this->getTemplate($translit);
+		return $this->render($template, compact('cat'));
+	}
+
+	private function getTemplate($translit) {
+		switch($translit) {
+			case 'bloki_podgotovki_vozdukha': return 'index/main';
+			default:  return 'categories/main';
+		}
 	}
 
 	// private function products($cat)
