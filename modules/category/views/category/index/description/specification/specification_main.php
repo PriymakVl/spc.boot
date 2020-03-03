@@ -6,10 +6,10 @@
 
 	<div class="sub-tab__content">
 		<section id="tab_sub_1" class="sub-tab__item">
-			<?= $this->render('product_specification_cn') ?>
+			<?= $this->render('specification_cn') ?>
 		</section>
 		<section id="tab_sub_2" class="sub-tab__item">
-			<?= $this->render('product_specification_cu') ?>
+			<?= $this->render('specification_cu') ?>
 		</section>
 	</div>
 </div>

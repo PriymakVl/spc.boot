@@ -12,10 +12,10 @@
 		</button> 
 	</div>
 
-	<!-- 	<div class="product__buy-click">
-	<input type="text" name="phone" id="" placeholder="Номер телефона">
+	<div class="product__buy-click">
+		<input type="text" name="phone" id="" placeholder="Номер телефона">
 	<button class="product__buy-click-btn">Купить в 1 клик</button> 
-</div> -->
+</div>
 </div> <!-- /.buy-block -->
 	
 

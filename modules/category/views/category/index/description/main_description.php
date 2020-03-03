@@ -1,8 +1,8 @@
-<div class="product-description">
+<div class="cat-description">
 
 	<div class="main-tab">
 		<div class="main-tab__nav">
-			<a href="#tab_main_1" onclick="show_tab_main(this);" class="main-tab__link main-tab--active">Технические характеристики</a>
+			<!-- <a href="#tab_main_1" onclick="show_tab_main(this);" class="main-tab__link main-tab--active">Технические характеристики</a> -->
 			<a href="#tab_main_2" onclick="show_tab_main(this);" class="main-tab__link">Габаритные размеры</a>
 			<a href="#tab_main_3" onclick="show_tab_main(this);" class="main-tab__link">Принцип работы</a>
 			<a href="#tab_main_4" onclick="show_tab_main(this);" class="main-tab__link">Правила эксплуатации</a>
@@ -12,24 +12,24 @@
 
 		<div class="main-tab__content">
 			<section id="tab_main_1" class="main-tab__item">
-				<?= $this->render('product_specification_main') ?>
+				<?//= $this->render('specification/specification_main') ?>
 			</section>
 			<section id="tab_main_2" class="main-tab__item">
-				<?= $this->render('product_dimensions_main') ?>
+				<?= $this->render('dimensions/dimensions_main') ?>
 			</section>
 			<section id="tab_main_3" class="main-tab__item">
-				<?= $this->render('product_work') ?>   
+				<?= $this->render('work') ?>   
 			</section>
 			<section id="tab_main_4" class="main-tab__item">
-				<?= $this->render('product_rules') ?>   
+				<?= $this->render('rules') ?>   
 			</section>
 			<section id="tab_main_5" class="main-tab__item">
-				<?= $this->render('product_choice') ?>   
+				<?//= $this->render('choice') ?>  coice 
 			</section>
 			<section id="tab_main_6" class="main-tab__item">
-				<?= $this->render('product_total') ?>   
+				<?= $this->render('total') ?>   
 			</section>
 		</div> <!-- /.main-tab__content -->
 	</div> <!-- /.main-tab -->
 	
-</div> <!-- /.product-description -->
+</div> <!-- /.cat-description -->

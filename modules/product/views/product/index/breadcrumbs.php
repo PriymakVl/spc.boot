@@ -10,7 +10,13 @@ use yii\helpers\Html;
 		<span class="breadcrumbs__del">/</span>
 		<?= Html::a($cat->parent->name, ['/category/'.$cat->parent->translit], ['class' => 'breadcrumbs__link']) ?>
 	<? endif; ?>
+
 	<span class="breadcrumbs__del">/</span>
-	<span class="breadcrumbs__active"><?=$cat->name?></span>
+
+	<?= Html::a($cat->name, ['/category/'.$cat->translit], ['class' => 'breadcrumbs__link']) ?>
+
+	<span class="breadcrumbs__del">/</span>
+
+	<span class="breadcrumbs__active">форма для покупки блока подготовки воздуха</span>
 
 </div>

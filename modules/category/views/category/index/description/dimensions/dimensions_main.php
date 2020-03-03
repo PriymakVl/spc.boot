@@ -7,10 +7,10 @@
 
 	<div class="sub-tab__content">
 		<section id="tab_sub_dim_1" class="sub-tab__item">
-			<?= $this->render('product_dimensions_cn') ?>
+			<?= $this->render('dimensions_cn') ?>
 		</section>
 		<section id="tab_sub_dim_2" class="sub-tab__item">
-			<?= $this->render('product_dimensions_cu') ?>
+			<?= $this->render('dimensions_cu') ?>
 		</section>
 	</div>
 </div>

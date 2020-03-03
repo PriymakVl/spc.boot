@@ -2,12 +2,10 @@
 use yii\helpers\Html;
 
 $this->registerCssFile('@web/css/content/product/product.css');
-$this->registerCssFile('@web/css/content/product/product_sidebar.css');
-$this->registerCssFile('@web/css/content/product/product_description.css');
-$this->registerCssFile('@web/css/content/product/product_dimension.css');
-$this->registerCssFile('@web/css/content/product/product_cart_modal.css');
+$this->registerCssFile('@web/css/content/product/product_assortiment.css');
+$this->registerCssFile('@web/css/content/product/sidebar.css');
+$this->registerCssFile('@web/css/content/product/cart_modal.css');
 
-$this->registerJsFile('@web/js/product/product_tab.js', ['depends' => 'yii\web\YiiAsset']);
 $this->registerJsFile('@web/js/product/product_counter.js', ['depends' => 'yii\web\YiiAsset']);
 $this->registerJsFile('@web/js/product/product_add_cart.js', ['depends' => 'yii\web\YiiAsset']);
 
@@ -29,7 +27,7 @@ $this->registerJsFile('@web/js/product/select_air_preparation.js', ['depends' =>
 			<!-- Product content -->
 			<div class="product__content">
 			
-				<h1 class="product__name"><?=$cat->name?></h1>
+				<h1 class="product__name">Купить блок подготовки воздуха</h1>
 
 				<?=$this->render('product_select')?>
 
@@ -38,12 +36,14 @@ $this->registerJsFile('@web/js/product/select_air_preparation.js', ['depends' =>
 			</div> <!-- /.product__content -->
 		</div> <!-- /.product__inner -->
 
+		<?=$this->render('product__assortiment')?>
+
 	</div> <!-- /.product -->
+
 
 	<?=$this->render('sidebar')?>
 </div>
 
 
-<?= $this->render('product_description') ?>
 
 <?= $this->render('cart_modal') ?>
