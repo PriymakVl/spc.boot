@@ -36,14 +36,12 @@ $this->registerJsFile('@web/js/product/select_air_preparation.js', ['depends' =>
 			</div> <!-- /.product__content -->
 		</div> <!-- /.product__inner -->
 
-		<?=$this->render('product__assortiment')?>
-
 	</div> <!-- /.product -->
 
 
 	<?=$this->render('sidebar')?>
 </div>
 
-
+<?=$this->render('product__assortiment')?>
 
 <?= $this->render('cart_modal') ?>

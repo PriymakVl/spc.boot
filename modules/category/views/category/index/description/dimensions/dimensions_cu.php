@@ -1,5 +1,5 @@
 <div class="dimension">
-	<section class="dimenstion__item">
+	<section class="dimension__item">
 		<h3 class="dimension__model">модель SA-CU20-08</h3>
 		<div class="dimension__img">
 			<img width="500" alt="Габаритные размеры блока подготовки воздуха CU20" src="/images/medialibrary/fa8/fa86cb2ad3941c3b1244e161287c9381.jpg" height="407" title="Габаритные размеры блока подготовки воздуха CU20">

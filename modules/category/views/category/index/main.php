@@ -3,9 +3,9 @@ use yii\helpers\Html;
 
 $this->registerCssFile('@web/css/content/category/category.css');
 
-$this->registerCssFile('@web/css/content/product/product.css');
-$this->registerCssFile('@web/css/content/product/product_description.css');
-$this->registerCssFile('@web/css/content/product/product_dimension.css');
+// $this->registerCssFile('@web/css/content/product/product.css');
+$this->registerCssFile('@web/css/content/category/description.css');
+$this->registerCssFile('@web/css/content/category/dimension.css');
 
 $this->registerJsFile('@web/js/category/category_tab.js', ['depends' => 'yii\web\YiiAsset']);
 

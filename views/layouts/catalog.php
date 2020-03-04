@@ -21,7 +21,9 @@
 <div class="catalog">
     <div class="catalog__header">
         <span>Каталог товаров</span>
-        <i class="fas fa-bars catalog__toggle"></i>
+        <div class="catalog__toggle" onclick="classList.toggle('burger-active');">
+        	<span></span>
+        </div>
     </div>
     
 	<ul class="catalog__list" <? if ($hide_catalog) echo 'style="display:none;"'; ?>>
