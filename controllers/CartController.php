@@ -32,12 +32,10 @@ class CartController extends BaseController {
 	}
 
 	//ajax
-	public function actionAddProductByCode($model, $size, $qty)
+	public function actionAddProductByCode($name, $qty)
 	{
-		$name = $model.'-'.$size;
 		$product = Product::findOne(['name' => $name, 'status' => self::STATUS_ACTIVE]);
-		if (!$product) return 'no';
-		$this->setSessionProduct($product, $qty);
+		$this->setSessionProduct($name, $product, $qty);
 		return $this->calculateItemsCart();
 	}
 
@@ -58,10 +56,13 @@ class CartController extends BaseController {
 		return $this->goHome();
 	}
 
-	private function setSessionProduct($product, $qty)
+	private function setSessionProduct($name, $product, $qty)
 	{
-		$data = ['id_prod' => $product->id, 'name' => $product->name, 'preview' => $product->preview, 'qty' => $qty];
-		$data['img'] = $product->image ? '@img/'.$product->image->subdir.'/'.$product->image->filename : '@img/no_photo_medium.png';
+		$data['id_prod'] = $product ? $product->id : null;
+		$data['name'] = $name;
+		$data['preview'] = $product ? $product->preview : null;
+		$data['qty'] = $qty;
+		$data['img'] = ($prduct && $product->image) ? '@img/'.$product->image->subdir.'/'.$product->image->filename : '@img/no_photo_medium.png';
 		$_SESSION['cart']['products'][] = $data;
 	}
 

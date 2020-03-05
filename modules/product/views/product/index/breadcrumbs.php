@@ -17,6 +17,6 @@ use yii\helpers\Html;
 
 	<span class="breadcrumbs__del">/</span>
 
-	<span class="breadcrumbs__active">форма для покупки блока подготовки воздуха</span>
+	<span class="breadcrumbs__active">Форма для заказа</span>
 
 </div>

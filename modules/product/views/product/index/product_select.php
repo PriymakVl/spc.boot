@@ -20,13 +20,13 @@
 			</select>
 		</div>
 	</div>
-	<div class="product__size">
-		<label>Пр. резьба:</label>
-		<div class="select-wrp">
-			<div class="error-message">Не выбрана резьба</div>
-			<select name="size" id="product_size" disabled>
-				<option value="">Не выбран</option>
-			</select>
-		</div>
+<!-- 	<div class="product__size">
+	<label>Пр. резьба:</label>
+	<div class="select-wrp">
+		<div class="error-message">Не выбрана резьба</div>
+		<select name="size" id="product_size" disabled>
+			<option value="">Не выбран</option>
+		</select>
 	</div>
+</div> -->
 </div> <!-- /.product__select-block -->

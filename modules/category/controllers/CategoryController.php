@@ -31,8 +31,9 @@ class CategoryController extends BaseController {
 
 	private function getTemplate($translit) {
 		switch($translit) {
-			case 'bloki_podgotovki_vozdukha': return 'index/main';
-			default:  return 'categories/main';
+			case 'podgotovka_vozdukha': return 'podgotovka_vozdukha/main';
+			case 'bloki_podgotovki_vozdukha': return 'bloki_podgotovki_vozdukha/main';
+			default:  throw new NotFoundHttpException('Такой категории не существует');
 		}
 	}
 

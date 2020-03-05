@@ -47,11 +47,12 @@ $this->registerJsFile('@web/js/category/category_tab.js', ['depends' => 'yii\web
 			</div> <!-- /.cat-alert -->
 		</div>	
 	</div> <!-- /.cat -->
-			
-	<div data-toggle="modal" data-target="#callback-form" class="consultation-order">
-		Нужна консультация?
-	</div>
-
+		
+	<div class="consultation-order-wrp">
+		<div data-toggle="modal" data-target="#callback-form" class="consultation-order">
+			заказать консультацию
+		</div>
+	</div>	
 
 	<?=$this->render('cat_assortiment')?>
 	

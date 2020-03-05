@@ -1,5 +1,7 @@
 <div class="product__assortiment">
-	<h2 class="product__assortiment-title">Таблица для выбора модели</h2>
+	
+	<h2 class="product__assortiment-title">Таблица для выбора модели блока подготовки воздуха</h2>
+	
 	<table>
 		<tr>
 			<th>Серия</th>
@@ -53,4 +55,5 @@
 			<td>‘G1/2”</td>
 		</tr>
 	</table>
-</div>
+
+</div> <!-- /.product__assortiment -->

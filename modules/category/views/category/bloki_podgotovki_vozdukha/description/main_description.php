@@ -20,7 +20,7 @@
 				<?= $this->render('rules') ?>   
 			</section>
 			<section id="tab_main_5" class="main-tab__item">
-				<?//= $this->render('choice') ?>  coice 
+				<?= $this->render('choice') ?>  coice 
 			</section>
 			<section id="tab_main_6" class="main-tab__item">
 				<?= $this->render('total') ?>   
