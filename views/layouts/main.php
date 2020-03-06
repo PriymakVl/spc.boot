@@ -30,18 +30,9 @@
 </div>
 
 <div class="body">
-
-    <?=$this->render('sidebar')?>
-
-    <div class="body__inner">
-        <!-- main -->
-        <main class="content">
     
-            <? echo $content; ?>
+    <? echo $content; ?>
 
-        </main>
-
-    </div> <!-- /.body__inner -->
 </div> <!-- /.body -->
 
 <!-- footer -->

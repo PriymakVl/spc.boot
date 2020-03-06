@@ -33,6 +33,7 @@ class CategoryController extends BaseController {
 		switch($translit) {
 			case 'podgotovka_vozdukha': return 'podgotovka_vozdukha/main';
 			case 'bloki_podgotovki_vozdukha': return 'bloki_podgotovki_vozdukha/main';
+			case 'filtry_regulatory': return 'filtry_regulatory/main';
 			default:  throw new NotFoundHttpException('Такой категории не существует');
 		}
 	}
