@@ -3,6 +3,7 @@ use yii\helpers\Url;
 use yii\helpers\Html;
 
 $this->registerCssFile('@web/css/content/category.css');
+
 ?>
 
 <?=$this->render('breadcrumbs', ['cat' => $cat])?>

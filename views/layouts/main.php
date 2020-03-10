@@ -30,6 +30,8 @@
 </div>
 
 <div class="body">
+
+    <?= $this->render('catalog') ?>
     
     <? echo $content; ?>
 

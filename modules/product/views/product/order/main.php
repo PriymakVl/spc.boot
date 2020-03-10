@@ -29,7 +29,7 @@ $this->registerJsFile('@web/js/product/select_air_preparation.js', ['depends' =>
 			
 				<h1 class="product__name">Форма для заказа</h1>
 
-				<?=$this->render('product_select')?>
+				<?=$this->render('select/'.$translit)?>
 
 				<?=$this->render('buy_block')?>
 				
@@ -42,6 +42,6 @@ $this->registerJsFile('@web/js/product/select_air_preparation.js', ['depends' =>
 
 </div>
 
-	<?=$this->render('product__assortiment')?>
+	<?=$this->render('assortiment/'.$translit)?>
 
 <?= $this->render('cart_modal') ?>

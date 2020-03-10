@@ -25,27 +25,8 @@ class CategoryController extends BaseController {
 		// if ($this->isCylinder($cat->code)) return $this->redirect(['cylinder/form', 'series' => $cat->code]);
 		//if ($cat->products) return $this->redirect(['/product/', 'cat_id' => $cat->id]);
 		// if ($cat->translit == 'tsilindry') $cat->filterCylinders();
-		$template = $this->getTemplate($translit);
-		return $this->render($template, compact('cat'));
+		return $this->render($translit.'/main', compact('cat'));
 	}
-
-	private function getTemplate($translit) {
-		switch($translit) {
-			case 'podgotovka_vozdukha': return 'podgotovka_vozdukha/main';
-			case 'bloki_podgotovki_vozdukha': return 'bloki_podgotovki_vozdukha/main';
-			case 'filtry_regulatory': return 'filtry_regulatory/main';
-			default:  throw new NotFoundHttpException('Такой категории не существует');
-		}
-	}
-
-	// private function products($cat)
-	// {
-		// $query = Product::find()->where(['id_cat' => $cat->id, 'status' => self::STATUS_ACTIVE, 'IBLOCK_ID' => 14]);
-		// $pages = new Pagination(['defaultPageSize' => 6, 'totalCount' => $query->count()]);
-		// $products = $query->offset($pages->offset)->limit($pages->limit)->all();
-		// $products = Product::find()->where(['id_cat' => $cat->id, 'status' => self::STATUS_ACTIVE, 'IBLOCK_ID' => 14])->all();
-		// return $this->render('products/main', compact('cat', 'products'));
-	// }
 
 	private function cylinders($cat) {
 		$this->render('categories/main_', compact('cat'));

@@ -10,20 +10,11 @@ use yii\web\NotFoundHttpException;
 
 class ProductController extends BaseController
 {
-	
-    // public function actionIndex($translit, $id)
-    // {
-    //     $product = Product::findOne(['id' => $id, 'status' => self::STATUS_ACTIVE]);
-    //     if (!$product) throw new NotFoundHttpException('Такого продукта не существует');
-    //     $this->view->title = $product->name;
-    //     return $this->render('index/main', compact('product'));
-    // }
 
-    public function actionIndex($cat_id = 812)
+    public function actionOrder($translit)
     {
-        $cat = Category::findOne($cat_id);
-        $products = Product::find()->where(['id_cat' => $cat->id, 'status' => self::STATUS_ACTIVE, 'IBLOCK_ID' => 14])->all();
-        return $this->render('index/main', compact('cat', 'products'));
+        $cat = Category::findOne(['translit' => $translit]);
+        return $this->render('order/main', compact('cat', 'translit'));
     }
 
     public function actionSearch($search)
