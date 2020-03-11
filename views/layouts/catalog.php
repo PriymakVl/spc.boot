@@ -14,6 +14,8 @@
 		if ($translit == 'podgotovka_vozdukha') return false;
 		if ($translit == 'bloki_podgotovki_vozdukha') return true;
 		if ($translit == 'filtry_regulatory') return true;
+		if ($translit == 'filtry') return true;
+		if ($translit == 'lubrikator') return true;
 		if ($translit == 'regulatory') return true;
 	}
 

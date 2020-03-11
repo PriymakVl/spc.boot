@@ -1,3 +1,14 @@
+<?php 
+	use yii\helpers\Html;
+	use app\modules\category\classes\Category;
+
+	$cat_rn = Category::findOne(['translit' => 'seriya_rn', 'status' => STATUS_ACTIVE]);
+	$cat_ru = Category::findOne(['translit' => 'seriya_ru', 'status' => STATUS_ACTIVE]);
+	$cat_rm = Category::findOne(['translit' => 'seriya_cm', 'status' => STATUS_ACTIVE]);
+	$cat_rh = Category::findOne(['translit' => 'seriya_ch', 'status' => STATUS_ACTIVE]);
+	$cat_rhf = Category::findOne(['translit' => 'seriya_chf', 'status' => STATUS_ACTIVE]);
+ ?>
+
 <div class="cat__assortiment">
 	<h2 class="cat__assortiment-title">В нашем ассортименте представлены 5 серий регуляторов давления</h2>
 	<h3 class="cat__assortiment-subtitle">таблица с основными отличиями данных серий.</h3>
@@ -13,47 +24,77 @@
 		</tr>
 		<tr>
 			<td>Внешний вид</td>
-			<td>
-				<img width="100" src="/web/images/block_prep.jpg">
+			<!-- img seriya_rn -->
+			<td class="cat__assortiment-img">
+				<? if ($cat_rn->image): ?>
+					<img width="100" src="<?printf('/images/%s/%s', $cat_rn->image->subdir, $cat_rn->image->filename);?>">
+				<? else: ?>
+					<?= Html::img('/images/no_photo_medium.png', ['width' => 100]) ?>
+				<? endif; ?>
 			</td>
-			<td>
-				<img width="100" src="/web/images/block_prep.jpg">
+			<!-- img seriya_ru -->
+			<td class="cat__assortiment-img">
+				<? if ($cat_ru->image): ?>
+					<img width="100" src="<?printf('/images/%s/%s', $cat_ru->image->subdir, $cat_ru->image->filename);?>">
+				<? else: ?>
+					<?= Html::img('/images/no_photo_medium.png', ['width' => 100]) ?>
+				<? endif; ?>			
 			</td>
-			<td>
-				<img width="100" src="/web/images/block_prep.jpg">
+			<!-- img seriya_rm -->
+			<td class="cat__assortiment-img">
+				<? if ($cat_rm->image): ?>
+					<img width="100" src="<?printf('/images/%s/%s', $cat_rm->image->subdir, $cat_rm->image->filename);?>">
+				<? else: ?>
+					<?= Html::img('@web/images/no_photo_medium.png', ['width' => 100]) ?>
+				<? endif; ?>			
 			</td>
-			<td>
-				<img width="100" src="/web/images/block_prep.jpg">
+			<!-- img seriya_rhf -->
+			<td class="cat__assortiment-img">
+				<? if ($cat_rh->image): ?>
+					<img width="100" src="<?printf('/images/%s/%s', $cat_rh->image->subdir, $cat_rh->image->filename);?>">
+				<? else: ?>
+					<?= Html::img('@web/images/no_photo_medium.png', ['width' => 100]) ?>
+				<? endif; ?>
 			</td>
-			<td>
-				<img width="100" src="/web/images/block_prep.jpg">
+			<!-- img seriya_rh -->
+			<td class="cat__assortiment-img">
+				<? if ($cat_rhf->image): ?>
+					<img width="100" src="<?printf('/images/%s/%s', $cat_rhf->image->subdir, $cat_rhf->image->filename);?>">
+				<? else: ?>
+					<?= Html::img('@web/images/no_photo_medium.png', ['width' => 100]) ?>
+				<? endif; ?>
 			</td>
 		</tr>
 		<tr>
 			<td>Каталог PDF</td>
-			<td>
+			<td class="cat__assortiment-pdf">
 				<a href="">
-					<img width="50" src="/web/images/pdf_file.png" alt="">
+					<img width="30" src="/web/images/pdf_file.png" alt="">
+					скачать каталог
 				</a>
 			</td>
-			<td>
+			<td class="cat__assortiment-pdf">
 				<a href="">
-					<img width="50" src="/web/images/pdf_file.png" alt="">
+					<img width="30" src="/web/images/pdf_file.png" alt="">
+					скачать каталог
 				</a>
 			</td>
-			<td>
+			<td class="cat__assortiment-pdf">
 				<a href="">
-					<img width="50" src="/web/images/pdf_file.png" alt="">
+					<img width="30" src="/web/images/pdf_file.png" alt="">
+					скачать каталог
 				</a>
 			</td>
-			<td>
+			<td class="cat__assortiment-pdf">
 				<a href="">
-					<img width="50" src="/web/images/pdf_file.png" alt="">
+					<img width="30" src="/web/images/pdf_file.png" alt="">
+					скачать каталог
 				</a>
 			</td>
-			<td>
+			<td class="cat__assortiment-pdf">
 				<a href="">
-					<img width="50" src="/web/images/pdf_file.png" alt="">
+					<img width="30" src="/web/images/pdf_file.png" alt="">
+					скачать каталог
 				</a>
 			</td>
 		</tr>
@@ -62,27 +103,32 @@
 			<td>3D модель</td>
 			<td>
 				<a href="">
-					<img src="" alt="">
+					<!-- <img src="" alt=""> -->
+					Нет
 				</a>
 			</td>
 			<td>
 				<a href="">
-					<img src="" alt="">
+					<!-- <img src="" alt=""> -->
+					Нет
 				</a>
 			</td>
 			<td>
 				<a href="">
-					<img src="" alt="">
+					<!-- <img src="" alt=""> -->
+					Нет
 				</a>
 			</td>
 			<td>
 				<a href="">
-					<img src="" alt="">
+					<!-- <img src="" alt=""> -->
+					Нет
 				</a>
 			</td>
 			<td>
 				<a href="">
-					<img src="" alt="">
+					<!-- <img src="" alt=""> -->
+					Нет
 				</a>
 			</td>
 		</tr>
