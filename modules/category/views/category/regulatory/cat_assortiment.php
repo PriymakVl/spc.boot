@@ -4,9 +4,9 @@
 
 	$cat_rn = Category::findOne(['translit' => 'seriya_rn', 'status' => STATUS_ACTIVE]);
 	$cat_ru = Category::findOne(['translit' => 'seriya_ru', 'status' => STATUS_ACTIVE]);
-	$cat_rm = Category::findOne(['translit' => 'seriya_cm', 'status' => STATUS_ACTIVE]);
-	$cat_rh = Category::findOne(['translit' => 'seriya_ch', 'status' => STATUS_ACTIVE]);
-	$cat_rhf = Category::findOne(['translit' => 'seriya_chf', 'status' => STATUS_ACTIVE]);
+	$cat_rm = Category::findOne(['translit' => 'seriya_rm', 'status' => STATUS_ACTIVE]);
+	$cat_rh = Category::findOne(['translit' => 'seriya_rh', 'status' => STATUS_ACTIVE]);
+	$cat_rhf = Category::findOne(['translit' => 'seriya_rhf', 'status' => STATUS_ACTIVE]);
  ?>
 
 <div class="cat__assortiment">

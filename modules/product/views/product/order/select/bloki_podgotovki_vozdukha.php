@@ -8,14 +8,15 @@
 				<option value="">Не выбрана</option>
 				<option value="cn">SA-CN</option>
 				<option value="cu">SA-CU</option>
+				<option value="cm">SA-CM</option>
 			</select>
 		</div>
 	</div>
-	<div class="product__model">
-		<label>Модель:</label>
+	<div class="product__thread">
+		<label>Пр. резьба:</label>
 		<div class="select-wrp">
-			<div class="error-message">Не выбрана модель</div>
-			<select name="model" id="product_model" disabled>
+			<div class="error-message">Не выбрана пр. резьба</div>
+			<select name="thread" id="product_thread" disabled>
 				<option value="">Не выбрана</option>
 			</select>
 		</div>

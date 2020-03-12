@@ -1,3 +1,12 @@
+<?php 
+	use yii\helpers\Html;
+	use app\modules\category\classes\Category;
+
+	$cat_fn = Category::findOne(['translit' => 'seriya_fn', 'status' => STATUS_ACTIVE]);
+	$cat_fu = Category::findOne(['translit' => 'seriya_fu', 'status' => STATUS_ACTIVE]);
+	$cat_fm = Category::findOne(['translit' => 'seriya_fm', 'status' => STATUS_ACTIVE]);
+	$cat_fh = Category::findOne(['translit' => 'seriya_fh', 'status' => STATUS_ACTIVE]);
+ ?>
 <div class="cat__assortiment">
 	<h2 class="cat__assortiment-title">В нашем ассортименте представлены 4 серии фильтров</h2>
 	<h3 class="cat__assortiment-subtitle">таблица с основными отличиями данных серий.</h3>
@@ -12,39 +21,63 @@
 		</tr>
 		<tr>
 			<td>Внешний вид</td>
-			<td>
-				<img width="100" src="/web/images/block_prep.jpg">
+			<!-- img seriya_fn -->
+			<td class="cat__assortiment-img">
+				<? if ($cat_fn->image): ?>
+					<img width="100" src="<?printf('/web/images/%s/%s', $cat_fn->image->subdir, $cat_fn->image->filename);?>">
+				<? else: ?>
+					<?= Html::img('@web/images/no_photo_medium.png', ['width' => 100]) ?>
+				<? endif; ?>
 			</td>
-			<td>
-				<img width="100" src="/web/images/block_prep.jpg">
+			<!-- img seriya_fu -->
+			<td class="cat__assortiment-img">
+				<? if ($cat_fu->image): ?>
+					<img width="100" src="<?printf('/web/images/%s/%s', $cat_fu->image->subdir, $cat_fu->image->filename);?>">
+				<? else: ?>
+					<?= Html::img('@web/images/no_photo_medium.png', ['width' => 100]) ?>
+				<? endif; ?>			
 			</td>
-			<td>
-				<img width="100" src="/web/images/block_prep.jpg">
+			<!-- img seriya_fm -->
+			<td class="cat__assortiment-img">
+				<? if ($cat_fm->image): ?>
+					<img width="100" src="<?printf('/web/images/%s/%s', $cat_fm->image->subdir, $cat_fm->image->filename);?>">
+				<? else: ?>
+					<?= Html::img('@web/images/no_photo_medium.png', ['width' => 100]) ?>
+				<? endif; ?>			
 			</td>
-			<td>
-				<img width="100" src="/web/images/block_prep.jpg">
+			<!-- img seriya_fh -->
+			<td class="cat__assortiment-img">
+				<? if ($cat_fh->image): ?>
+					<img width="100" src="<?printf('/web/images/%s/%s', $cat_fh->image->subdir, $cat_fh->image->filename);?>">
+				<? else: ?>
+					<?= Html::img('@web/images/no_photo_medium.png', ['width' => 100]) ?>
+				<? endif; ?>			
 			</td>
 		</tr>
 		<tr>
 			<td>Каталог PDF</td>
-			<td>
+			<td class="cat__assortiment-pdf">
 				<a href="">
-					<img width="50" src="/web/images/pdf_file.png" alt="">
+					<img width="30" src="/web/images/pdf_file.png" alt="">
+					скачать каталог
 				</a>
 			</td>
-			<td>
+			<td class="cat__assortiment-pdf">
 				<a href="">
-					<img width="50" src="/web/images/pdf_file.png" alt="">
+					<img width="30" src="/web/images/pdf_file.png" alt="">
+					скачать каталог
 				</a>
 			</td>
-			<td>
+			<td class="cat__assortiment-pdf">
 				<a href="">
-					<img width="50" src="/web/images/pdf_file.png" alt="">
+					<img width="30" src="/web/images/pdf_file.png" alt="">
+					скачать каталог
 				</a>
 			</td>
-			<td>
+			<td class="cat__assortiment-pdf">
 				<a href="">
-					<img width="50" src="/web/images/pdf_file.png" alt="">
+					<img width="30" src="/web/images/pdf_file.png" alt="">
+					скачать каталог
 				</a>
 			</td>
 		</tr>
@@ -53,22 +86,26 @@
 			<td>3D модель</td>
 			<td>
 				<a href="">
-					<img src="" alt="">
+					Нет
+					<!-- <img src="" alt=""> -->
 				</a>
 			</td>
 			<td>
 				<a href="">
-					<img src="" alt="">
+					Нет
+					<!-- <img src="" alt=""> -->
 				</a>
 			</td>
 			<td>
 				<a href="">
-					<img src="" alt="">
+					Нет
+					<!-- <img src="" alt=""> -->
 				</a>
 			</td>
 			<td>
 				<a href="">
-					<img src="" alt="">
+					Нет
+					<!-- <img src="" alt=""> -->
 				</a>
 			</td>
 		</tr>

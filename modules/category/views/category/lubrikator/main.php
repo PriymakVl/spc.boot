@@ -2,8 +2,6 @@
 use yii\helpers\Html;
 
 $this->registerCssFile('@web/css/content/category/category.css');
-
-// $this->registerCssFile('@web/css/content/product/product.css');
 $this->registerCssFile('@web/css/content/category/description.css');
 $this->registerCssFile('@web/css/content/category/dimension.css');
 
@@ -18,10 +16,14 @@ $this->registerJsFile('@web/js/category/category_tab.js', ['depends' => 'yii\web
 <h1 class="page-title"><?=$cat->name?></h1>
 <div class="cat">
 	
-	<?= Html::a('Заказать фильтр', ['/order/'.$cat->translit], ['class' => 'buy-btn buy-btn--top']) ?>
+	<?= Html::a('Заказать маслораспылитель', ['/order/'.$cat->translit], ['class' => 'buy-btn buy-btn--top']) ?>
 
 	<div class="cat__img">
-		<img src="/web/images/block_prep.jpg">
+		<? if ($cat->image): ?>
+			<img src="<?printf('/images/%s/%s', $cat->image->subdir, $cat->image->filename);?>">
+		<? else: ?>
+			<?= Html::img('/images/no_photo_medium.png') ?>
+		<? endif; ?>
 	</div>
 	<div class="cat__description">
 		<div class="cat__description-inner">
@@ -53,7 +55,7 @@ $this->registerJsFile('@web/js/category/category_tab.js', ['depends' => 'yii\web
 <?=$this->render('cat_assortiment')?>
 
 <div class="buy-btn-wrp">
-	<?= Html::a('Заказать фильтр', ['/order/'.$cat->translit], ['class' => 'buy-btn buy-btn--middle']) ?>
+	<?= Html::a('Заказать маслораспылитель', ['/order/'.$cat->translit], ['class' => 'buy-btn buy-btn--middle']) ?>
 </div>
 
 <?//=$this->render('description/main_description')?>

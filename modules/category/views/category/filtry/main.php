@@ -21,7 +21,11 @@ $this->registerJsFile('@web/js/category/category_tab.js', ['depends' => 'yii\web
 	<?= Html::a('Заказать фильтр', ['/order/'.$cat->translit], ['class' => 'buy-btn buy-btn--top']) ?>
 
 	<div class="cat__img">
-		<img src="/web/images/block_prep.jpg">
+		<? if ($cat->image): ?>
+			<img src="<?printf('/images/%s/%s', $cat->image->subdir, $cat->image->filename);?>">
+		<? else: ?>
+			<?= Html::img('/images/no_photo_medium.png') ?>
+		<? endif; ?>
 	</div>
 	<div class="cat__description">
 		<div class="cat__description-inner">
