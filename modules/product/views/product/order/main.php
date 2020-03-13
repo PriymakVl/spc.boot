@@ -9,8 +9,6 @@ $this->registerCssFile('@web/css/content/product/cart_modal.css');
 $this->registerJsFile('@web/js/product/product_counter.js', ['depends' => 'yii\web\YiiAsset']);
 $this->registerJsFile('@web/js/product/product_add_cart.js', ['depends' => 'yii\web\YiiAsset']);
 
-$this->registerJsFile('@web/js/product/select_air_preparation.js', ['depends' => 'yii\web\YiiAsset']);
-
 ?>
 
 <?=$this->render('breadcrumbs', ['cat' => $cat])?>
@@ -29,7 +27,7 @@ $this->registerJsFile('@web/js/product/select_air_preparation.js', ['depends' =>
 			
 				<h1 class="product__name">Форма для заказа</h1>
 
-				<?=$this->render('select/'.$translit)?>
+				<?=$this->render('select/'.$cat->parent->translit.'/'.$translit)?>
 
 				<?=$this->render('buy_block')?>
 				

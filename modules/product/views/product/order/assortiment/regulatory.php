@@ -53,11 +53,11 @@
 		<!-- SA-RH -->
 		<tr>
 			<td rowspan="2">SA-RH</td>
-			<td></td>
+			<td>40</td>
 			<td>‘G1/2”</td>
 		</tr>
 		<tr>
-			<td></td>
+			<td>60</td>
 			<td>‘G1”</td>
 		</tr>
 		<!-- SA-RHF -->

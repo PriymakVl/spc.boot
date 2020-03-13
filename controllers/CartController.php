@@ -7,6 +7,7 @@
 	use app\modules\product\classes\Product;
 	use app\modules\order\classes\Order;
 	use app\models\OrderCylinderForm;
+	use app\modules\product\classes\ProductCode;
 	
 class CartController extends BaseController {
 
@@ -32,10 +33,11 @@ class CartController extends BaseController {
 	}
 
 	//ajax
-	public function actionAddProductByCode($name, $qty)
+	public function actionAddProductByCode($series, $thread, $condensate, $qty)
 	{
-		$product = Product::findOne(['name' => $name, 'status' => self::STATUS_ACTIVE]);
-		$this->setSessionProduct($name, $product, $qty);
+		$code = new ProductCode($series, $thread, $condensate);
+		$product = Product::findOne(['name' => $code->short, 'status' => STATUS_ACTIVE]);
+		$this->setSessionProduct($code->full, $product, $qty);
 		return $this->calculateItemsCart();
 	}
 

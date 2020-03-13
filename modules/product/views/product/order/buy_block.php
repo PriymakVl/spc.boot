@@ -6,10 +6,12 @@
 			<span id="product_count_plus">+</span>
 		</div>
 
-		<button class="product__cart-btn" type="button" data-toggle="modal" data-target="#cart_modal">
+		<button class="product__cart-btn" type="button" >
 			<i class="fas fa-cart-plus product__cart-icon"></i>
 			добавить в корзину
 		</button> 
+		<!-- for show cart modal window after add product in cart by ajax-->
+		<div data-toggle="modal" data-target="#cart_modal" id="show_cart_modal"></div>
 	</div>
 
 	<div class="product__buy-click">
