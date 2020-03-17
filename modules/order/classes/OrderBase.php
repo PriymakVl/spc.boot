@@ -18,20 +18,21 @@ class OrderBase extends ModelBase {
     public function rules()
     {
         return [
-            [['state', 'closed'], 'safe'],
-
             [['name', 'phone'], 'required'],
             [['note'], 'string'],
             ['email', 'email'],
             [['name'], 'string', 'max' => 255],
+            [ ['id_customer'], 'integer'],
+            [['state', 'registered', 'closed'], 'safe'],
         ];
     }
 
     public function scenarios()
     {
         $scenarios = parent::scenarios();
+        $scenarios[static::SCENARIO_ONE_CLICK] = ['id_customer'];
+        $scenarios[static::SCENARIO_CART] = ['phone', 'name'];
         $scenarios[static::SCENARIO_ADMIN] = ['state', 'closed'];
-        $scenarios[static::SCENARIO_USER] = ['name', 'phone', 'email'];
         return $scenarios;
     }
 

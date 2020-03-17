@@ -48,7 +48,7 @@
 		<tr>
 			<td>Каталог PDF</td>
 			<td class="cat__assortiment-pdf">
-				<a href="">
+				<a href="/pdf/sa-cn.pdf">
 					<img width="30" src="/web/images/pdf_file.png" alt="">
 					скачать каталог
 				</a>

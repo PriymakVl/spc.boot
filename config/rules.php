@@ -23,9 +23,9 @@ return [
 	'filter' => 'category/category/filter',
 	'category/cylinder/form' => 'category/category/cylinder-form',
 	'category/<translit:\w+>' => 'category/category/index',
+	'order/save' => 'order/order/save',
 	'order/<translit:\w+>' => 'product/product/order',
 	// 'product/<translit:\w+>/<id:\d+>' => 'product/product/index',
-	'order/save' => 'order/order/save',
 	'stuff' => 'main/stuff',
 
 	//admin filters

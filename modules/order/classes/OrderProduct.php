@@ -19,9 +19,9 @@ class OrderProduct extends ModelBase {
         foreach ($products as $item)
         {
             $product = new self();
-            $product->id_prod = $item['id_prod'];
-            $product->name = Product::find()->select('name')->where(['id' => $item['id_prod']])->asArray()->limit(1)->column()[0];
-            $product->price = $item['price'];
+            if ($item['id_prod']) $product->id_prod = $item['id_prod'];
+            $product->name = $item['name'];
+            if ($item['price']) $product->price = $item['price'];
             $product->qty = $item['qty'];
             $product->id_order = $id_order;
             $product->save();
@@ -31,6 +31,16 @@ class OrderProduct extends ModelBase {
     public function saveCart($id_order, $cart)
     {
         if (isset($cart['products'])) self::saveProducts($cart['products'], $id_order);
+    }
+
+    public function saveOne($id_order, $code, $product, $qty)
+    {
+        $product = new self();
+        $product->id_prod = $product ? $product->id : null;
+        $product->name = $code->full;
+        $product->qty = $qty;
+        $product->id_order = $id_order;
+        return $product->save();
     }
 
     

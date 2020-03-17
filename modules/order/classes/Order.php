@@ -16,27 +16,38 @@ class Order extends OrderBase
     use OrderConvert;
 
     const SCENARIO_ADMIN = 'admin';
-    const SCENARIO_USER = 'user';
+    const SCENARIO_ONE_CLICK = 'one_click';
+    const SCENARIO_CART = 'cart';
     
     const STATE_ALL = 'all';
     const STATE_REGISTERED = 1;
     const STATE_CLOSED = 2;
     const STATE_PENDING = 3;
 
+    public function rules()
+    {
+        return [
+            ['phone', 'required'],
+            ['phone', 'trim'],
+        ];
+    }
+
+    public function scenarios()
+    {
+        $scenarios = parent::scenarios();
+
+        return $scenarios;
+    }
+
     public function saveOrder($form, $cart)
     {
         $customer = (new Customer)->getAccordingToForm((object) $form);
-        $this->createOrder($customer->id);
-        (new OrderCylinder)->saveCart($this->id, $cart);
-        (new OrderProduct)->saveCart($this->id, $cart);
-    }
-
-    private function createOrder($id_customer)
-    {
-        $this->id_customer = $id_customer;
+        $this->id_customer = $customer->id;
         $this->registered = time();
         $this->state = self::STATE_REGISTERED;
-        return $this->save();
+        $this->save();
+        (new OrderCylinder)->saveCart($this->id, $cart);
+        (new OrderProduct)->saveCart($this->id, $cart);
     }
 
     public function getCustomer()

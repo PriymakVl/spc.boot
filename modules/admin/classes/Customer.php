@@ -7,14 +7,24 @@ use app\modules\order\classes\Order;
 
 class Customer extends ModelBase {
 
+    const SCENARIO_PHONE = 'phone';
+
 	public static function tableName()
     {
         return '{{customers}}';
     }
 
+    public function scenarios()
+    {
+        $scenarios = parent::scenarios();
+
+        $scenarios[static::SCENARIO_PHONE] = ['phone'];
+        return $scenarios;
+    }
+
     public function getAccordingToForm($form)
     {
-        $customer = self::findOne(['name' => $form->name, 'email' => $form->email, 'phone' => $form->phone]);
+        $customer = self::findOne(['phone' => $form->phone]);
         if ($customer) return $customer;
         return $this->registerCustomer($form);
      }  
@@ -37,6 +47,15 @@ class Customer extends ModelBase {
     {
         if ($this->orders) return sprintf('<a href="/admin/customer/orders?id_customer=%s">%s</a>', $this->id, count($this->orders));
         return '<span classes="text-danger">нет</span>';
+    }
+
+    public function getByPhone($phone)
+    {
+        $customer = self::findOne(['phone' => $phone]);
+        if ($customer) return $customer;
+        $customer = new self(['scenario' => self::SCENARIO_PHONE]);
+        $customer->phone = $phone;
+        return $customer->save();
     }
 
    

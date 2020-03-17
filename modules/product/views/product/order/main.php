@@ -8,6 +8,7 @@ $this->registerCssFile('@web/css/content/product/cart_modal.css');
 
 $this->registerJsFile('@web/js/product/product_counter.js', ['depends' => 'yii\web\YiiAsset']);
 $this->registerJsFile('@web/js/product/product_add_cart.js', ['depends' => 'yii\web\YiiAsset']);
+$this->registerJsFile('@web/js/product/buy_one_click.js', ['depends' => 'yii\web\YiiAsset']);
 
 ?>
 
@@ -42,4 +43,10 @@ $this->registerJsFile('@web/js/product/product_add_cart.js', ['depends' => 'yii\
 
 	<?=$this->render('assortiment/'.$translit)?>
 
+<!-- hide trigger modal window cart for ajax js-->
+<div data-toggle="modal" data-target="#cart_modal" id="trigger_cart_modal"></div>
 <?= $this->render('cart_modal') ?>
+
+<!-- trigger modal window -->
+<div data-toggle="modal" data-target="#one_click_modal" id="trigger_one_click_modal"></div>
+<?= $this->render('one_click_modal') ?>

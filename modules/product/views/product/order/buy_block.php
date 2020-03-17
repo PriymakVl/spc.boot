@@ -10,12 +10,11 @@
 			<i class="fas fa-cart-plus product__cart-icon"></i>
 			добавить в корзину
 		</button> 
-		<!-- for show cart modal window after add product in cart by ajax-->
-		<div data-toggle="modal" data-target="#cart_modal" id="show_cart_modal"></div>
 	</div>
 
 	<div class="product__buy-click">
-		<input type="text" name="phone" id="" placeholder="Номер телефона">
+		<div class="error-message">Не верно указан телефон</div>
+		<input type="text" name="phone" id="phone_number" placeholder="Номер телефона">
 	<button class="product__buy-click-btn">Купить в 1 клик</button> 
 </div>
 </div> <!-- /.buy-block -->
