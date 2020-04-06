@@ -1,0 +1,17 @@
+#cart_modal h4 {
+	text-align: center;
+	text-transform: uppercase;
+	font-size: 1.5em;
+	font-weight: 700;
+}
+
+#cart_modal .modal-body {
+	height: 100px;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+}
+
+#cart_modal .modal-body a {
+	font-weight: bold;
+}

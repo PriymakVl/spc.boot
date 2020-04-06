@@ -1,0 +1,58 @@
+.sidebar {
+	width: 290px;
+}
+
+.service__header {
+	height: 40px;
+	background: #E5E5E5;
+
+	text-align: center;
+	font-family: Roboto;
+	text-transform: uppercase;
+	font-size: 14px;
+	line-height: 40px;
+	color: #666;
+}
+
+.service__content {
+	border: 1px solid #ccc;
+	border-top: none;
+}
+
+.service__item {
+	height: 70px;
+	border-bottom: 1px solid #ccc;
+	display: flex;
+}
+
+.service__item-img {
+	width: 85px;
+	display: flex;
+}
+
+.service__item img {
+	margin: auto;
+}
+
+.service__item-content {
+	width: 200px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: flex-start;
+}
+
+.service__item-title {
+	margin-bottom: 5px;
+	font-family: Roboto;
+	font-size: 16px;
+	color: #000;
+}
+
+.service__item-text {
+	font-family: Roboto;
+	font-size: 14px;
+	color: #666;
+}
+
+

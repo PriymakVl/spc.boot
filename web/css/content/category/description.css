@@ -1,0 +1,150 @@
+.product-description {
+	margin: 15px 0 0 -310px;
+}
+
+/*Main Tabs*/
+.main-tab__nav {
+  border-bottom: 1px solid #ccc;
+}
+
+.main-tab__link {
+	display: inline-block;
+	padding: 10px;
+	margin-right: 5px;
+	border: 1px solid #ccc;
+	border-bottom: none;
+	border-top-right-radius: 7px;
+	border-top-left-radius: 7px;
+	text-decoration: none;
+	text-transform: uppercase;
+	font-weight: 600!important;
+	font-family: 'Open Sans', sans-serif;
+	font-size: .9em;
+	color: #999;
+}
+
+.main-tab__link:last-child {
+	margin-right: 0;
+}
+
+.main-tab__link:hover {
+	text-decoration: none;
+	background: #e5e5e5;
+	color: #000;
+}
+
+.main-tab--active {
+	background: #e5e5e5;
+	color: #000;
+	cursor: default;
+}
+
+.main-tab__item {
+	width:100%;
+	display: none;
+}
+
+.main-tab__item:first-child {
+  display: block;
+}
+
+/*Sub Tab*/
+.sub-tab {
+	margin-top: 15px;
+	background: #fff;
+}
+
+.sub-tab__nav {
+	margin: 20px 0;
+	text-align: center;
+}
+
+.sub-tab__nav:after {
+	content: '';
+	display: block;
+	height: 2px;
+	width: 70%;
+	background: #ccc;
+	margin: 20px auto 20px;
+
+}
+
+.sub-tab__link {
+	margin-right: 20px;
+	padding: 7px;
+	text-transform: uppercase;
+	font-family: 'Roboto', sans-serif;
+	font-size: 1em;
+	color: #999;
+	font-weight: bold;
+}
+
+.sub-tab__link:hover {
+	color: #000;
+	text-decoration: none;
+	border: 1px solid #ccc;
+	background: #e5e5e5;
+}
+
+.sub-tab__link.sub-tab--active {
+	color: #000;
+	cursor: default;
+	border: 1px solid #ccc;
+	background: #e5e5e5;
+}
+
+/*.sub-tab__link.sub-tab--active span {
+	color: #007bff;
+}
+*/
+/*.sub-tab__link.sub-tab--active:hover {
+	text-decoration: none;
+}*/
+
+.sub-tab__item {
+	display: none;
+}
+
+.sub-tab__item:first-child {
+  display: block;
+}
+
+
+/*Product Specification*/
+.product__spec {
+	width: 100%;
+	font-family: 'Open Sans', sans-serif;
+}
+
+.product__spec td, .product__spec th {
+	text-align: center;
+	border: 1px solid #ccc;
+	height: 40px;
+}
+
+.product__spec th {
+	background: #e5e5e5;
+}
+
+.product__spec td {
+	font-size: .9em;
+	height: 35px;
+}
+
+.product__spec td:first-child {
+	text-align: left;
+	padding-left: 10px;
+	width: 350px;
+	font-weight: bold;
+}
+
+.product__spec tr:child-nth(even) {
+	background: #ccc;
+}
+
+.product__work h3, .product__rules h3, .product__choice h3, .product__total h3 {
+	text-align: center;
+	margin: 15px 0;
+	color: #007bff;
+	font-family: 'Roboto', sans-serif;
+}

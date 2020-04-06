@@ -1,0 +1,63 @@
+/*
+
+#007bff; main blue
+#2a8ffb; main blue light
+
+#ccc;  border grey light
+#ebebeb border light light grey;
+#666;  font grey not active
+#444;  font grey not active dark
+#fdfdfd; filters
+
+#fbc217; active yellow
+
+#009a4c; green active button 
+
+*/
+
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	/*font-family: 'Open Sans', sans-serif;*/
+	/*font-family: 'Roboto', sans-serif;*/
+	/*font-family: Arial, sans-serif;*/
+	font-size: 16px;
+	font-weight: 400;
+}
+
+a {
+	text-decoration: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	margin: 0;
+	padding: 0;
+}
+
+.body {
+	max-width: 1200px;
+	margin: 0 auto;
+	position: relative;
+	/*display: flex;*/
+}
+
+/*.body__inner {
+	flex-grow: 1;
+	margin-left: 30px;
+}
+*/
+.page-title {
+	font-size: 1.8em;
+	font-weight: 400;
+	font-family: 'Roboto', sans-serif;
+	margin-left: 300px;
+}
+
+.red {
+	color: red;
+}

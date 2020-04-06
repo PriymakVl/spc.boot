@@ -1,0 +1,32 @@
+/*Product Specification*/
+.product__assortiment {
+	font-family: 'Roboto', sans-serif;
+	margin-top: 20px;
+}
+
+.product__assortiment-title {
+	text-align: center;
+	font-family: 'Roboto', sans-serif;
+	font-size: 1.7em;
+	margin-bottom: 15px;
+}
+
+.product__assortiment table {
+	width: 100%;
+}
+
+.product__assortiment td, .product__assortiment th {
+	border: 1px solid #ccc;
+	height: 40px;
+	text-align: center;
+}
+
+.product__assortiment th {
+	background: #e5e5e5;
+}
+
+.product__assortiment td {
+	font-size: 1em;
+	height: 40px;
+}
+

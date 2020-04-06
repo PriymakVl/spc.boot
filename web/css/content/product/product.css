@@ -1,0 +1,257 @@
+.product-wrp {
+	display: flex;
+	justify-content: space-between;
+	padding-top: 20px;
+}
+
+.product {
+	flex-grow: 1;
+}
+
+.product__inner {
+	display: flex;
+	justify-content: space-between;
+}
+
+.product__img {
+	width: 400px;
+	height: 300px;
+	border: 1px solid #ccc;
+	margin-bottom: 5px;
+	display: flex;
+}
+
+.product__img img {
+	height: 270px;
+	margin: auto;
+}
+
+.product__trumb img {
+	width: 105px;
+	height: 105px;
+	border: 1px solid #ccc;
+	margin-right: 5px;
+	transition: border .3s linear;
+}
+
+.product__trumb img:hover {
+	border: 1px solid #007bff;
+	cursor: pointer;
+}
+
+.product__name {
+	padding-left: 15px;
+	margin-bottom: 25px;
+	text-align: center;
+	font-size: 1.5em;
+	font-weight: 400;
+	line-height: .7;
+	font-family: 'Roboto', sans-serif;
+}
+
+.product__content {
+	flex-grow: 1;
+	margin: 0 30px;
+}
+
+/*Product Select Block*/
+.product__select-block {
+	margin-bottom: 30px;
+}
+
+.product__select-block > div {
+	margin-bottom: 30px;
+}
+
+.product__select-block > div:last-child {
+	margin-bottom: 0;
+}
+
+.product__select-block .select-wrp{
+	position: relative;
+}
+
+.product__select-block .select-wrp .error-message {
+	position: absolute;
+	left: 0;
+	top: -20px;
+	font-size: 14px;
+	color: red;
+	display: none;
+}
+
+.product__model, .product__series, .product__thread {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.product__model label, .product__series label, .product__thread label {
+	font-size: 1.3em;
+	font-family: 'Roboto', sans-serif;
+	margin: 0;
+	font-weight: 400;
+}
+
+.product__model select, .product__series select, .product__thread select {
+	height: 40px;
+	width: 330px;
+	border: 1px solid #ccc;
+	font-size: 1em;
+	font-family: 'Roboto', sans-serif;
+}
+
+.product__condensate {
+	position: relative;
+}
+
+.product__condensate h3 {
+	font-size: 1.3em;
+	font-family: 'Roboto', sans-serif;
+	margin-bottom: 10px;
+}
+
+.product__condensate label {
+	font-weight: normal;
+	font-family: 'Roboto', sans-serif;
+	margin-right: 15px;
+}
+
+.product__condensate .error-message {
+	position: absolute;
+	top: 3px;
+	left: 190px;
+	font-size: 14px;
+	color: red;
+	display: none;
+}
+
+.product__buy-click .error-message {
+	position: absolute;
+	top: -20px;
+	left: 0;
+	font-size: 14px;
+	color: red;
+	display: none;
+}
+
+/*Cart Block*/
+.product__cart-block {
+	display: flex;
+	justify-content: space-between;
+}
+
+.product__counter-block > span{
+	border: 1px solid #ccc;
+	display: inline-block;
+	height: 40px;
+	width: 40px;
+	cursor: pointer;
+	vertical-align: top;
+	text-align: center;
+	font-size: 1.5em;
+	line-height: 38px;
+	font-family: 'Open Sans', sans-serif;
+	color: #444;
+}
+
+.product__counter-block > input {
+	height: 40px;
+	width: 60px;
+	outline: none;
+	border: none;
+	margin: 0 -4px;
+	border: 1px solid #ccc;
+	border-left: none;
+	border-right: none;
+	background: #f7f7f7;
+
+	font-size: 16px;
+	font-family: 'Open Sans', sans-serif;
+	text-align: center;
+	color: #444;
+}
+
+.product__cart-btn {
+	width: 280px;
+	height: 40px;
+	text-transform: uppercase;
+	background: #007bff;
+	border: none;
+
+	font-size: .9em;
+	color: #fff;
+	line-height: 40px;
+	font-weight: bold;
+	font-family: 'Roboto', sans-serif;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	transition: background .3s linear;
+}
+
+.product__cart-btn:hover {
+	background: #009a4c;
+	cursor: pointer;
+}
+
+.product__cart-icon {
+	margin-right: 15px;
+	font-size: 1.3em;
+	color: #fbc217;
+}
+
+
+/*Buy Click*/
+.product__buy-click {
+	margin-top: 35px;
+	display: flex;
+	justify-content: space-between;
+	position: relative;
+}
+
+.product__buy-click > input {
+	width: 260px;
+	height: 40px;
+	padding: 0 5px; 
+	border: 1px solid #ccc;
+	font-family: Open Sans;
+	font-size: 14px;
+}
+
+.product__buy-click > button {
+	width: 160px;
+	height: 40px;
+	border: 2px solid #007bff;
+	background: #fff;
+	text-align: center;
+	font-family: Roboto;
+	font-weight: bold;
+	font-size: 14px;
+	text-transform: uppercase;
+	line-height: 40px;
+	color: #007bff;
+}
+
+.product__buy-click > button:hover {
+	border: 2px solid #009A4C;
+	color: #009A4C;
+	cursor: pointer;
+}
+
+/*.product__custom-compare {
+	color: #007bff;
+	font-size: 0.8em;
+	font-family: 'Open Sans', sans-serif;
+	line-height: 60px;
+}
+
+.product__custom-compare i {
+	font-size: 1.3em;
+}
+
+.card__custom-compare:hover {
+	text-decoration: underline;
+}*/

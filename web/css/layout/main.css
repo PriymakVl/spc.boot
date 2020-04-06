@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,400i,600,700&display=swap&subset=cyrillic');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700&display=swap&subset=cyrillic');
+
+
+@import 'init.css';
+@import 'header.css';
+@import 'sidebar.css';
+@import 'catalog.css';
+@import 'slider.css';
+@import 'breadcrumbs.css';
+@import 'filters.css';
+@import 'card.css';
+@import 'footer.css';
+@import 'product.css';
+@import 'product_sidebar.css';
+
+

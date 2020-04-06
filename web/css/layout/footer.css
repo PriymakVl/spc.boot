@@ -1,0 +1,45 @@
+.footer {
+	margin-top: 30px;
+	padding: 50px 0;
+	background: #007bff;
+	color: #fff;
+	font-size: 1em;
+	line-height: 1.4;
+	display: flex;
+	justify-content: center;
+}
+
+.footer__item {
+	margin-left: 120px;
+}
+
+.footer__item:first-child {
+	margin-left: 0;
+}
+
+.footer__item h3 {
+	text-transform: uppercase;
+	text-decoration: underline;
+	font-size: 1.2em;
+	margin-bottom: 15px;
+	line-height: 1;
+}
+
+.footer__item a {
+	display: block;
+	color: inherit;
+	text-decoration: none;
+}
+
+.footer__item a:hover {
+	text-decoration: underline;
+}
+
+.f-contacts__item {
+	font-size: 1.2em;
+	line-height: 1.6;
+}
+
+.f-contacts__phone, .f-contacts__mail {
+	margin-left: 10px;
+}
